@@ -37,5 +37,8 @@ php:
 database:
 	@$(DOCKER_COMPOSE) exec database sh
 
+dotenv:
+	$(PHP) php bin/console debug:dotenv
+
 setup-env:
 	./scripts/setup-env.sh
