@@ -16,16 +16,16 @@ kill:
 	@$(DOCKER_COMPOSE) kill $(CONTAINER) || true
 
 ## Build containers
-build:
+build: setup-env
 	@$(DOCKER_COMPOSE) build --pull --no-cache
 
 ## Start containers
 start:
-	@$(DOCKER_COMPOSE) up -d
+	@$(DOCKER_COMPOSE) up --pull always -d --wait
 
 ## Stop containers
 stop:
-	@$(DOCKER_COMPOSE) down
+	@$(DOCKER_COMPOSE) down --remove-orphans
 
 restart: stop start
 
@@ -36,3 +36,6 @@ php:
 ## Entering database shell
 database:
 	@$(DOCKER_COMPOSE) exec database sh
+
+setup-env:
+	./scripts/setup-env.sh

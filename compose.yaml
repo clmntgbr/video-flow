@@ -34,8 +34,6 @@ services:
         container_name: ${PROJECT_NAME}-db
         networks:
             - api_network
-        env_file:
-            - .env
         volumes:
             - database_data:/var/lib/postgresql/data
         ports:
