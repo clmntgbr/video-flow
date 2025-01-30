@@ -19,6 +19,9 @@ kill:
 build:
 	@$(DOCKER_COMPOSE) build --pull --no-cache
 
+## Init project
+init: install update
+
 ## Start containers
 start:
 	@$(DOCKER_COMPOSE) up -d
@@ -29,6 +32,16 @@ stop:
 
 restart: stop start
 
+## Init project
+init: install update npm fabric db
+
+npm: 
+	$(PHP) npm install
+	$(PHP) npm run build
+
+cache:
+	$(PHP) rm -r var/cache
+
 ## Entering php shell
 php:
 	@$(DOCKER_COMPOSE) exec php sh
@@ -36,3 +49,23 @@ php:
 ## Entering database shell
 database:
 	@$(DOCKER_COMPOSE) exec database sh
+
+## Composer install
+install:
+	$(PHP) composer install
+
+## Composer update
+update:
+	$(PHP) composer update
+
+fabric: 
+	$(PHP) php bin/console messenger:setup-transports
+
+db: 
+	$(PHP) php bin/console doctrine:database:drop -f
+	$(PHP) php bin/console doctrine:database:create
+	$(PHP) php bin/console doctrine:schema:update -f
+	$(PHP) php bin/console hautelook:fixtures:load -n
+
+fixtures:
+	$(PHP) php bin/console hautelook:fixtures:load -n
