@@ -9,3 +9,11 @@ services:
       APP_SECRET: ${APP_SECRET}
       MERCURE_PUBLISHER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET}
       MERCURE_SUBSCRIBER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET}
+
+  subtitle-generator:
+      build:
+          context: ./services/subtitle-generator
+          dockerfile: ./Dockerfile
+          args:
+              SERVICE_PORT: 5000
+              SERVICE_NAME: subtitle-generator
