@@ -74,9 +74,9 @@ services:
         - minio_data:/data/minio
         command: 'minio server /data/minio --console-address ":9001"'
         environment:
-            MINIO_ROOT_USER: ${MINIO_USER}
-            MINIO_ROOT_PASSWORD: ${MINIO_PASSWORD}
-            MINIO_DEFAULT_BUCKETS: ${MINIO_DEFAULT_BUCKETS}
+            MINIO_ROOT_USER: ${S3_USER}
+            MINIO_ROOT_PASSWORD: ${S3_PASSWORD}
+            MINIO_DEFAULT_BUCKETS: ${S3_DEFAULT_BUCKETS}
 
     subtitle-generator:
         container_name: ${PROJECT_NAME}-subtitle-generator

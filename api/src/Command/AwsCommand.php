@@ -30,7 +30,7 @@ class AwsCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $this->awsStorage->write('test.txt', 'Hello AWS');
+        $this->awsStorage->write('toto/test.txt', 'Hello AWS');
         return Command::SUCCESS;
     }
 }
