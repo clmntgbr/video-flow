@@ -1,7 +1,9 @@
+import os
+import json
+
+from api import status
 from flask import Flask
 
 app = Flask(__name__)
 
-@app.route('/status')
-def status():
-    return {'status': 'running'}
+app.add_url_rule('/status', 'status', status)
