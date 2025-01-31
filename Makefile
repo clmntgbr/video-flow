@@ -16,7 +16,7 @@ kill:
 	@$(DOCKER_COMPOSE) kill $(CONTAINER) || true
 
 ## Build containers
-build: setup-env
+build:
 	@$(DOCKER_COMPOSE) build --pull --no-cache
 
 ## Start containers

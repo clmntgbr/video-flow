@@ -4,11 +4,11 @@ Based on A [Symfony Docker](https://github.com/dunglas/symfony-docker) installer
 with [FrankenPHP](https://frankenphp.dev) and [Caddy](https://caddyserver.com/) inside!
 
 ## Getting Started
-
-1. Run `make build` to build fresh images
-2. Run `make start` to set up and start a fresh Symfony project
-3. Open `https://localhost` in your favorite web browser
-4. Run `make stop` to stop the Docker containers.
+1. Run `make setup-env` to create env file & modify them
+2. Run `make build` to build fresh images
+3. Run `make start` to set up and start a fresh Symfony project
+4. Open `https://localhost` in your favorite web browser
+5. Run `make stop` to stop the Docker containers.
 
 # TLS Certificates
 
