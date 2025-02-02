@@ -1,0 +1,13 @@
+App\Entity\User:
+  user_1:
+    familyName: <lastname()>
+    givenName: <firstName()>
+    email: "clement@gmail.com"
+    plain_password: "clement"
+    roles: ["ROLE_ADMIN"]
+
+  user_{2..10}:
+    email: <email()>
+    familyName: <lastname()>
+    givenName: <firstName()>
+    plain_password: "random"

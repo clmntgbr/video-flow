@@ -29,6 +29,13 @@ stop:
 
 restart: stop start
 
+npm: 
+	$(PHP) npm install
+	$(PHP) npm run build
+
+jwt: 
+	$(PHP) php bin/console lexik:jwt:generate-keypair --skip-if-exists
+
 ## Entering php shell
 php:
 	@$(DOCKER_COMPOSE) exec php sh
@@ -42,3 +49,15 @@ dotenv:
 
 setup-env:
 	./scripts/setup-env.sh
+
+command:
+	$(PHP) php bin/console $(filter-out $@,$(MAKECMDGOALS))
+
+schema:
+	$(PHP) php bin/console doctrine:schema:update -f
+
+regenerate:
+	$(PHP) php bin/console make:entity --regenerate App
+
+fixtures:
+	$(PHP) php bin/console hautelook:fixtures:load -n
