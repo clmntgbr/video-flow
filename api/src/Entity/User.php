@@ -45,12 +45,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::STRING, nullable: true)]
     private ?string $avatarUrl = null;
 
-    #[ORM\Column(type: Types::STRING, nullable: true)]
-    private ?string $socialNetworksState = null;
-
-    #[ORM\Column(type: Types::STRING, nullable: true)]
-    private ?string $socialNetworksCallbackPath = null;
-
     #[ORM\Column]
     private array $roles = [];
 
@@ -222,29 +216,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getId(): ?string
     {
         return $this->id;
-    }
-
-    public function getSocialNetworksState(): ?string
-    {
-        return $this->socialNetworksState;
-    }
-
-    public function setSocialNetworksState(?string $socialNetworksState): static
-    {
-        $this->socialNetworksState = $socialNetworksState;
-
-        return $this;
-    }
-
-    public function getSocialNetworksCallbackPath(): ?string
-    {
-        return $this->socialNetworksCallbackPath;
-    }
-
-    public function setSocialNetworksCallbackPath(?string $socialNetworksCallbackPath): static
-    {
-        $this->socialNetworksCallbackPath = $socialNetworksCallbackPath;
-
-        return $this;
     }
 }

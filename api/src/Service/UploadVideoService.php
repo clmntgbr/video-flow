@@ -47,13 +47,23 @@ class UploadVideoService
 
       try {
           $fileName = sprintf('%s/%s.%s', $user->getUuid(), md5(uniqid()), $file->guessExtension());
-          $content = file_get_contents($file->getPathname());
+          $stream = fopen($file->getPathname(), 'r');
+            
+          if ($stream === false) {
+            return new JsonResponse([
+                'message' => 'An error occurred during the upload.'
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+          }
 
-          $this->awsStorage->write($fileName, $content, [
+          $this->awsStorage->writeStream($fileName, $stream, [
               'visibility' => 'public',
               'mimetype' => $file->getMimeType()
           ]);
 
+          if (is_resource($stream)) {
+            fclose($stream);
+          }
+          
           return new JsonResponse([
               'message' => 'Video uploaded successfully.',
           ], Response::HTTP_OK);

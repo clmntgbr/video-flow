@@ -6,10 +6,14 @@ meta {
 
 post {
   url: {{api_url}}api/video/upload
-  body: none
+  body: multipartForm
   auth: bearer
 }
 
 auth:bearer {
   token: {{token}}
+}
+
+body:multipart-form {
+  video: @file(/Users/clement/Movies/video1.mp4)
 }
