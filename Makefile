@@ -55,6 +55,12 @@ setup-env:
 command:
 	$(PHP) php bin/console $(filter-out $@,$(MAKECMDGOALS))
 
+db: 
+	$(PHP) php bin/console doctrine:database:drop -f
+	$(PHP) php bin/console doctrine:database:create
+	$(PHP) php bin/console doctrine:schema:update -f
+	$(PHP) php bin/console hautelook:fixtures:load -n
+	
 schema:
 	$(PHP) php bin/console doctrine:schema:update -f
 

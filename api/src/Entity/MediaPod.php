@@ -4,7 +4,10 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
+use App\ApiResource\UploadVideoAction;
 use App\Entity\Traits\UuidTrait;
+use App\Enum\MediaPodStatus;
 use App\Repository\MediaPodRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -16,6 +19,11 @@ use Symfony\Component\Serializer\Attribute\Groups;
     operations: [
         new GetCollection(
             normalizationContext: ['skip_null_values' => false, 'groups' => ['media-pods:get', 'default']],
+        ),
+        new Post(
+            uriTemplate: '/video/upload',
+            controller: UploadVideoAction::class,
+            normalizationContext: ['groups' => ['media-pods:get']],
         ),
     ]
 )]
@@ -37,8 +45,13 @@ class MediaPod
     #[Groups(['media-pods:get'])]
     private ?Video $originalVideo = null;
 
+    #[ORM\Column(type: Types::STRING)]
+    #[Groups(['media-pods:get'])]
+    private ?string $status = null;
+
     public function __construct()
     {
+        $this->status = MediaPodStatus::UPLOAD_COMPLETE->toString();
         $this->initializeUuid();
     }
 
@@ -86,6 +99,18 @@ class MediaPod
     public function setVideoName(string $videoName): static
     {
         $this->videoName = $videoName;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): static
+    {
+        $this->status = $status;
 
         return $this;
     }

@@ -8,8 +8,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpKernel\Attribute\AsController;
 
+#[AsController]
 class UploadVideoAction extends AbstractController
 {
     public function __construct(
@@ -17,14 +18,13 @@ class UploadVideoAction extends AbstractController
     ) {
     }
 
-    #[Route('/api/video/upload', name: 'api_video_upload', methods: ['POST'])]
-    public function upload(Request $request): JsonResponse
+    public function __invoke(Request $request): JsonResponse
     {
         $video = $request->files->get('video');
 
         if (!$video instanceof UploadedFile) {
             return new JsonResponse([
-                'message' => 'Aucun fichier video n\'a été envoyé',
+                'message' => 'No video file has been sent',
             ], Response::HTTP_BAD_REQUEST);
         }
 
