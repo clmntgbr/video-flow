@@ -1,0 +1,15 @@
+meta {
+  name: Get VideoHubs
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{api_url}}api/media_pods
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

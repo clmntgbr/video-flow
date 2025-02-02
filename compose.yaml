@@ -77,6 +77,20 @@ services:
             MINIO_ROOT_USER: ${S3_USER}
             MINIO_ROOT_PASSWORD: ${S3_PASSWORD}
             MINIO_DEFAULT_BUCKETS: ${S3_DEFAULT_BUCKETS}
+    
+    qa:
+        container_name: ${PROJECT_NAME}-qa
+        image: php:8.3-cli-alpine
+        volumes:
+            - ./api/src:/app/src
+        working_dir: /app
+        tty: true
+        command: >
+            sh -c "apk add --no-cache wget composer &&
+            wget https://cs.symfony.com/download/php-cs-fixer-v3.phar -O php-cs-fixer &&
+            chmod a+x php-cs-fixer &&
+            composer require --dev phpstan/phpstan &&
+            tail -f /dev/null"
 
     subtitle-generator:
         container_name: ${PROJECT_NAME}-subtitle-generator

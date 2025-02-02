@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Dto\Api\UserRegister;
 use App\Dto\UserRegister as DtoUserRegister;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

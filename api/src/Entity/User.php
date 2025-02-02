@@ -6,12 +6,13 @@ use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use App\Entity\Traits\UuidTrait;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -20,7 +21,6 @@ use Symfony\Component\Serializer\Attribute\Groups;
     operations: [
         new Get(
             uriTemplate: '/me',
-            normalizationContext: ['groups' => ['user:get']],
         ),
     ]
 )]
@@ -30,7 +30,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     use UuidTrait;
 
     #[ORM\Column(length: 180)]
-    #[Groups(['user:get', 'organizations:get'])]
     private ?string $email = null;
 
     #[ORM\Column(type: Types::STRING, nullable: true)]
@@ -51,9 +50,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[ORM\OneToMany(targetEntity: MediaPod::class, mappedBy: 'user', cascade: ['remove'])]
+    private Collection $mediaPods;
+
     public function __construct()
     {
         $this->initializeUuid();
+        $this->mediaPods = new ArrayCollection();
     }
 
     public function getEmail(): ?string
@@ -216,5 +219,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getId(): ?string
     {
         return $this->id;
+    }
+
+    /**
+     * @return Collection<int, MediaPod>
+     */
+    public function getMediaPods(): Collection
+    {
+        return $this->mediaPods;
+    }
+
+    public function addMediaPod(MediaPod $mediaPod): static
+    {
+        if (!$this->mediaPods->contains($mediaPod)) {
+            $this->mediaPods->add($mediaPod);
+            $mediaPod->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMediaPod(MediaPod $mediaPod): static
+    {
+        if ($this->mediaPods->removeElement($mediaPod)) {
+            // set the owning side to null (unless already changed)
+            if ($mediaPod->getUser() === $this) {
+                $mediaPod->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

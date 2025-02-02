@@ -3,20 +3,17 @@
 namespace App\ApiResource;
 
 use App\Service\UploadVideoService;
-use League\Flysystem\FilesystemOperator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Validator\Constraints\File;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class UploadVideoAction extends AbstractController
 {
     public function __construct(
-        private UploadVideoService $uploadVideoService
+        private UploadVideoService $uploadVideoService,
     ) {
     }
 
@@ -27,7 +24,7 @@ class UploadVideoAction extends AbstractController
 
         if (!$video instanceof UploadedFile) {
             return new JsonResponse([
-                'message' => 'Aucun fichier video n\'a été envoyé'
+                'message' => 'Aucun fichier video n\'a été envoyé',
             ], Response::HTTP_BAD_REQUEST);
         }
 
