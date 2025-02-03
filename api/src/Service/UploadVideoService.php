@@ -17,6 +17,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 use App\Protobuf\Video as ProtoVideo;
 use App\Protobuf\MediaPod as ProtoMediaPod;
 use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
+use Symfony\Component\Uid\Uuid;
 
 class UploadVideoService
 {
@@ -56,8 +57,9 @@ class UploadVideoService
         }
 
         try {
+            $mediaPodUuid = Uuid::v4()->toString();
             $fileName = sprintf('%s.%s', md5(uniqid()), $file->guessExtension());
-            $path = sprintf('%s/%s', $user->getUuid(), $fileName);
+            $path = sprintf('%s/%s/%s', $user->getUuid(), $mediaPodUuid, $fileName);
             
             $stream = fopen($file->getPathname(), 'r');
 
@@ -76,7 +78,7 @@ class UploadVideoService
                 fclose($stream);
             }
 
-            $mediaPod = $this->createMediaPod($file, $fileName);
+            $mediaPod = $this->createMediaPod($file, $fileName, $mediaPodUuid);
             $this->sendToSubtitleGenerator($file, $mediaPod, $user, $fileName);
             return new JsonResponse([
                 'message' => 'Video uploaded successfully.',
@@ -88,7 +90,7 @@ class UploadVideoService
         }
     }
 
-    private function createMediaPod(UploadedFile $uploadedFile, string $fileName): MediaPod
+    private function createMediaPod(UploadedFile $uploadedFile, string $fileName, string $mediaPodUuid): MediaPod
     {
         $video = $this->videoRepository->create([
             'mimeType' => $uploadedFile->getMimeType(),
@@ -99,6 +101,7 @@ class UploadVideoService
 
         $mediaPod = $this->mediaPodRepository->create([
             'user' => $this->security->getUser(),
+            'uuid' => $mediaPodUuid,
             'originalVideo' => $video,
         ]);
 
@@ -107,17 +110,17 @@ class UploadVideoService
 
     public function sendToSubtitleGenerator(UploadedFile $uploadedFile, MediaPod $mediaPod, User $user, string $fileName)
     {
-        $video = new ProtoVideo();
-        $video->setName($fileName);
-        $video->setMimeType($uploadedFile->getMimeType());
-        $video->setSize($uploadedFile->getSize());
+        $protoVideo = new ProtoVideo();
+        $protoVideo->setName($fileName);
+        $protoVideo->setMimeType($uploadedFile->getMimeType());
+        $protoVideo->setSize($uploadedFile->getSize());
 
-        $mediaPod = new ProtoMediaPod();
-        $mediaPod->setUuid($mediaPod->getUuid());
-        $mediaPod->setUserUuid($user->getUuid());
-        $mediaPod->setOriginalVideo($video);
+        $protoMediaPod = new ProtoMediaPod();
+        $protoMediaPod->setUuid($mediaPod->getUuid());
+        $protoMediaPod->setUserUuid($user->getUuid());
+        $protoMediaPod->setOriginalVideo($protoVideo);
 
-        $this->messageBus->dispatch($mediaPod, [
+        $this->messageBus->dispatch($protoMediaPod, [
             new AmqpStamp('api_subtitle_generator', 0, []),
         ]);
     }

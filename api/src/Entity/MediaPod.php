@@ -52,7 +52,6 @@ class MediaPod
     public function __construct()
     {
         $this->status = MediaPodStatus::UPLOAD_COMPLETE->toString();
-        $this->initializeUuid();
     }
 
     public function getOriginalVideo(): ?Video
