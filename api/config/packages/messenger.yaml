@@ -3,6 +3,7 @@ framework:
         transports:
             default:
                 dsn: "%env(MESSENGER_TRANSPORT_DSN)%"
+                serializer: App\Messenger\Serializer\ProtobufSerializer
                 options:
                     exchange:
                         name: messages
@@ -12,3 +13,4 @@ framework:
                         default:
                             binding_keys: [default]
         routing:
+            'App\Protobuf\MediaPod': default

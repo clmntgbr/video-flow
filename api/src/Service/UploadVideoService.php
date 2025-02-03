@@ -2,19 +2,21 @@
 
 namespace App\Service;
 
+use App\Entity\MediaPod;
 use App\Entity\User;
-use App\Entity\Video;
-use App\Entity\VideoHub;
 use App\Repository\MediaPodRepository;
-use App\Repository\VideoHubRepository;
 use App\Repository\VideoRepository;
 use League\Flysystem\FilesystemOperator;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use App\Protobuf\Video as ProtoVideo;
+use App\Protobuf\MediaPod as ProtoMediaPod;
+use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
 
 class UploadVideoService
 {
@@ -24,6 +26,7 @@ class UploadVideoService
         private Security $security,
         private MediaPodRepository $mediaPodRepository,
         private VideoRepository $videoRepository,
+        private MessageBusInterface $messageBus
     ) {
     }
 
@@ -73,7 +76,8 @@ class UploadVideoService
                 fclose($stream);
             }
 
-            $this->createMediaPod($file, $fileName);
+            $mediaPod = $this->createMediaPod($file, $fileName);
+            $this->sendToSubtitleGenerator($file, $mediaPod, $user, $fileName);
             return new JsonResponse([
                 'message' => 'Video uploaded successfully.',
             ], Response::HTTP_OK);
@@ -84,7 +88,7 @@ class UploadVideoService
         }
     }
 
-    private function createMediaPod(UploadedFile $uploadedFile, string $fileName): void
+    private function createMediaPod(UploadedFile $uploadedFile, string $fileName): MediaPod
     {
         $video = $this->videoRepository->create([
             'mimeType' => $uploadedFile->getMimeType(),
@@ -93,9 +97,28 @@ class UploadVideoService
             'size' => $uploadedFile->getSize(),
         ]);
 
-        $this->mediaPodRepository->create([
+        $mediaPod = $this->mediaPodRepository->create([
             'user' => $this->security->getUser(),
             'originalVideo' => $video,
+        ]);
+
+        return $mediaPod;
+    }
+
+    public function sendToSubtitleGenerator(UploadedFile $uploadedFile, MediaPod $mediaPod, User $user, string $fileName)
+    {
+        $video = new ProtoVideo();
+        $video->setName($fileName);
+        $video->setMimeType($uploadedFile->getMimeType());
+        $video->setSize($uploadedFile->getSize());
+
+        $mediaPod = new ProtoMediaPod();
+        $mediaPod->setUuid($mediaPod->getUuid());
+        $mediaPod->setUserUuid($user->getUuid());
+        $mediaPod->setOriginalVideo($video);
+
+        $this->messageBus->dispatch($mediaPod, [
+            new AmqpStamp('default', 0, []),
         ]);
     }
 }

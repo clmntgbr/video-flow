@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package app.protobuf;
+
+option php_namespace = "App\\Protobuf";
+option php_metadata_namespace = "App\\Protobuf\\GPBMetadata";
+
+message MediaPod {
+    string uuid = 1;
+    string userUuid = 2;
+    Video originalVideo = 3;
+}
+
+message Video {
+    string name = 1;
+    string mimeType = 2;
+    int64 size = 3;
+}
