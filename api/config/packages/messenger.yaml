@@ -1,7 +1,7 @@
 framework:
     messenger:
         transports:
-            default:
+            api_subtitle_generator:
                 dsn: "%env(MESSENGER_TRANSPORT_DSN)%"
                 serializer: App\Messenger\Serializer\ProtobufSerializer
                 options:
@@ -10,7 +10,7 @@ framework:
                         type: direct
                     auto_setup: true
                     queues:
-                        default:
-                            binding_keys: [default]
+                        api_subtitle_generator:
+                            binding_keys: [api_subtitle_generator]
         routing:
-            'App\Protobuf\MediaPod': default
+            'App\Protobuf\MediaPod': api_subtitle_generator

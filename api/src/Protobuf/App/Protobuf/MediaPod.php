@@ -9,7 +9,7 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * Generated from protobuf message <code>app.protobuf.MediaPod</code>
+ * Generated from protobuf message <code>MediaPod</code>
  */
 class MediaPod extends \Google\Protobuf\Internal\Message
 {
@@ -22,7 +22,7 @@ class MediaPod extends \Google\Protobuf\Internal\Message
      */
     protected $userUuid = '';
     /**
-     * Generated from protobuf field <code>.app.protobuf.Video originalVideo = 3;</code>
+     * Generated from protobuf field <code>.Video originalVideo = 3;</code>
      */
     protected $originalVideo = null;
 
@@ -87,7 +87,7 @@ class MediaPod extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.app.protobuf.Video originalVideo = 3;</code>
+     * Generated from protobuf field <code>.Video originalVideo = 3;</code>
      * @return \App\Protobuf\Video|null
      */
     public function getOriginalVideo()
@@ -106,7 +106,7 @@ class MediaPod extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>.app.protobuf.Video originalVideo = 3;</code>
+     * Generated from protobuf field <code>.Video originalVideo = 3;</code>
      * @param \App\Protobuf\Video $var
      * @return $this
      */

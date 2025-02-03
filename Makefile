@@ -21,6 +21,9 @@ kill:
 build:
 	@$(DOCKER_COMPOSE) build --pull --no-cache
 
+init:
+	npm jwt db fabric proto
+
 ## Start containers
 start:
 	@$(DOCKER_COMPOSE) up --pull always -d --wait
@@ -51,6 +54,9 @@ dotenv:
 
 setup-env:
 	./scripts/setup-env.sh
+
+fabric: 
+	$(PHP) php bin/console messenger:setup-transports
 
 command:
 	$(PHP) php bin/console $(filter-out $@,$(MAKECMDGOALS))

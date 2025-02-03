@@ -118,7 +118,7 @@ class UploadVideoService
         $mediaPod->setOriginalVideo($video);
 
         $this->messageBus->dispatch($mediaPod, [
-            new AmqpStamp('default', 0, []),
+            new AmqpStamp('api_subtitle_generator', 0, []),
         ]);
     }
 }

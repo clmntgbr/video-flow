@@ -1,7 +1,5 @@
 syntax = "proto3";
 
-package app.protobuf;
-
 option php_namespace = "App\\Protobuf";
 option php_metadata_namespace = "App\\Protobuf\\GPBMetadata";
 

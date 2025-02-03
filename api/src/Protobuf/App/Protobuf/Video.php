@@ -9,7 +9,7 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * Generated from protobuf message <code>app.protobuf.Video</code>
+ * Generated from protobuf message <code>Video</code>
  */
 class Video extends \Google\Protobuf\Internal\Message
 {
