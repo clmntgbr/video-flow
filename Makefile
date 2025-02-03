@@ -22,7 +22,7 @@ build:
 	@$(DOCKER_COMPOSE) build --pull --no-cache
 
 init:
-	npm jwt db fabric proto
+	setup-env npm jwt db fabric proto
 
 ## Start containers
 start:
