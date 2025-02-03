@@ -31,7 +31,7 @@ services:
             
     database:
         env_file:
-                - .env
+            - .env
         image: postgres:latest
         container_name: ${PROJECT_NAME}-db
         networks:
@@ -63,6 +63,8 @@ services:
             - "9003:15672"
     
     minio:
+        env_file:
+            - .env
         container_name: ${PROJECT_NAME}-s3
         image: minio/minio:latest
         ports:
