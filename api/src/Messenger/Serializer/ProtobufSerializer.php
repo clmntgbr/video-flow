@@ -26,14 +26,9 @@ class ProtobufSerializer implements SerializerInterface
 
         /** @var Message $message */
         $message = new $messageClass;
-        $message->mergeFromString(base64_decode($body));
+        $message->mergeFromJsonString(base64_decode($body));
 
-        $stamps = [];
-        if (isset($headers['stamps'])) {
-            $stamps = unserialize($headers['stamps']);
-        }
-
-        return new Envelope($message, $stamps);
+        return new Envelope($message);
     }
 
     public function encode(Envelope $envelope): array

@@ -72,6 +72,9 @@ db:
 	$(PHP) php bin/console doctrine:schema:update -f
 	$(PHP) php bin/console hautelook:fixtures:load -n
 	
+consume:
+	$(PHP) php bin/console messenger:consume subtitle_generator_api -vv
+
 schema:
 	$(PHP) php bin/console doctrine:schema:update -f
 
