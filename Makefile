@@ -11,6 +11,7 @@ CONTAINER_QA := $(shell docker container ls -f "name=$(PROJECT_NAME)-qa" -q)
 CONTAINER_SG := $(shell docker container ls -f "name=$(PROJECT_NAME)-subtitle-generator" -q)
 
 PHP := docker exec -ti $(CONTAINER_PHP)
+PHP_SH := docker exec -ti $(CONTAINER_PHP) sh -c
 SG := docker exec -ti $(CONTAINER_SG)
 QA := docker exec -ti $(CONTAINER_QA)
 DATABASE := docker exec -ti $(CONTAINER_DB)
@@ -91,5 +92,8 @@ php-stan:
 	$(QA) ./vendor/bin/phpstan analyse src -l $(or $(level), 5)
 
 proto: 
-	$(PHP) protoc --proto_path=protobuf --php_out=src protobuf/*.proto
+	$(PHP_SH) "rm -r /app/src/Protobuf/*"
+	$(PHP) protoc --proto_path=protobuf --php_out=src/Protobuf protobuf/*.proto
+	$(PHP_SH) "mv /app/src/Protobuf/App/Protobuf/* /app/src/Protobuf"
+	$(PHP_SH) "rm -r /app/src/Protobuf/App"
 	$(SG) protoc --proto_path=protobuf --python_out=src/Protobuf protobuf/*.proto

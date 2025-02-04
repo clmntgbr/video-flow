@@ -1,7 +1,9 @@
 syntax = "proto3";
 
-option php_namespace = "Protobuf";
-option php_metadata_namespace = "Protobuf\\GPBMetadata";
+package App.Protobuf;
+
+option php_namespace = "App\\Protobuf";
+option php_metadata_namespace = "App\\Protobuf\\GPBMetadata";
 
 message ApiSubtitleGenerator {
     MediaPod mediaPod = 1;

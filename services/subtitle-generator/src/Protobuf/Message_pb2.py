@@ -13,20 +13,20 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rMessage.proto\"3\n\x14\x41piSubtitleGenerator\x12\x1b\n\x08mediaPod\x18\x01 \x01(\x0b\x32\t.MediaPod\"3\n\x14SubtitleGeneratorApi\x12\x1b\n\x08mediaPod\x18\x01 \x01(\x0b\x32\t.MediaPod\"I\n\x08MediaPod\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x10\n\x08userUuid\x18\x02 \x01(\t\x12\x1d\n\roriginalVideo\x18\x03 \x01(\x0b\x32\x06.Video\"5\n\x05Video\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08mimeType\x18\x02 \x01(\t\x12\x0c\n\x04size\x18\x03 \x01(\x03\x42\"\xca\x02\x08Protobuf\xe2\x02\x14Protobuf\\GPBMetadatab\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rMessage.proto\x12\x0c\x41pp.Protobuf\"@\n\x14\x41piSubtitleGenerator\x12(\n\x08mediaPod\x18\x01 \x01(\x0b\x32\x16.App.Protobuf.MediaPod\"@\n\x14SubtitleGeneratorApi\x12(\n\x08mediaPod\x18\x01 \x01(\x0b\x32\x16.App.Protobuf.MediaPod\"V\n\x08MediaPod\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x10\n\x08userUuid\x18\x02 \x01(\t\x12*\n\roriginalVideo\x18\x03 \x01(\x0b\x32\x13.App.Protobuf.Video\"5\n\x05Video\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08mimeType\x18\x02 \x01(\t\x12\x0c\n\x04size\x18\x03 \x01(\x03\x42*\xca\x02\x0c\x41pp\\Protobuf\xe2\x02\x18\x41pp\\Protobuf\\GPBMetadatab\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'Message_pb2', globals())
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  DESCRIPTOR._serialized_options = b'\312\002\010Protobuf\342\002\024Protobuf\\GPBMetadata'
-  _APISUBTITLEGENERATOR._serialized_start=17
-  _APISUBTITLEGENERATOR._serialized_end=68
-  _SUBTITLEGENERATORAPI._serialized_start=70
-  _SUBTITLEGENERATORAPI._serialized_end=121
-  _MEDIAPOD._serialized_start=123
-  _MEDIAPOD._serialized_end=196
-  _VIDEO._serialized_start=198
-  _VIDEO._serialized_end=251
+  DESCRIPTOR._serialized_options = b'\312\002\014App\\Protobuf\342\002\030App\\Protobuf\\GPBMetadata'
+  _APISUBTITLEGENERATOR._serialized_start=31
+  _APISUBTITLEGENERATOR._serialized_end=95
+  _SUBTITLEGENERATORAPI._serialized_start=97
+  _SUBTITLEGENERATORAPI._serialized_end=161
+  _MEDIAPOD._serialized_start=163
+  _MEDIAPOD._serialized_end=249
+  _VIDEO._serialized_start=251
+  _VIDEO._serialized_end=304
 # @@protoc_insertion_point(module_scope)

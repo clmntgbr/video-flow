@@ -2,9 +2,9 @@
 
 namespace App\MessageHandler;
 
+use App\Protobuf\SubtitleGeneratorApi;
 use Monolog\Logger;
 use Psr\Log\LoggerInterface;
-use Protobuf\SubtitleGeneratorApi;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]

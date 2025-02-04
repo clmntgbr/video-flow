@@ -2,10 +2,10 @@
 
 namespace App\Service;
 
-use Protobuf\Video as ProtoVideo;
-use Protobuf\MediaPod as ProtoMediaPod;
-use Protobuf\ApiSubtitleGenerator;
-use Protobuf\SubtitleGeneratorApi;
+use App\Protobuf\Video as ProtoVideo;
+use App\Protobuf\MediaPod as ProtoMediaPod;
+use App\Protobuf\ApiSubtitleGenerator;
+use App\Protobuf\SubtitleGeneratorApi;
 use App\Entity\MediaPod;
 use App\Entity\User;
 use App\Repository\MediaPodRepository;

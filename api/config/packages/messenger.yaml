@@ -24,5 +24,5 @@ framework:
                         subtitle_generator_api:
                             binding_keys: [subtitle_generator_api]
         routing:
-            'Protobuf\ApiSubtitleGenerator': api_subtitle_generator
-            'Protobuf\SubtitleGeneratorApi': subtitle_generator_api
+            'App\Protobuf\ApiSubtitleGenerator': api_subtitle_generator
+            'App\Protobuf\SubtitleGeneratorApi': subtitle_generator_api
