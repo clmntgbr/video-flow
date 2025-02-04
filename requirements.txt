@@ -1,1 +1,0 @@
-https://symfony.com/doc/current/messenger.html#message-serializer-for-custom-data-formats
