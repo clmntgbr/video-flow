@@ -8,8 +8,10 @@ DOCKER_COMPOSE = docker compose -p $(PROJECT_NAME)
 CONTAINER_PHP := $(shell docker container ls -f "name=$(PROJECT_NAME)-php" -q)
 CONTAINER_DB := $(shell docker container ls -f "name=$(PROJECT_NAME)-database" -q)
 CONTAINER_QA := $(shell docker container ls -f "name=$(PROJECT_NAME)-qa" -q)
+CONTAINER_SG := $(shell docker container ls -f "name=$(PROJECT_NAME)-subtitle-generator" -q)
 
 PHP := docker exec -ti $(CONTAINER_PHP)
+SG := docker exec -ti $(CONTAINER_SG)
 QA := docker exec -ti $(CONTAINER_QA)
 DATABASE := docker exec -ti $(CONTAINER_DB)
 
@@ -43,6 +45,10 @@ jwt:
 ## Entering php shell
 php:
 	@$(DOCKER_COMPOSE) exec php sh
+
+## Entering php shell
+subtitle-generator:
+	@$(DOCKER_COMPOSE) exec subtitle-generator sh
 
 ## Entering database shell
 database:
@@ -83,3 +89,4 @@ php-stan:
 
 proto: 
 	$(PHP) protoc --proto_path=protobuf --php_out=src/Protobuf protobuf/*.proto
+	$(SG) protoc --proto_path=protobuf --python_out=src/Protobuf protobuf/*.proto
