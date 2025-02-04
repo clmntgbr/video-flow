@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -21,6 +22,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
     operations: [
         new Get(
             uriTemplate: '/me',
+            normalizationContext: ['skip_null_values' => false, 'groups' => ['user:get', 'media-pods:get', 'default']],
         ),
     ]
 )]
@@ -30,33 +32,51 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     use UuidTrait;
 
     #[ORM\Column(length: 180)]
+    #[Groups(['user:get'])]
     private ?string $email = null;
 
     #[ORM\Column(type: Types::STRING, nullable: true)]
     private ?string $plainPassword = null;
 
     #[ORM\Column(type: Types::STRING, nullable: true)]
+    #[Groups(['user:get'])]
     private ?string $givenName = null;
 
     #[ORM\Column(type: Types::STRING, nullable: true)]
+    #[Groups(['user:get'])]
     private ?string $familyName = null;
 
     #[ORM\Column(type: Types::STRING, nullable: true)]
+    #[Groups(['user:get'])]
     private ?string $avatarUrl = null;
 
     #[ORM\Column]
+    #[Groups(['user:get'])]
     private array $roles = [];
 
     #[ORM\Column]
     private ?string $password = null;
 
     #[ORM\OneToMany(targetEntity: MediaPod::class, mappedBy: 'user', cascade: ['remove'])]
+    #[Groups(['user:get'])]
     private Collection $mediaPods;
 
     public function __construct()
     {
         $this->initializeUuid();
         $this->mediaPods = new ArrayCollection();
+    }
+
+    #[Groups(['user:get'])]
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    #[Groups(['user:get'])]
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 
     public function getEmail(): ?string
@@ -192,21 +212,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
     public function setCreatedAt(\DateTimeInterface $createdAt): static
     {
         $this->createdAt = $createdAt;
 
         return $this;
-    }
-
-    public function getUpdatedAt(): ?\DateTimeInterface
-    {
-        return $this->updatedAt;
     }
 
     public function setUpdatedAt(\DateTimeInterface $updatedAt): static

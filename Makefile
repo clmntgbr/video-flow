@@ -91,5 +91,5 @@ php-stan:
 	$(QA) ./vendor/bin/phpstan analyse src -l $(or $(level), 5)
 
 proto: 
-	$(PHP) protoc --proto_path=protobuf --php_out=src/Protobuf protobuf/*.proto
+	$(PHP) protoc --proto_path=protobuf --php_out=src protobuf/*.proto
 	$(SG) protoc --proto_path=protobuf --python_out=src/Protobuf protobuf/*.proto

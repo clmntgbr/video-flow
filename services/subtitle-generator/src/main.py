@@ -6,4 +6,4 @@ from flask import Flask
 
 app = Flask(__name__)
 
-app.add_url_rule('/status', 'status', status)
+app.add_url_rule('/api/status', 'status', status)

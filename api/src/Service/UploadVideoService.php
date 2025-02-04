@@ -2,9 +2,12 @@
 
 namespace App\Service;
 
+use Protobuf\Video as ProtoVideo;
+use Protobuf\MediaPod as ProtoMediaPod;
+use Protobuf\ApiSubtitleGenerator;
+use Protobuf\SubtitleGeneratorApi;
 use App\Entity\MediaPod;
 use App\Entity\User;
-use App\Protobuf\ApiSubtitleGenerator;
 use App\Repository\MediaPodRepository;
 use App\Repository\VideoRepository;
 use League\Flysystem\FilesystemOperator;
@@ -15,9 +18,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use App\Protobuf\Video as ProtoVideo;
-use App\Protobuf\MediaPod as ProtoMediaPod;
-use App\Protobuf\SubtitleGeneratorApi;
 use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
 use Symfony\Component\Uid\Uuid;
 
