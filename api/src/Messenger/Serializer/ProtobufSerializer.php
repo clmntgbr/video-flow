@@ -12,7 +12,7 @@ class ProtobufSerializer implements SerializerInterface
 {
     public function decode(array $encodedEnvelope): Envelope
     {
-        $body = $encodedEnvelope['body']['args'] ?? [];
+        $body = $encodedEnvelope['body'] ?? [];
         $headers = $encodedEnvelope['headers'];
 
         $messageClass = $headers['type'] ?? null;
@@ -24,9 +24,15 @@ class ProtobufSerializer implements SerializerInterface
             throw new MessageDecodingFailedException(sprintf('Message class "%s" not found', $messageClass));
         }
 
+        $body = json_decode($body, true);
+        
+        if (null === $body && !$body['args'] && $body['args'][0]) {
+            throw new MessageDecodingFailedException('Invalid JSON');
+        }
+        
         /** @var Message $message */
         $message = new $messageClass;
-        $message->mergeFromJsonString(base64_decode($body));
+        $message->mergeFromJsonString($body['args'][0]);
 
         return new Envelope($message);
     }
@@ -47,11 +53,18 @@ class ProtobufSerializer implements SerializerInterface
             'body' => json_encode([
                 'task' => 'tasks.process_message',
                 'args' => [$message->serializeToJsonString()],
-                'queue' => 'api_sound_extractor',
+                'queue' => $this->convertClassNameToSnakeCase(get_class($message)),
             ]),
             'headers' => [
+                'type' => get_class($message),
                 'Content-Type' => 'application/json'
             ],
         ];
+    }
+
+    private function convertClassNameToSnakeCase(string $className): string
+    {
+        $className = substr(strrchr($className, '\\'), 1) ?: $className;
+        return strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $className));
     }
 }
