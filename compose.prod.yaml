@@ -18,3 +18,12 @@ services:
           args:
               SERVICE_PORT: 5000
               SERVICE_NAME: subtitle-generator
+
+  sound-extractor:
+      build:
+          context: ./services/sound-extractor
+          dockerfile: ./Dockerfile
+          target: prod
+          args:
+              SERVICE_PORT: 5000
+              SERVICE_NAME: sound-extractor

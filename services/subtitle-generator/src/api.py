@@ -1,4 +1,4 @@
 from flask import jsonify
 
 def status():
-    return {'status': 'running'}
+    return {'status': 'Subtitle Generator API is running'}

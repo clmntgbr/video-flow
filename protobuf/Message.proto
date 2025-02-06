@@ -9,6 +9,14 @@ message ApiSubtitleGenerator {
     MediaPod mediaPod = 1;
 }
 
+message ApiSoundExtractor {
+    MediaPod mediaPod = 1;
+}
+
+message SoundExtractorApi {
+    MediaPod mediaPod = 1;
+}
+
 message SubtitleGeneratorApi {
     MediaPod mediaPod = 1;
 }

@@ -46,7 +46,7 @@ class ProtobufSerializer implements SerializerInterface
         $stamps = $envelope->all();
 
         return [
-            'body' => base64_encode($message->serializeToJsonString()),
+            'body' => $message->serializeToJsonString(),
             'headers' => [
                 'type' => get_class($message),
                 'stamps' => serialize($stamps),

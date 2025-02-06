@@ -8,6 +8,7 @@ use App\Protobuf\ApiSubtitleGenerator;
 use App\Protobuf\SubtitleGeneratorApi;
 use App\Entity\MediaPod;
 use App\Entity\User;
+use App\Protobuf\ApiSoundExtractor;
 use App\Repository\MediaPodRepository;
 use App\Repository\VideoRepository;
 use League\Flysystem\FilesystemOperator;
@@ -81,7 +82,7 @@ class UploadVideoService
             }
 
             $mediaPod = $this->createMediaPod($file, $fileName, $mediaPodUuid);
-            $this->sendToSubtitleGenerator($file, $mediaPod, $user, $fileName);
+            $this->sendToSoundExtractor($file, $mediaPod, $user, $fileName);
             return new JsonResponse([
                 'message' => 'Video uploaded successfully.',
             ], Response::HTTP_OK);
@@ -110,7 +111,7 @@ class UploadVideoService
         return $mediaPod;
     }
 
-    public function sendToSubtitleGenerator(UploadedFile $uploadedFile, MediaPod $mediaPod, User $user, string $fileName): void
+    public function sendToSoundExtractor(UploadedFile $uploadedFile, MediaPod $mediaPod, User $user, string $fileName): void
     {
         $protoVideo = new ProtoVideo();
         $protoVideo->setName($fileName);
@@ -122,18 +123,11 @@ class UploadVideoService
         $protoMediaPod->setUserUuid($user->getUuid());
         $protoMediaPod->setOriginalVideo($protoVideo);
 
-        $apiSubtitleGenerator = new ApiSubtitleGenerator();
-        $apiSubtitleGenerator->setMediaPod($protoMediaPod);
+        $apiSoundExtractor = new ApiSoundExtractor();
+        $apiSoundExtractor->setMediaPod($protoMediaPod);
 
-        $subtitleGenerator = new SubtitleGeneratorApi();
-        $subtitleGenerator->setMediaPod($protoMediaPod);
-
-        $this->messageBus->dispatch($apiSubtitleGenerator, [
-            new AmqpStamp('api_subtitle_generator', 0, []),
-        ]);
-
-        $this->messageBus->dispatch($subtitleGenerator, [
-            new AmqpStamp('subtitle_generator_api', 0, []),
+        $this->messageBus->dispatch($apiSoundExtractor, [
+            new AmqpStamp('api_sound_extractor', 0, []),
         ]);
     }
 }

@@ -94,6 +94,28 @@ services:
             composer require --dev phpstan/phpstan &&
             tail -f /dev/null"
 
+    sound-extractor:
+        container_name: ${PROJECT_NAME}-sound-extractor
+        build:
+            context: ./services/sound-extractor
+            dockerfile: ./Dockerfile
+            args:
+                SERVICE_PORT: 5000
+                SERVICE_NAME: sound-extractor
+        restart: unless-stopped
+        networks:
+            - api_network
+        volumes:
+            - ./protobuf:/app/protobuf:ro
+            - ./services/sound-extractor:/app
+        command: celery -A src.main.celery worker --loglevel=info --queues=api_sound_extractor
+        environment:
+            - RABBITMQ_HOST=${RABBITMQ_HOST}
+        ports:
+            - "5000:5000"
+        depends_on:
+            - rabbitmq
+
     subtitle-generator:
         container_name: ${PROJECT_NAME}-subtitle-generator
         build:
@@ -103,13 +125,15 @@ services:
                 SERVICE_PORT: 5000
                 SERVICE_NAME: subtitle-generator
         restart: unless-stopped
+        networks:
+            - api_network
         volumes:
             - ./protobuf:/app/protobuf:ro
             - ./services/subtitle-generator:/app
         environment:
             - RABBITMQ_HOST=${RABBITMQ_HOST}
         ports:
-            - "5000:5000"
+            - "5001:5000"
         depends_on:
             - rabbitmq
 
