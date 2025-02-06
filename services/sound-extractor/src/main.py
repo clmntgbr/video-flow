@@ -4,14 +4,11 @@ from celery import Celery
 from kombu import Queue
 
 app = Flask(__name__)
-app.config['CELERY_BROKER_URL'] = os.environ.get('CELERY_BROKER_URL', 'amqp://rabbitmq:rabbitmq@rabbitmq:5672/rabbitmq')
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+app.config['CELERY_RABBITMQ_URL'] = os.environ.get('CELERY_RABBITMQ_URL')
 
 celery = Celery(
     'tasks',
-    broker=app.config['CELERY_BROKER_URL']
+    broker=app.config['CELERY_RABBITMQ_URL']
 )
 
 celery.conf.update({

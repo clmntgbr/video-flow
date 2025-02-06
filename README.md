@@ -36,7 +36,7 @@ $ docker compose cp php:/data/caddy/pki/authorities/local/root.crt %TEMP%/root.c
 * ApiPlatform, Doctrine, Fixtures, AMQP Messenger bundles in symfony
 
 **Enjoy!**
-
+    
 ## License
 
 Symfony Docker FrankenPHP is available under the MIT License.

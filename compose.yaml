@@ -96,6 +96,8 @@ services:
 
     sound-extractor:
         container_name: ${PROJECT_NAME}-sound-extractor
+        env_file:
+            - .env
         build:
             context: ./services/sound-extractor
             dockerfile: ./Dockerfile
@@ -110,7 +112,7 @@ services:
             - ./services/sound-extractor:/app
         command: celery -A src.main.celery worker --loglevel=info --queues=api_sound_extractor
         environment:
-            - RABBITMQ_HOST=${RABBITMQ_HOST}
+            - CELERY_RABBITMQ_URL=${CELERY_RABBITMQ_URL}
         ports:
             - "5000:5000"
         depends_on:
