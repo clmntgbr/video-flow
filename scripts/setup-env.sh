@@ -13,5 +13,5 @@ fi
 set -a
 source .env
 envsubst < api/.env.dist > api/.env.local
-envsubst < services/sound-extractor/.env.dist > services/sound-extractor/.env
+envsubst < services/sound-extractor/src/.env.dist > services/sound-extractor/src/.env
 set +a

@@ -111,8 +111,6 @@ services:
             - ./protobuf:/app/protobuf:ro
             - ./services/sound-extractor:/app
         command: celery -A src.main.celery worker --loglevel=info --queues=api_sound_extractor
-        environment:
-            - CELERY_RABBITMQ_URL=${CELERY_RABBITMQ_URL}
         ports:
             - "5000:5000"
         depends_on:

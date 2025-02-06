@@ -6,6 +6,7 @@ WORKDIR /app
 
 # Installation des dépendances système
 RUN apt-get update && apt-get install -y \
+    ffmpeg \
     protobuf-compiler \
     && rm -rf /var/lib/apt/lists/*
 
@@ -13,7 +14,10 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt \
     && pip install watchdog flask-debug
 
+
 COPY . .
+
+RUN mkdir -p /tmp && chmod 777 /tmp
 
 FROM base AS dev
 
