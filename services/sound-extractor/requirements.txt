@@ -9,3 +9,4 @@ watchdog==3.0.0
 celery==5.3.6
 beautifulsoup4==4.12.3
 protobuf==5.29.3
+kombu==5.4.2

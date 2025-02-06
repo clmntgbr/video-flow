@@ -12,7 +12,7 @@ class ProtobufSerializer implements SerializerInterface
 {
     public function decode(array $encodedEnvelope): Envelope
     {
-        $body = $encodedEnvelope['body'];
+        $body = $encodedEnvelope['body']['args'] ?? [];
         $headers = $encodedEnvelope['headers'];
 
         $messageClass = $headers['type'] ?? null;
@@ -34,7 +34,7 @@ class ProtobufSerializer implements SerializerInterface
     public function encode(Envelope $envelope): array
     {
         $message = $envelope->getMessage();
-        
+
         if (!$message instanceof Message) {
             throw new \InvalidArgumentException(sprintf(
                 'Message must be an instance of %s, %s given',
@@ -43,14 +43,14 @@ class ProtobufSerializer implements SerializerInterface
             ));
         }
 
-        $stamps = $envelope->all();
-
         return [
-            'body' => $message->serializeToJsonString(),
+            'body' => json_encode([
+                'task' => 'tasks.process_message',
+                'args' => [$message->serializeToJsonString()],
+                'queue' => 'api_sound_extractor',
+            ]),
             'headers' => [
-                'type' => get_class($message),
-                'stamps' => serialize($stamps),
-                'Content-Type' => 'application/x-protobuf'
+                'Content-Type' => 'application/json'
             ],
         ];
     }
