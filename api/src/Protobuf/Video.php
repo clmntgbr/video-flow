@@ -26,9 +26,9 @@ class Video extends \Google\Protobuf\Internal\Message
      */
     protected $size = 0;
     /**
-     * Generated from protobuf field <code>optional string subtitleName = 4;</code>
+     * Generated from protobuf field <code>repeated string subtitles = 4;</code>
      */
-    protected $subtitleName = null;
+    private $subtitles;
 
     /**
      * Constructor.
@@ -39,7 +39,7 @@ class Video extends \Google\Protobuf\Internal\Message
      *     @type string $name
      *     @type string $mimeType
      *     @type int|string $size
-     *     @type string $subtitleName
+     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $subtitles
      * }
      */
     public function __construct($data = NULL) {
@@ -114,33 +114,23 @@ class Video extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>optional string subtitleName = 4;</code>
-     * @return string
+     * Generated from protobuf field <code>repeated string subtitles = 4;</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
      */
-    public function getSubtitleName()
+    public function getSubtitles()
     {
-        return isset($this->subtitleName) ? $this->subtitleName : '';
-    }
-
-    public function hasSubtitleName()
-    {
-        return isset($this->subtitleName);
-    }
-
-    public function clearSubtitleName()
-    {
-        unset($this->subtitleName);
+        return $this->subtitles;
     }
 
     /**
-     * Generated from protobuf field <code>optional string subtitleName = 4;</code>
-     * @param string $var
+     * Generated from protobuf field <code>repeated string subtitles = 4;</code>
+     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
-    public function setSubtitleName($var)
+    public function setSubtitles($var)
     {
-        GPBUtil::checkString($var, True);
-        $this->subtitleName = $var;
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->subtitles = $arr;
 
         return $this;
     }

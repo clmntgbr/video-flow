@@ -36,6 +36,10 @@ class Video
     #[Groups(['media-pods:get'])]
     private ?int $size = null;
 
+    #[ORM\Column(type: Types::JSON, nullable: false)]
+    #[Groups(['media-pods:get'])]
+    private array $subtitles = [];
+
     public function __construct()
     {
         $this->initializeUuid();
@@ -97,6 +101,25 @@ class Video
     public function setSize(?int $size): static
     {
         $this->size = $size;
+
+        return $this;
+    }
+
+    public function getSubtitles(): array
+    {
+        return $this->subtitles;
+    }
+
+    public function addSubtitles(string $subtitle): static
+    {
+        $this->subtitles[] = $subtitle;
+
+        return $this;
+    }
+
+    public function setSubtitles(array $subtitles): static
+    {
+        $this->subtitles = $subtitles;
 
         return $this;
     }

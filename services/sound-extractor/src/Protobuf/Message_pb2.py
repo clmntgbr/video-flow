@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rMessage.proto\x12\x0c\x41pp.Protobuf\"@\n\x14\x41piSubtitleGenerator\x12(\n\x08mediaPod\x18\x01 \x01(\x0b\x32\x16.App.Protobuf.MediaPod\"=\n\x11\x41piSoundExtractor\x12(\n\x08mediaPod\x18\x01 \x01(\x0b\x32\x16.App.Protobuf.MediaPod\"=\n\x11SoundExtractorApi\x12(\n\x08mediaPod\x18\x01 \x01(\x0b\x32\x16.App.Protobuf.MediaPod\"@\n\x14SubtitleGeneratorApi\x12(\n\x08mediaPod\x18\x01 \x01(\x0b\x32\x16.App.Protobuf.MediaPod\"f\n\x08MediaPod\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x10\n\x08userUuid\x18\x02 \x01(\t\x12*\n\roriginalVideo\x18\x03 \x01(\x0b\x32\x13.App.Protobuf.Video\x12\x0e\n\x06status\x18\x04 \x01(\t\"a\n\x05Video\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08mimeType\x18\x02 \x01(\t\x12\x0c\n\x04size\x18\x03 \x01(\x03\x12\x19\n\x0csubtitleName\x18\x04 \x01(\tH\x00\x88\x01\x01\x42\x0f\n\r_subtitleNameB*\xca\x02\x0c\x41pp\\Protobuf\xe2\x02\x18\x41pp\\Protobuf\\GPBMetadatab\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rMessage.proto\x12\x0c\x41pp.Protobuf\"@\n\x14\x41piSubtitleGenerator\x12(\n\x08mediaPod\x18\x01 \x01(\x0b\x32\x16.App.Protobuf.MediaPod\"=\n\x11\x41piSoundExtractor\x12(\n\x08mediaPod\x18\x01 \x01(\x0b\x32\x16.App.Protobuf.MediaPod\"=\n\x11SoundExtractorApi\x12(\n\x08mediaPod\x18\x01 \x01(\x0b\x32\x16.App.Protobuf.MediaPod\"@\n\x14SubtitleGeneratorApi\x12(\n\x08mediaPod\x18\x01 \x01(\x0b\x32\x16.App.Protobuf.MediaPod\"f\n\x08MediaPod\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x10\n\x08userUuid\x18\x02 \x01(\t\x12*\n\roriginalVideo\x18\x03 \x01(\x0b\x32\x13.App.Protobuf.Video\x12\x0e\n\x06status\x18\x04 \x01(\t\"H\n\x05Video\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08mimeType\x18\x02 \x01(\t\x12\x0c\n\x04size\x18\x03 \x01(\x03\x12\x11\n\tsubtitles\x18\x04 \x03(\tB*\xca\x02\x0c\x41pp\\Protobuf\xe2\x02\x18\x41pp\\Protobuf\\GPBMetadatab\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'Message_pb2', globals())
@@ -32,5 +32,5 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _MEDIAPOD._serialized_start=289
   _MEDIAPOD._serialized_end=391
   _VIDEO._serialized_start=393
-  _VIDEO._serialized_end=490
+  _VIDEO._serialized_end=465
 # @@protoc_insertion_point(module_scope)

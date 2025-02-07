@@ -32,5 +32,5 @@ message Video {
     string name = 1;
     string mimeType = 2;
     int64 size = 3;
-    optional string subtitleName = 4;
+    repeated string subtitles = 4;
 }

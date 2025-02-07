@@ -8,7 +8,7 @@ use App\Protobuf\ApiSubtitleGenerator;
 use App\Protobuf\SoundExtractorApi;
 use App\Protobuf\SubtitleGeneratorApi;
 use App\Repository\MediaPodRepository;
-use BadStatusMediaPodException;
+use Exception;
 use Monolog\Logger;
 use NotFoundMediaPodException;
 use Psr\Log\LoggerInterface;
@@ -35,18 +35,22 @@ final class SoundExtractorApiMessageHandler
         ]);
 
         if (!$mediaPod instanceof MediaPod) {
-            throw new NotFoundMediaPodException();
+            throw new Exception();
         }
 
         if ($soundExtractorApi->getMediaPod()->getStatus() !== MediaPodStatus::SOUND_EXTRACTOR_COMPLETE->getValue()) {
-            throw new BadStatusMediaPodException();
+            throw new Exception();
+        }
+
+        foreach ($soundExtractorApi->getMediaPod()->getOriginalVideo()->getSubtitles()->getIterator() as $iterator) {
+            $mediaPod->getOriginalVideo()->addSubtitles($iterator);
         }
 
         $mediaPod = $this->mediaPodRepository->update($mediaPod, [
             'statuses' => [MediaPodStatus::SOUND_EXTRACTOR_COMPLETE->getValue(), MediaPodStatus::SUBTITLE_GENERATOR_PENDING->getValue(),],
             'status' => MediaPodStatus::SUBTITLE_GENERATOR_PENDING->getValue(),
         ]);
-
+        
         $apiSubtitleGenerator = $this->createApiSubtitleGeneratorProto($soundExtractorApi);
 
         $this->messageBus->dispatch($apiSubtitleGenerator, [

@@ -9,6 +9,7 @@ from kombu import Queue
 import boto3
 from dotenv import load_dotenv
 from google.protobuf.json_format import MessageToJson
+from pydub import AudioSegment
 
 sys.path.append('/app/src')
 from Protobuf.Message_pb2 import MediaPod, Video, SoundExtractorApi
@@ -55,29 +56,46 @@ def process_message(message):
 
     key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/{protoMediaPod.mediaPod.originalVideo.name}"
     s3FilePath = f"/tmp/{protoMediaPod.mediaPod.originalVideo.name}"
+    uuid = os.path.splitext(os.path.basename(s3FilePath))[0]
 
     if not downloadFromS3(key, s3FilePath):
         return False
 
-    audioFilePath = os.path.splitext(s3FilePath)[0] + ".mp3"
+    audioFilePath = uuid + ".mp3"
 
-    if not extractSound(s3FilePath, audioFilePath):
+    if not extractSound(s3FilePath, f"/tmp/{audioFilePath}"):
         return False
     
-    key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/{os.path.basename(audioFilePath)}"
-    if not uploadToS3(key, audioFilePath):
-        return False
-    
+    chunks = chunkMP3(f"/tmp/{audioFilePath}", uuid)
+
+    for chunk in chunks:
+        key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/subtitles/{chunk}"
+        if not uploadToS3(key, f"/tmp/{chunk}"):
+            return False
+        deleteFile(f"/tmp/{chunk}")
+        
     deleteFile(s3FilePath)
-    deleteFile(audioFilePath)
+    deleteFile(f"/tmp/{audioFilePath}")
 
-    protoMediaPod.mediaPod.originalVideo.subtitleName = os.path.basename(audioFilePath)
+    protoMediaPod.mediaPod.originalVideo.subtitles.extend(chunks)
     protoMediaPod.mediaPod.status = 'sound_extractor_complete'
     
     if not sendMessageOnRabbitMQ(protoMediaPod):
         return False
     
     return True
+
+def chunkMP3(audioFilePath: str, uuid: str) -> list[str]: 
+    audio = AudioSegment.from_mp3(audioFilePath)
+    segmentDuration = 10 * 60 * 1000
+    chunkFilenames = []
+
+    chunks = [audio[i:i+segmentDuration] for i in range(0, len(audio), segmentDuration)]
+    for idx, chunk in enumerate(chunks):
+        chunk.export(f"/tmp/{uuid}_{idx+1}.mp3", format="mp3")
+        chunkFilenames.append(f"{uuid}_{idx+1}.mp3")
+
+    return chunkFilenames
 
 def sendMessageOnRabbitMQ(protoMediaPod: SoundExtractorApi) -> bool:
     message = {
