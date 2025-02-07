@@ -25,10 +25,12 @@ message MediaPod {
     string uuid = 1;
     string userUuid = 2;
     Video originalVideo = 3;
+    string status = 4;
 }
 
 message Video {
     string name = 1;
     string mimeType = 2;
     int64 size = 3;
+    optional string subtitleName = 4;
 }

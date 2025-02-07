@@ -49,9 +49,13 @@ class MediaPod
     #[Groups(['media-pods:get'])]
     private ?string $status = null;
 
+    #[ORM\Column(type: Types::JSON)]
+    #[Groups(['media-pods:get'])]
+    private array $statuses = [];
+
     public function __construct()
     {
-        $this->status = MediaPodStatus::UPLOAD_COMPLETE->toString();
+        $this->status = MediaPodStatus::UPLOAD_COMPLETE->getValue();
     }
 
     public function getOriginalVideo(): ?Video
@@ -110,6 +114,18 @@ class MediaPod
     public function setStatus(string $status): static
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getStatuses(): array
+    {
+        return $this->statuses;
+    }
+
+    public function setStatuses(array $statuses): static
+    {
+        $this->statuses = array_merge($this->statuses, $statuses);
 
         return $this;
     }

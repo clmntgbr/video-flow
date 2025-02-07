@@ -25,7 +25,7 @@ class ProtobufSerializer implements SerializerInterface
         }
 
         $body = json_decode($body, true);
-        
+
         if (null === $body && !$body['args'] && $body['args'][0]) {
             throw new MessageDecodingFailedException('Invalid JSON');
         }

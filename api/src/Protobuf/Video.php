@@ -25,6 +25,10 @@ class Video extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>int64 size = 3;</code>
      */
     protected $size = 0;
+    /**
+     * Generated from protobuf field <code>optional string subtitleName = 4;</code>
+     */
+    protected $subtitleName = null;
 
     /**
      * Constructor.
@@ -35,6 +39,7 @@ class Video extends \Google\Protobuf\Internal\Message
      *     @type string $name
      *     @type string $mimeType
      *     @type int|string $size
+     *     @type string $subtitleName
      * }
      */
     public function __construct($data = NULL) {
@@ -104,6 +109,38 @@ class Video extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt64($var);
         $this->size = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>optional string subtitleName = 4;</code>
+     * @return string
+     */
+    public function getSubtitleName()
+    {
+        return isset($this->subtitleName) ? $this->subtitleName : '';
+    }
+
+    public function hasSubtitleName()
+    {
+        return isset($this->subtitleName);
+    }
+
+    public function clearSubtitleName()
+    {
+        unset($this->subtitleName);
+    }
+
+    /**
+     * Generated from protobuf field <code>optional string subtitleName = 4;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setSubtitleName($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->subtitleName = $var;
 
         return $this;
     }

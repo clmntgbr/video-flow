@@ -2,14 +2,16 @@ import json
 import os
 import sys
 import ffmpeg
+import pika
 from flask import Flask
 from celery import Celery
 from kombu import Queue
 import boto3
 from dotenv import load_dotenv
+from google.protobuf.json_format import MessageToJson
 
 sys.path.append('/app/src')
-from Protobuf.Message_pb2 import MediaPod, Video, SubtitleGeneratorApi
+from Protobuf.Message_pb2 import MediaPod, Video, SoundExtractorApi
 
 load_dotenv()
 
@@ -52,29 +54,61 @@ def process_message(message):
     protoMediaPod = jsonToProtobuf(message)
 
     key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/{protoMediaPod.mediaPod.originalVideo.name}"
-    localFilePath = f"/tmp/{protoMediaPod.mediaPod.originalVideo.name}"
+    s3FilePath = f"/tmp/{protoMediaPod.mediaPod.originalVideo.name}"
 
-    if not downloadFromS3(key, localFilePath):
+    if not downloadFromS3(key, s3FilePath):
         return False
 
-    audioPath = os.path.splitext(localFilePath)[0] + ".mp3"
+    audioFilePath = os.path.splitext(s3FilePath)[0] + ".mp3"
 
-    if not extractSound(localFilePath, audioPath):
-        return False
-    
-    key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/{os.path.basename(audioPath)}"
-    if not uploadToS3(key, audioPath):
+    if not extractSound(s3FilePath, audioFilePath):
         return False
     
-    deleteFile(localFilePath)
-    deleteFile(audioPath)
+    key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/{os.path.basename(audioFilePath)}"
+    if not uploadToS3(key, audioFilePath):
+        return False
+    
+    deleteFile(s3FilePath)
+    deleteFile(audioFilePath)
+
+    protoMediaPod.mediaPod.originalVideo.subtitleName = os.path.basename(audioFilePath)
+    protoMediaPod.mediaPod.status = 'sound_extractor_complete'
+    
+    if not sendMessageOnRabbitMQ(protoMediaPod):
+        return False
     
     return True
 
-def extractSound(file: str, audioPath: str) -> bool:
+def sendMessageOnRabbitMQ(protoMediaPod: SoundExtractorApi) -> bool:
+    message = {
+        "task": "tasks.process_message",
+        "args": [MessageToJson(protoMediaPod)],
+        "queue": 'sound_extractor_api'
+    }
+
+    parameters = pika.URLParameters(os.getenv("CELERY_RABBITMQ_URL"))
+    connection = pika.BlockingConnection(parameters)
+    channel = connection.channel()
+    
+    channel.queue_declare(queue='sound_extractor_api', durable=True)
+
+    channel.basic_publish(
+        exchange='messages',
+        routing_key='sound_extractor_api',
+        body=json.dumps(message),
+        properties=pika.BasicProperties(
+            delivery_mode=2,
+            content_type="application/json",
+            headers={"type": "App\\Protobuf\\SoundExtractorApi"}
+        )
+    )
+
+    connection.close()
+
+def extractSound(file: str, audioFilePath: str) -> bool:
     try:
-        ffmpeg.input(file).output(f"{audioPath}").run()
-        print(f"audio successfully extracted: {audioPath}")
+        ffmpeg.input(file).output(f"{audioFilePath}").run()
+        print(f"audio successfully extracted: {audioFilePath}")
         return True
     except Exception as e:
         print(f"error extracting audio: {e}")
@@ -89,26 +123,25 @@ def deleteFile(filePath: str) -> bool:
         print(f"error deleting file: {e}")
         return False
     
-def downloadFromS3(key: str, localFilePath: str) -> bool:
+def downloadFromS3(key: str, s3FilePath: str) -> bool:
     try:
-        s3Client.download_file(S3_BUCKET_NAME, key, localFilePath)
-        print(f"file successfully downloaded: {localFilePath}")
+        s3Client.download_file(S3_BUCKET_NAME, key, s3FilePath)
+        print(f"file successfully downloaded: {s3FilePath}")
         return True
     except Exception as e:
         print(f"error downloading file: {e}")
         return False
 
-
-def uploadToS3(key: str, localFilePath: str) -> bool:
+def uploadToS3(key: str, s3FilePath: str) -> bool:
     try:
-        s3Client.upload_file(localFilePath, S3_BUCKET_NAME, key)
-        print(f"file successfully uploaded: {localFilePath}")
+        s3Client.upload_file(s3FilePath, S3_BUCKET_NAME, key)
+        print(f"file successfully uploaded: {s3FilePath}")
         return True
     except Exception as e:
         print(f"error uploading file: {e}")
         return False
 
-def jsonToProtobuf(json_str: str) -> SubtitleGeneratorApi:
+def jsonToProtobuf(json_str: str) -> SoundExtractorApi:
     data = json.loads(json_str)
     media_pod_data = data["mediaPod"]
     
@@ -122,7 +155,7 @@ def jsonToProtobuf(json_str: str) -> SubtitleGeneratorApi:
     media_pod.userUuid = media_pod_data["userUuid"]
     media_pod.originalVideo.CopyFrom(video)
     
-    message = SubtitleGeneratorApi()
+    message = SoundExtractorApi()
     message.mediaPod.CopyFrom(media_pod)
     
     return message

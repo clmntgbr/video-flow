@@ -8,6 +8,7 @@ use App\Protobuf\ApiSubtitleGenerator;
 use App\Protobuf\SubtitleGeneratorApi;
 use App\Entity\MediaPod;
 use App\Entity\User;
+use App\Enum\MediaPodStatus;
 use App\Protobuf\ApiSoundExtractor;
 use App\Repository\MediaPodRepository;
 use App\Repository\VideoRepository;
@@ -106,6 +107,11 @@ class UploadVideoService
             'user' => $this->security->getUser(),
             'uuid' => $mediaPodUuid,
             'originalVideo' => $video,
+            'status' => MediaPodStatus::SOUND_EXTRACTOR_PENDING->getValue(),
+            'statuses' => [
+                MediaPodStatus::UPLOAD_COMPLETE->getValue(),
+                MediaPodStatus::SOUND_EXTRACTOR_PENDING->getValue(),
+            ]
         ]);
 
         return $mediaPod;
@@ -122,6 +128,7 @@ class UploadVideoService
         $protoMediaPod->setUuid($mediaPod->getUuid());
         $protoMediaPod->setUserUuid($user->getUuid());
         $protoMediaPod->setOriginalVideo($protoVideo);
+        $protoMediaPod->setStatus(MediaPodStatus::SOUND_EXTRACTOR_PENDING->getValue());
 
         $apiSoundExtractor = new ApiSoundExtractor();
         $apiSoundExtractor->setMediaPod($protoMediaPod);

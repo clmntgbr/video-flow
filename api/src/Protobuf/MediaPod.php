@@ -25,6 +25,10 @@ class MediaPod extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.App.Protobuf.Video originalVideo = 3;</code>
      */
     protected $originalVideo = null;
+    /**
+     * Generated from protobuf field <code>string status = 4;</code>
+     */
+    protected $status = '';
 
     /**
      * Constructor.
@@ -35,6 +39,7 @@ class MediaPod extends \Google\Protobuf\Internal\Message
      *     @type string $uuid
      *     @type string $userUuid
      *     @type \App\Protobuf\Video $originalVideo
+     *     @type string $status
      * }
      */
     public function __construct($data = NULL) {
@@ -114,6 +119,28 @@ class MediaPod extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \App\Protobuf\Video::class);
         $this->originalVideo = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string status = 4;</code>
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Generated from protobuf field <code>string status = 4;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setStatus($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->status = $var;
 
         return $this;
     }
