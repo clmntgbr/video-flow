@@ -118,6 +118,8 @@ services:
 
     subtitle-generator:
         container_name: ${PROJECT_NAME}-subtitle-generator
+        env_file:
+            - .env
         build:
             context: ./services/subtitle-generator
             dockerfile: ./Dockerfile
@@ -130,8 +132,7 @@ services:
         volumes:
             - ./protobuf:/app/protobuf:ro
             - ./services/subtitle-generator:/app
-        environment:
-            - RABBITMQ_HOST=${RABBITMQ_HOST}
+        command: celery -A src.main.celery worker --loglevel=info --queues=api_subtitle_generator
         ports:
             - "5001:5000"
         depends_on:

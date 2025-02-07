@@ -42,12 +42,14 @@ final class SoundExtractorApiMessageHandler
             throw new BadStatusMediaPodException();
         }
 
-        $this->mediaPodRepository->update($mediaPod, [
+        $mediaPod = $this->mediaPodRepository->update($mediaPod, [
             'statuses' => [MediaPodStatus::SOUND_EXTRACTOR_COMPLETE->getValue(), MediaPodStatus::SUBTITLE_GENERATOR_PENDING->getValue(),],
             'status' => MediaPodStatus::SUBTITLE_GENERATOR_PENDING->getValue(),
         ]);
 
-        $this->messageBus->dispatch($soundExtractorApi, [
+        $apiSubtitleGenerator = $this->createApiSubtitleGeneratorProto($soundExtractorApi);
+
+        $this->messageBus->dispatch($apiSubtitleGenerator, [
             new AmqpStamp('api_subtitle_generator', 0, []),
         ]);
     }
@@ -55,7 +57,11 @@ final class SoundExtractorApiMessageHandler
     private function createApiSubtitleGeneratorProto(SoundExtractorApi $soundExtractorApi): ApiSubtitleGenerator
     {
         $apiSubtitleGenerator = new ApiSubtitleGenerator();
-        $apiSubtitleGenerator->setMediaPod($soundExtractorApi->getMediaPod());
+
+        $mediaPod = $soundExtractorApi->getMediaPod();
+        $mediaPod->setStatus(MediaPodStatus::SUBTITLE_GENERATOR_PENDING->getValue());
+
+        $apiSubtitleGenerator->setMediaPod($mediaPod);
 
         return $apiSubtitleGenerator;
     }

@@ -15,6 +15,8 @@ RUN pip install --no-cache-dir -r requirements.txt \
 
 COPY . .
 
+RUN mkdir -p /tmp && chmod 777 /tmp
+
 FROM base AS dev
 
 ENV FLASK_APP=src/main.py
