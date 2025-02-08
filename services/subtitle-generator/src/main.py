@@ -1,3 +1,4 @@
+from functools import partial
 import json
 import os
 import sys
@@ -9,6 +10,8 @@ from kombu import Queue
 import boto3
 from dotenv import load_dotenv
 from google.protobuf.json_format import MessageToJson
+from concurrent.futures import ThreadPoolExecutor
+from functools import partial
 
 sys.path.append('/app/src')
 from Protobuf.Message_pb2 import MediaPod, Video, SubtitleGeneratorApi
@@ -54,34 +57,41 @@ def process_message(message):
     protoMediaPod = jsonToProtobuf(message)
 
     subtitlesFilename = []
-
-    model = whisper.load_model("small")
+    chunks = []
 
     for audio in protoMediaPod.mediaPod.originalVideo.audios:
-        key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/audios/{audio}"
-        s3FilePath = f"/tmp/{audio}"
-        srtFilePath = os.path.splitext(s3FilePath)[0] + ".srt"
-        
-        if not downloadFromS3(key, s3FilePath):
-            return False
-        
-        if not generateSubtitle(s3FilePath, srtFilePath, model):
-            return False
-        
-        key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/subtitles/{os.path.basename(srtFilePath)}"
+        chunks.append(audio)
 
-        if not uploadToS3(key, srtFilePath):
-            return False
-        
-        subtitlesFilename.append(os.path.basename(srtFilePath))
+    partialMultiprocess = partial(multiprocess, protoMediaPod=protoMediaPod)
 
-    protoMediaPod.mediaPod.originalVideo.subtitles.extend(subtitlesFilename)
+    with ThreadPoolExecutor(max_workers=4) as executor:
+        results = list(executor.map(partialMultiprocess, chunks))
+
+    protoMediaPod.mediaPod.originalVideo.subtitles.extend(results)
     protoMediaPod.mediaPod.status = 'subtitle_generator_complete'
 
     if not sendMessageOnRabbitMQ(protoMediaPod):
         return False
-    
+
     return True
+
+def multiprocess(chunk: str, protoMediaPod: SubtitleGeneratorApi):
+    model = whisper.load_model("small")
+    key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/audios/{chunk}"
+    s3FilePath = f"/tmp/{chunk}"
+    srtFilePath = os.path.splitext(s3FilePath)[0] + ".srt"
+    if not downloadFromS3(key, s3FilePath):
+            return False
+        
+    if not generateSubtitle(s3FilePath, srtFilePath, model):
+        return False
+    
+    key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/subtitles/{os.path.basename(srtFilePath)}"
+
+    if not uploadToS3(key, srtFilePath):
+            return False
+    
+    return os.path.basename(srtFilePath)
 
 def generateSubtitle(s3FilePath: str, srtFilePath: str, model) -> bool:
     print(f"transcription in pending")
