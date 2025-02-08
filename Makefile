@@ -77,6 +77,9 @@ db:
 	
 consume-sound-extractor:
 	$(PHP) php bin/console messenger:consume sound_extractor_api -vv
+	
+consume-subtitle-generator:
+	$(PHP) php bin/console messenger:consume subtitle_generator_api -vv
 
 schema:
 	$(PHP) php bin/console doctrine:schema:update -f
