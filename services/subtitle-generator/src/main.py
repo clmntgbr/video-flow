@@ -2,6 +2,7 @@ import json
 import os
 import sys
 import whisper
+import pika
 from flask import Flask
 from celery import Celery
 from kombu import Queue
@@ -50,21 +51,39 @@ celery.conf.update({
 
 @celery.task(name='tasks.process_message', queue='api_subtitle_generator')
 def process_message(message):
-    print(message)
     protoMediaPod = jsonToProtobuf(message)
-    print(protoMediaPod)
 
-    return True
-    
-    key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/{protoMediaPod.mediaPod.originalVideo.subtitleName}"
-    s3FilePath = f"/tmp/{protoMediaPod.mediaPod.originalVideo.subtitleName}"
-    srtFilePath = os.path.splitext(s3FilePath)[0] + ".srt"
+    subtitlesFilename = []
 
-    if not downloadFromS3(key, s3FilePath):
+    for audio in protoMediaPod.mediaPod.originalVideo.audios:
+        key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/audios/{audio}"
+        s3FilePath = f"/tmp/{audio}"
+        srtFilePath = os.path.splitext(s3FilePath)[0] + ".srt"
+        
+        if not downloadFromS3(key, s3FilePath):
+            return False
+        
+        if not generateSubtitle(s3FilePath, srtFilePath):
+            return False
+        
+        key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/subtitles/{os.path.basename(srtFilePath)}"
+
+        if not uploadToS3(key, srtFilePath):
+            return False
+        
+        subtitlesFilename.append(os.path.basename(srtFilePath))
+
+    protoMediaPod.mediaPod.originalVideo.subtitles.extend(subtitlesFilename)
+    protoMediaPod.mediaPod.status = 'subtitle_generator_complete'
+
+    if not sendMessageOnRabbitMQ(protoMediaPod):
         return False
     
+    return True
+
+def generateSubtitle(s3FilePath: str, srtFilePath: str) -> bool:
     print(f"transcription in pending")
-    model = whisper.load_model("small")
+    model = whisper.load_model("base")
     result = model.transcribe(s3FilePath, fp16=False)
     print(f"file successfully transcribed")
 
@@ -80,13 +99,34 @@ def process_message(message):
             f.write(f"{i + 1}\n{start_time} --> {end_time}\n{text.strip()}\n\n")
     
     print(f"srt file successfully generated")
+    return True
 
-    key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/{os.path.basename(srtFilePath)}"
-    if not uploadToS3(key, srtFilePath):
-        return False
+def sendMessageOnRabbitMQ(protoMediaPod: SubtitleGeneratorApi) -> bool:
+    message = {
+        "task": "tasks.process_message",
+        "args": [MessageToJson(protoMediaPod)],
+        "queue": 'subtitle_generator_api'
+    }
 
-    print("Sous-titres générés : subtitles.srt")
+    parameters = pika.URLParameters(os.getenv("CELERY_RABBITMQ_URL"))
+    connection = pika.BlockingConnection(parameters)
+    channel = connection.channel()
     
+    channel.queue_declare(queue='subtitle_generator_api', durable=True)
+
+    channel.basic_publish(
+        exchange='messages',
+        routing_key='subtitle_generator_api',
+        body=json.dumps(message),
+        properties=pika.BasicProperties(
+            delivery_mode=2,
+            content_type="application/json",
+            headers={"type": "App\\Protobuf\\SubtitleGeneratorApi"}
+        )
+    )
+
+    connection.close()
+
 def downloadFromS3(key: str, s3FilePath: str) -> bool:
     try:
         s3Client.download_file(S3_BUCKET_NAME, key, s3FilePath)
@@ -116,13 +156,14 @@ def deleteFile(filePath: str) -> bool:
 
 def jsonToProtobuf(json_str: str) -> SubtitleGeneratorApi:
     data = json.loads(json_str)
+
     media_pod_data = data["mediaPod"]
     
     video = Video()
     video.name = media_pod_data["originalVideo"]["name"]
     video.mimeType = media_pod_data["originalVideo"]["mimeType"]
     video.size = int(media_pod_data["originalVideo"]["size"])
-    video.subtitles.extend(media_pod_data["originalVideo"]["subtitles"])
+    video.audios.extend(media_pod_data["originalVideo"]["audios"])
     
     media_pod = MediaPod()
     media_pod.uuid = media_pod_data["uuid"]

@@ -42,8 +42,8 @@ final class SoundExtractorApiMessageHandler
             throw new Exception();
         }
 
-        foreach ($soundExtractorApi->getMediaPod()->getOriginalVideo()->getSubtitles()->getIterator() as $iterator) {
-            $mediaPod->getOriginalVideo()->addSubtitles($iterator);
+        foreach ($soundExtractorApi->getMediaPod()->getOriginalVideo()->getAudios()->getIterator() as $iterator) {
+            $mediaPod->getOriginalVideo()->addAudios($iterator);
         }
 
         $mediaPod = $this->mediaPodRepository->update($mediaPod, [

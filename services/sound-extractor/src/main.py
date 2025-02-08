@@ -69,7 +69,7 @@ def process_message(message):
     chunks = chunkMP3(f"/tmp/{audioFilePath}", uuid)
 
     for chunk in chunks:
-        key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/subtitles/{chunk}"
+        key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/audios/{chunk}"
         if not uploadToS3(key, f"/tmp/{chunk}"):
             return False
         deleteFile(f"/tmp/{chunk}")
@@ -77,7 +77,7 @@ def process_message(message):
     deleteFile(s3FilePath)
     deleteFile(f"/tmp/{audioFilePath}")
 
-    protoMediaPod.mediaPod.originalVideo.subtitles.extend(chunks)
+    protoMediaPod.mediaPod.originalVideo.audios.extend(chunks)
     protoMediaPod.mediaPod.status = 'sound_extractor_complete'
     
     if not sendMessageOnRabbitMQ(protoMediaPod):
@@ -87,7 +87,7 @@ def process_message(message):
 
 def chunkMP3(audioFilePath: str, uuid: str) -> list[str]: 
     audio = AudioSegment.from_mp3(audioFilePath)
-    segmentDuration = 10 * 60 * 1000
+    segmentDuration = 5 * 60 * 1000
     chunkFilenames = []
 
     chunks = [audio[i:i+segmentDuration] for i in range(0, len(audio), segmentDuration)]

@@ -29,6 +29,10 @@ class Video extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>repeated string subtitles = 4;</code>
      */
     private $subtitles;
+    /**
+     * Generated from protobuf field <code>repeated string audios = 5;</code>
+     */
+    private $audios;
 
     /**
      * Constructor.
@@ -40,6 +44,7 @@ class Video extends \Google\Protobuf\Internal\Message
      *     @type string $mimeType
      *     @type int|string $size
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $subtitles
+     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $audios
      * }
      */
     public function __construct($data = NULL) {
@@ -131,6 +136,28 @@ class Video extends \Google\Protobuf\Internal\Message
     {
         $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
         $this->subtitles = $arr;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string audios = 5;</code>
+     * @return \Google\Protobuf\Internal\RepeatedField
+     */
+    public function getAudios()
+    {
+        return $this->audios;
+    }
+
+    /**
+     * Generated from protobuf field <code>repeated string audios = 5;</code>
+     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @return $this
+     */
+    public function setAudios($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->audios = $arr;
 
         return $this;
     }

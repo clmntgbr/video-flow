@@ -40,6 +40,10 @@ class Video
     #[Groups(['media-pods:get'])]
     private array $subtitles = [];
 
+    #[ORM\Column(type: Types::JSON, nullable: false)]
+    #[Groups(['media-pods:get'])]
+    private array $audios = [];
+
     public function __construct()
     {
         $this->initializeUuid();
@@ -117,9 +121,28 @@ class Video
         return $this;
     }
 
+    public function addAudios(string $audio): static
+    {
+        $this->audios[] = $audio;
+
+        return $this;
+    }
+
     public function setSubtitles(array $subtitles): static
     {
         $this->subtitles = $subtitles;
+
+        return $this;
+    }
+
+    public function getAudios(): array
+    {
+        return $this->audios;
+    }
+
+    public function setAudios(array $audios): static
+    {
+        $this->audios = $audios;
 
         return $this;
     }
