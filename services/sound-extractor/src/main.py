@@ -1,5 +1,6 @@
 import json
 import os
+import re
 import sys
 import ffmpeg
 import pika
@@ -79,6 +80,7 @@ def process_message(message):
     deleteFile(s3FilePath)
     deleteFile(audioFilePath)
 
+    resultsSorted = sorted(chunks, key=extractChunkNumber)
     protoMediaPod.mediaPod.originalVideo.audios.extend(chunks)
     protoMediaPod.mediaPod.status = 'sound_extractor_complete'
     
@@ -86,6 +88,10 @@ def process_message(message):
         return False
     
     return True
+
+def extractChunkNumber(item):
+    match = re.search(r'_(\d+)\.wav$', item[0])
+    return int(match.group(1)) if match else float('inf')
 
 def chunkWav(audioFilePath: str, uuid: str) -> list[str]: 
     audio = AudioSegment.from_mp3(audioFilePath)

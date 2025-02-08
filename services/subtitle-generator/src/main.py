@@ -3,6 +3,7 @@ import json
 import os
 import sys
 import whisper
+import re
 import pika
 from flask import Flask
 from celery import Celery
@@ -67,7 +68,8 @@ def process_message(message):
     with ThreadPoolExecutor(max_workers=4) as executor:
         results = list(executor.map(partialMultiprocess, chunks))
 
-    protoMediaPod.mediaPod.originalVideo.subtitles.extend(results)
+    resultsSorted = sorted(results, key=extractChunkNumber)
+    protoMediaPod.mediaPod.originalVideo.subtitles.extend(resultsSorted)
     protoMediaPod.mediaPod.status = 'subtitle_generator_complete'
 
     if not sendMessageOnRabbitMQ(protoMediaPod):
@@ -92,6 +94,10 @@ def multiprocess(chunk: str, protoMediaPod: SubtitleGeneratorApi):
             return False
     
     return os.path.basename(srtFilePath)
+
+def extractChunkNumber(item):
+    match = re.search(r'_(\d+)\.srt$', item[0])
+    return int(match.group(1)) if match else float('inf')
 
 def generateSubtitle(s3FilePath: str, srtFilePath: str, model) -> bool:
     print(f"transcription in pending")
