@@ -5,6 +5,8 @@ import sys
 import whisper
 import re
 import pika
+import openai
+from openai import OpenAI
 from flask import Flask
 from celery import Celery
 from kombu import Queue
@@ -77,14 +79,14 @@ def process_message(message):
     return True
 
 def multiprocess(chunk: str, protoMediaPod: SubtitleGeneratorApi):
-    model = whisper.load_model("small")
     key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/audios/{chunk}"
     s3FilePath = f"/tmp/{chunk}"
     srtFilePath = os.path.splitext(s3FilePath)[0] + ".srt"
+    
     if not downloadFromS3(key, s3FilePath):
             return False
         
-    if not generateSubtitle(s3FilePath, srtFilePath, model):
+    if not generateSubtitle(s3FilePath, srtFilePath):
         return False
     
     key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/subtitles/{os.path.basename(srtFilePath)}"
@@ -98,23 +100,32 @@ def extractChunkNumber(item):
     match = re.search(r'_(\d+)\.srt$', item[0])
     return int(match.group(1)) if match else float('inf')
 
-def generateSubtitle(s3FilePath: str, srtFilePath: str, model) -> bool:
-    print(f"transcription in pending")
-    result = model.transcribe(s3FilePath, fp16=False)
-    print(f"file successfully transcribed")
+def generateSubtitle(s3FilePath: str, srtFilePath: str) -> bool:
+    print("Uploading file for transcription...")
+
+    client = OpenAI()
+
+    with open(s3FilePath, "rb") as audio_file:
+        response = client.audio.transcriptions.create(
+            model="whisper-1",
+            file=audio_file,
+            response_format="json"
+        )
+
+    print("File successfully transcribed")
 
     with open(srtFilePath, "w", encoding="utf-8") as f:
-        for i, segment in enumerate(result["segments"]):
-            start = segment["start"]
-            end = segment["end"]
-            text = segment["text"]
+        for i, segment in enumerate(response.segments):
+            start = segment.start
+            end = segment.end
+            text = segment.text
 
             start_time = f"{int(start // 3600):02}:{int((start % 3600) // 60):02}:{int(start % 60):02},{int((start % 1) * 1000):03}"
             end_time = f"{int(end // 3600):02}:{int((end % 3600) // 60):02}:{int(end % 60):02},{int((end % 1) * 1000):03}"
 
             f.write(f"{i + 1}\n{start_time} --> {end_time}\n{text.strip()}\n\n")
-    
-    print(f"srt file successfully generated")
+
+    print("SRT file successfully generated")
     return True
 
 def sendMessageOnRabbitMQ(protoMediaPod: SubtitleGeneratorApi) -> bool:
