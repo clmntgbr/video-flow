@@ -99,7 +99,7 @@ class MediaPod
         return $this->videoName;
     }
 
-    public function setVideoName(string $videoName): static
+    public function setVideoName(?string $videoName): static
     {
         $this->videoName = $videoName;
 

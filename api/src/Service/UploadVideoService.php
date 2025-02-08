@@ -4,8 +4,6 @@ namespace App\Service;
 
 use App\Protobuf\Video as ProtoVideo;
 use App\Protobuf\MediaPod as ProtoMediaPod;
-use App\Protobuf\ApiSubtitleGenerator;
-use App\Protobuf\SubtitleGeneratorApi;
 use App\Entity\MediaPod;
 use App\Entity\User;
 use App\Enum\MediaPodStatus;

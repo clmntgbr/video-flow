@@ -103,27 +103,19 @@ def extractChunkNumber(item):
 def generateSubtitle(s3FilePath: str, srtFilePath: str) -> bool:
     print("Uploading file for transcription...")
 
-    client = OpenAI()
+    client = OpenAI(api_key=os.getenv("OPEN_AI_API_KEY"))
 
     with open(s3FilePath, "rb") as audio_file:
         response = client.audio.transcriptions.create(
-            model="whisper-1",
             file=audio_file,
-            response_format="json"
+            model="whisper-1",
+            response_format="srt",
         )
 
     print("File successfully transcribed")
 
-    with open(srtFilePath, "w", encoding="utf-8") as f:
-        for i, segment in enumerate(response.segments):
-            start = segment.start
-            end = segment.end
-            text = segment.text
-
-            start_time = f"{int(start // 3600):02}:{int((start % 3600) // 60):02}:{int(start % 60):02},{int((start % 1) * 1000):03}"
-            end_time = f"{int(end // 3600):02}:{int((end % 3600) // 60):02}:{int(end % 60):02},{int((end % 1) * 1000):03}"
-
-            f.write(f"{i + 1}\n{start_time} --> {end_time}\n{text.strip()}\n\n")
+    with open(srtFilePath, "w", encoding="utf-8") as file:
+        file.write(response)
 
     print("SRT file successfully generated")
     return True
