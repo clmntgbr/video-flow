@@ -55,6 +55,8 @@ def process_message(message):
 
     subtitlesFilename = []
 
+    model = whisper.load_model("small")
+
     for audio in protoMediaPod.mediaPod.originalVideo.audios:
         key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/audios/{audio}"
         s3FilePath = f"/tmp/{audio}"
@@ -63,7 +65,7 @@ def process_message(message):
         if not downloadFromS3(key, s3FilePath):
             return False
         
-        if not generateSubtitle(s3FilePath, srtFilePath):
+        if not generateSubtitle(s3FilePath, srtFilePath, model):
             return False
         
         key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/subtitles/{os.path.basename(srtFilePath)}"
@@ -81,9 +83,8 @@ def process_message(message):
     
     return True
 
-def generateSubtitle(s3FilePath: str, srtFilePath: str) -> bool:
+def generateSubtitle(s3FilePath: str, srtFilePath: str, model) -> bool:
     print(f"transcription in pending")
-    model = whisper.load_model("base")
     result = model.transcribe(s3FilePath, fp16=False)
     print(f"file successfully transcribed")
 

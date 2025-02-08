@@ -66,7 +66,9 @@ def process_message(message):
     if not extractSound(s3FilePath, f"/tmp/{audioFilePath}"):
         return False
     
-    chunks = chunkMP3(f"/tmp/{audioFilePath}", uuid)
+    audioFilePath = convertToWav(f"/tmp/{audioFilePath}")
+    
+    chunks = chunkWav(audioFilePath, uuid)
 
     for chunk in chunks:
         key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/audios/{chunk}"
@@ -75,7 +77,7 @@ def process_message(message):
         deleteFile(f"/tmp/{chunk}")
         
     deleteFile(s3FilePath)
-    deleteFile(f"/tmp/{audioFilePath}")
+    deleteFile(audioFilePath)
 
     protoMediaPod.mediaPod.originalVideo.audios.extend(chunks)
     protoMediaPod.mediaPod.status = 'sound_extractor_complete'
@@ -85,15 +87,15 @@ def process_message(message):
     
     return True
 
-def chunkMP3(audioFilePath: str, uuid: str) -> list[str]: 
+def chunkWav(audioFilePath: str, uuid: str) -> list[str]: 
     audio = AudioSegment.from_mp3(audioFilePath)
     segmentDuration = 5 * 60 * 1000
     chunkFilenames = []
 
     chunks = [audio[i:i+segmentDuration] for i in range(0, len(audio), segmentDuration)]
     for idx, chunk in enumerate(chunks):
-        chunk.export(f"/tmp/{uuid}_{idx+1}.mp3", format="mp3")
-        chunkFilenames.append(f"{uuid}_{idx+1}.mp3")
+        chunk.export(f"/tmp/{uuid}_{idx+1}.wav", format="wav")
+        chunkFilenames.append(f"{uuid}_{idx+1}.wav")
 
     return chunkFilenames
 
@@ -131,6 +133,12 @@ def extractSound(file: str, audioFilePath: str) -> bool:
     except Exception as e:
         print(f"error extracting audio: {e}")
         return False
+
+def convertToWav(audioFilePath) -> str:
+    audio = AudioSegment.from_mp3(audioFilePath)
+    wav_path = audioFilePath.replace(".mp3", ".wav")
+    audio.export(wav_path, format="wav", parameters=["-ac", "1", "-ar", "16000"]) 
+    return wav_path
 
 def deleteFile(filePath: str) -> bool:
     try:
