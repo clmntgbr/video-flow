@@ -57,7 +57,6 @@ celery.conf.update({
 def process_message(message):
     protoMediaPod = jsonToProtobuf(message)
 
-    subtitlesFilename = []
     chunks = []
 
     for audio in protoMediaPod.mediaPod.originalVideo.audios:
