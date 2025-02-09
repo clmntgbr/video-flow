@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rMessage.proto\x12\x0c\x41pp.Protobuf\"@\n\x14\x41piSubtitleGenerator\x12(\n\x08mediaPod\x18\x01 \x01(\x0b\x32\x16.App.Protobuf.MediaPod\"=\n\x11\x41piSoundExtractor\x12(\n\x08mediaPod\x18\x01 \x01(\x0b\x32\x16.App.Protobuf.MediaPod\"=\n\x11SoundExtractorApi\x12(\n\x08mediaPod\x18\x01 \x01(\x0b\x32\x16.App.Protobuf.MediaPod\"@\n\x14SubtitleGeneratorApi\x12(\n\x08mediaPod\x18\x01 \x01(\x0b\x32\x16.App.Protobuf.MediaPod\"f\n\x08MediaPod\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x10\n\x08userUuid\x18\x02 \x01(\t\x12*\n\roriginalVideo\x18\x03 \x01(\x0b\x32\x13.App.Protobuf.Video\x12\x0e\n\x06status\x18\x04 \x01(\t\"X\n\x05Video\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08mimeType\x18\x02 \x01(\t\x12\x0c\n\x04size\x18\x03 \x01(\x03\x12\x11\n\tsubtitles\x18\x04 \x03(\t\x12\x0e\n\x06\x61udios\x18\x05 \x03(\tB*\xca\x02\x0c\x41pp\\Protobuf\xe2\x02\x18\x41pp\\Protobuf\\GPBMetadatab\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rMessage.proto\x12\x0c\x41pp.Protobuf\"@\n\x14\x41piSubtitleGenerator\x12(\n\x08mediaPod\x18\x01 \x01(\x0b\x32\x16.App.Protobuf.MediaPod\"=\n\x11\x41piSubtitleMerger\x12(\n\x08mediaPod\x18\x01 \x01(\x0b\x32\x16.App.Protobuf.MediaPod\"=\n\x11\x41piSoundExtractor\x12(\n\x08mediaPod\x18\x01 \x01(\x0b\x32\x16.App.Protobuf.MediaPod\"=\n\x11SoundExtractorApi\x12(\n\x08mediaPod\x18\x01 \x01(\x0b\x32\x16.App.Protobuf.MediaPod\"@\n\x14SubtitleGeneratorApi\x12(\n\x08mediaPod\x18\x01 \x01(\x0b\x32\x16.App.Protobuf.MediaPod\"=\n\x11SubtitleMergerApi\x12(\n\x08mediaPod\x18\x01 \x01(\x0b\x32\x16.App.Protobuf.MediaPod\"f\n\x08MediaPod\x12\x0c\n\x04uuid\x18\x01 \x01(\t\x12\x10\n\x08userUuid\x18\x02 \x01(\t\x12*\n\roriginalVideo\x18\x03 \x01(\x0b\x32\x13.App.Protobuf.Video\x12\x0e\n\x06status\x18\x04 \x01(\t\"j\n\x05Video\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08mimeType\x18\x02 \x01(\t\x12\x0c\n\x04size\x18\x03 \x01(\x03\x12\x10\n\x08subtitle\x18\x06 \x01(\t\x12\x11\n\tsubtitles\x18\x04 \x03(\t\x12\x0e\n\x06\x61udios\x18\x05 \x03(\tB*\xca\x02\x0c\x41pp\\Protobuf\xe2\x02\x18\x41pp\\Protobuf\\GPBMetadatab\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'Message_pb2', globals())
@@ -23,14 +23,18 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._serialized_options = b'\312\002\014App\\Protobuf\342\002\030App\\Protobuf\\GPBMetadata'
   _APISUBTITLEGENERATOR._serialized_start=31
   _APISUBTITLEGENERATOR._serialized_end=95
-  _APISOUNDEXTRACTOR._serialized_start=97
-  _APISOUNDEXTRACTOR._serialized_end=158
-  _SOUNDEXTRACTORAPI._serialized_start=160
-  _SOUNDEXTRACTORAPI._serialized_end=221
-  _SUBTITLEGENERATORAPI._serialized_start=223
-  _SUBTITLEGENERATORAPI._serialized_end=287
-  _MEDIAPOD._serialized_start=289
-  _MEDIAPOD._serialized_end=391
-  _VIDEO._serialized_start=393
-  _VIDEO._serialized_end=481
+  _APISUBTITLEMERGER._serialized_start=97
+  _APISUBTITLEMERGER._serialized_end=158
+  _APISOUNDEXTRACTOR._serialized_start=160
+  _APISOUNDEXTRACTOR._serialized_end=221
+  _SOUNDEXTRACTORAPI._serialized_start=223
+  _SOUNDEXTRACTORAPI._serialized_end=284
+  _SUBTITLEGENERATORAPI._serialized_start=286
+  _SUBTITLEGENERATORAPI._serialized_end=350
+  _SUBTITLEMERGERAPI._serialized_start=352
+  _SUBTITLEMERGERAPI._serialized_end=413
+  _MEDIAPOD._serialized_start=415
+  _MEDIAPOD._serialized_end=517
+  _VIDEO._serialized_start=519
+  _VIDEO._serialized_end=625
 # @@protoc_insertion_point(module_scope)

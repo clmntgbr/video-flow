@@ -19,6 +19,15 @@ services:
               SERVICE_PORT: 5000
               SERVICE_NAME: subtitle-generator
 
+  subtitle-merger:
+      build:
+          context: ./services/subtitle-merger
+          dockerfile: ./Dockerfile
+          target: prod
+          args:
+              SERVICE_PORT: 5000
+              SERVICE_NAME: subtitle-merger
+
   sound-extractor:
       build:
           context: ./services/sound-extractor

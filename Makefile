@@ -10,11 +10,13 @@ CONTAINER_DB := $(shell docker container ls -f "name=$(PROJECT_NAME)-database" -
 CONTAINER_QA := $(shell docker container ls -f "name=$(PROJECT_NAME)-qa" -q)
 CONTAINER_SG := $(shell docker container ls -f "name=$(PROJECT_NAME)-subtitle-generator" -q)
 CONTAINER_SE := $(shell docker container ls -f "name=$(PROJECT_NAME)-sound-extractor" -q)
+CONTAINER_SM := $(shell docker container ls -f "name=$(PROJECT_NAME)-subtitle-merger" -q)
 
 PHP := docker exec -ti $(CONTAINER_PHP)
 PHP_SH := docker exec -ti $(CONTAINER_PHP) sh -c
 SG := docker exec -ti $(CONTAINER_SG)
 SE := docker exec -ti $(CONTAINER_SE)
+SM := docker exec -ti $(CONTAINER_SM)
 QA := docker exec -ti $(CONTAINER_QA)
 DATABASE := docker exec -ti $(CONTAINER_DB)
 
@@ -103,3 +105,4 @@ proto:
 	$(PHP_SH) "rm -r /app/src/Protobuf/App"
 	$(SG) protoc --proto_path=protobuf --python_out=src/Protobuf protobuf/*.proto
 	$(SE) protoc --proto_path=protobuf --python_out=src/Protobuf protobuf/*.proto
+	$(SM) protoc --proto_path=protobuf --python_out=src/Protobuf protobuf/*.proto

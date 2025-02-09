@@ -45,9 +45,13 @@ final class SoundExtractorApiMessageHandler
         }
 
         $mediaPod->getOriginalVideo()->setAudios([]);
+        $audios = [];
         foreach ($soundExtractorApi->getMediaPod()->getOriginalVideo()->getAudios()->getIterator() as $iterator) {
-            $mediaPod->getOriginalVideo()->addAudios($iterator);
+            $audios[] = $iterator;
         }
+        natsort($audios);
+        $audios = array_values($audios);
+        $mediaPod->getOriginalVideo()->setAudios($audios);
 
         $mediaPod = $this->mediaPodRepository->update($mediaPod, [
             'statuses' => [MediaPodStatus::SOUND_EXTRACTOR_COMPLETE->getValue(), MediaPodStatus::SUBTITLE_GENERATOR_PENDING->getValue(),],

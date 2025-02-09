@@ -138,6 +138,28 @@ services:
         depends_on:
             - rabbitmq
 
+    subtitle-merger:
+        container_name: ${PROJECT_NAME}-subtitle-merger
+        env_file:
+            - .env
+        build:
+            context: ./services/subtitle-merger
+            dockerfile: ./Dockerfile
+            args:
+                SERVICE_PORT: 5000
+                SERVICE_NAME: subtitle-merger
+        restart: unless-stopped
+        networks:
+            - api_network
+        volumes:
+            - ./protobuf:/app/protobuf:ro
+            - ./services/subtitle-merger:/app
+        command: celery -A src.main.celery worker --loglevel=info --queues=api_subtitle_merger
+        ports:
+            - "5002:5000"
+        depends_on:
+            - rabbitmq
+
 networks:
   api_network:
     name: api_network

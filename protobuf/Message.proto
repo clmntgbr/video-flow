@@ -9,6 +9,10 @@ message ApiSubtitleGenerator {
     MediaPod mediaPod = 1;
 }
 
+message ApiSubtitleMerger {
+    MediaPod mediaPod = 1;
+}
+
 message ApiSoundExtractor {
     MediaPod mediaPod = 1;
 }
@@ -18,6 +22,10 @@ message SoundExtractorApi {
 }
 
 message SubtitleGeneratorApi {
+    MediaPod mediaPod = 1;
+}
+
+message SubtitleMergerApi {
     MediaPod mediaPod = 1;
 }
 
@@ -32,6 +40,7 @@ message Video {
     string name = 1;
     string mimeType = 2;
     int64 size = 3;
+    string subtitle = 6;
     repeated string subtitles = 4;
     repeated string audios = 5;
 }

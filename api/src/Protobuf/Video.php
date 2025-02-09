@@ -26,6 +26,10 @@ class Video extends \Google\Protobuf\Internal\Message
      */
     protected $size = 0;
     /**
+     * Generated from protobuf field <code>string subtitle = 6;</code>
+     */
+    protected $subtitle = '';
+    /**
      * Generated from protobuf field <code>repeated string subtitles = 4;</code>
      */
     private $subtitles;
@@ -43,6 +47,7 @@ class Video extends \Google\Protobuf\Internal\Message
      *     @type string $name
      *     @type string $mimeType
      *     @type int|string $size
+     *     @type string $subtitle
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $subtitles
      *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $audios
      * }
@@ -114,6 +119,28 @@ class Video extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkInt64($var);
         $this->size = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string subtitle = 6;</code>
+     * @return string
+     */
+    public function getSubtitle()
+    {
+        return $this->subtitle;
+    }
+
+    /**
+     * Generated from protobuf field <code>string subtitle = 6;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setSubtitle($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->subtitle = $var;
 
         return $this;
     }

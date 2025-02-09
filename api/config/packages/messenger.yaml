@@ -13,18 +13,6 @@ framework:
                         api_subtitle_generator:
                             binding_keys: [api_subtitle_generator]
 
-            api_sound_extractor:
-                dsn: "%env(MESSENGER_TRANSPORT_DSN)%"
-                serializer: App\Messenger\Serializer\ProtobufSerializer
-                options:
-                    exchange:
-                        name: messages
-                        type: direct
-                    auto_setup: true
-                    queues:
-                        api_sound_extractor:
-                            binding_keys: [api_sound_extractor]
-
             subtitle_generator_api:
                 dsn: "%env(MESSENGER_TRANSPORT_DSN)%"
                 serializer: App\Messenger\Serializer\ProtobufSerializer
@@ -36,6 +24,41 @@ framework:
                     queues:
                         subtitle_generator_api:
                             binding_keys: [subtitle_generator_api]
+            api_subtitle_merger:
+                dsn: "%env(MESSENGER_TRANSPORT_DSN)%"
+                serializer: App\Messenger\Serializer\ProtobufSerializer
+                options:
+                    exchange:
+                        name: messages
+                        type: direct
+                    auto_setup: true
+                    queues:
+                        api_subtitle_merger:
+                            binding_keys: [api_subtitle_merger]
+
+            subtitle_merger_api:
+                dsn: "%env(MESSENGER_TRANSPORT_DSN)%"
+                serializer: App\Messenger\Serializer\ProtobufSerializer
+                options:
+                    exchange:
+                        name: messages
+                        type: direct
+                    auto_setup: true
+                    queues:
+                        subtitle_merger_api:
+                            binding_keys: [subtitle_merger_api]
+
+            api_sound_extractor:
+                dsn: "%env(MESSENGER_TRANSPORT_DSN)%"
+                serializer: App\Messenger\Serializer\ProtobufSerializer
+                options:
+                    exchange:
+                        name: messages
+                        type: direct
+                    auto_setup: true
+                    queues:
+                        api_sound_extractor:
+                            binding_keys: [api_sound_extractor]
 
             sound_extractor_api:
                 dsn: "%env(MESSENGER_TRANSPORT_DSN)%"
@@ -51,6 +74,8 @@ framework:
                             
         routing:
             'App\Protobuf\ApiSoundExtractor': api_sound_extractor
+            'App\Protobuf\SoundExtractorApi': sound_extractor_api
             'App\Protobuf\ApiSubtitleGenerator': api_subtitle_generator
             'App\Protobuf\SubtitleGeneratorApi': subtitle_generator_api
-            'App\Protobuf\SoundExtractorApi': sound_extractor_api
+            'App\Protobuf\ApiSubtitleMerger': api_subtitle_merger
+            'App\Protobuf\SubtitleMergerApi': subtitle_merger_api
