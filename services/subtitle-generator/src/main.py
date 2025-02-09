@@ -15,6 +15,7 @@ from dotenv import load_dotenv
 from google.protobuf.json_format import MessageToJson
 from concurrent.futures import ThreadPoolExecutor
 from functools import partial
+import assemblyai as aai
 
 sys.path.append('/app/src')
 from Protobuf.Message_pb2 import MediaPod, Video, SubtitleGeneratorApi
@@ -86,7 +87,7 @@ def multiprocess(chunk: str, protoMediaPod: SubtitleGeneratorApi):
     if not downloadFromS3(key, s3FilePath):
             return False
         
-    if not generateSubtitle(s3FilePath, srtFilePath):
+    if not generateSubtitleAssemblyAI(s3FilePath, srtFilePath):
         return False
     
     key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/subtitles/{os.path.basename(srtFilePath)}"
@@ -100,7 +101,7 @@ def extractChunkNumber(item):
     match = re.search(r'_(\d+)\.srt$', item[0])
     return int(match.group(1)) if match else float('inf')
 
-def generateSubtitle(s3FilePath: str, srtFilePath: str) -> bool:
+def generateSubtitleOpenAI(s3FilePath: str, srtFilePath: str) -> bool:
     print("Uploading file for transcription...")
 
     client = OpenAI(api_key=os.getenv("OPEN_AI_API_KEY"))
@@ -116,6 +117,24 @@ def generateSubtitle(s3FilePath: str, srtFilePath: str) -> bool:
 
     with open(srtFilePath, "w", encoding="utf-8") as file:
         file.write(response)
+
+    print("SRT file successfully generated")
+    return True
+
+def generateSubtitleAssemblyAI(s3FilePath: str, srtFilePath: str) -> bool:
+    print("Uploading file for transcription...")
+
+    aai.settings.api_key = os.getenv("ASSEMBLY_AI_API_KEY")
+    config = aai.TranscriptionConfig(language_detection=True)
+    transcriber = aai.Transcriber(config=config)
+
+    transcript = transcriber.transcribe(s3FilePath)
+    srt = transcript.export_subtitles_srt()
+
+    print("File successfully transcribed")
+
+    with open(srtFilePath, "w", encoding="utf-8") as file:
+        file.write(srt)
 
     print("SRT file successfully generated")
     return True
