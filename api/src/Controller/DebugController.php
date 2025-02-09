@@ -76,6 +76,7 @@ class DebugController extends AbstractController
             $video->setUpdatedAt(new \DateTime($mediaPodData['originalVideo']['updatedAt']));
 
             $mediaPod = new MediaPod();
+            $mediaPod->setUser($user);
             $mediaPod->setUuid($mediaPodData['uuid']);
             $mediaPod->setVideoName($mediaPodData['videoName']);
             $mediaPod->setOriginalVideo($video);

@@ -4,6 +4,8 @@ namespace App\MessageHandler;
 
 use App\Entity\MediaPod;
 use App\Enum\MediaPodStatus;
+use App\Exception\MediaPodNotFoundException;
+use App\Exception\MediaPodStatusException;
 use App\Protobuf\ApiSubtitleGenerator;
 use App\Protobuf\SoundExtractorApi;
 use App\Protobuf\SubtitleGeneratorApi;
@@ -35,13 +37,14 @@ final class SoundExtractorApiMessageHandler
         ]);
 
         if (!$mediaPod instanceof MediaPod) {
-            throw new Exception();
+            throw new MediaPodNotFoundException();
         }
 
         if ($soundExtractorApi->getMediaPod()->getStatus() !== MediaPodStatus::SOUND_EXTRACTOR_COMPLETE->getValue()) {
-            throw new Exception();
+            throw new MediaPodStatusException();
         }
 
+        $mediaPod->getOriginalVideo()->setAudios([]);
         foreach ($soundExtractorApi->getMediaPod()->getOriginalVideo()->getAudios()->getIterator() as $iterator) {
             $mediaPod->getOriginalVideo()->addAudios($iterator);
         }
