@@ -3,13 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\MediaPod;
-use App\Protobuf\Video as ProtoVideo;
-use App\Protobuf\MediaPod as ProtoMediaPod;
 use App\Entity\User;
 use App\Entity\Video;
+use App\Protobuf\MediaPod as ProtoMediaPod;
 use App\Protobuf\SubtitleGeneratorApi;
+use App\Protobuf\Video as ProtoVideo;
 use App\Repository\MediaPodRepository;
-use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use League\Flysystem\FilesystemOperator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,40 +26,40 @@ class DebugController extends AbstractController
     public function subtitleGeneratorApi(#[CurrentUser] ?User $user, EntityManagerInterface $entityManager, MediaPodRepository $mediaPodRepository, FilesystemOperator $awsStorage, MessageBusInterface $messageBus): JsonResponse
     {
         $mediaPodData = [
-            "@id" => "/api/media_pods/35d74015-4b0e-46e9-a64c-044a75f27f15",
-            "@type" => "MediaPod",
-            "videoName" => null,
-            "originalVideo" => [
-                "@id" => "/api/videos/7fb5d19e-002a-49d6-ba06-5f9f879137f7",
-                "@type" => "Video",
-                "originalName" => "video5.mp4",
-                "name" => "ddece7e95695595e8b6147b7a3127553.mp4",
-                "mimeType" => "video/mp4",
-                "size" => 71541180,
-                "subtitles" => [],
-                "audios" => [
-                    "ddece7e95695595e8b6147b7a3127553_1.wav",
-                    "ddece7e95695595e8b6147b7a3127553_2.wav",
-                    "ddece7e95695595e8b6147b7a3127553_3.wav",
-                    "ddece7e95695595e8b6147b7a3127553_4.wav",
-                    "ddece7e95695595e8b6147b7a3127553_5.wav"
+            '@id' => '/api/media_pods/35d74015-4b0e-46e9-a64c-044a75f27f15',
+            '@type' => 'MediaPod',
+            'videoName' => null,
+            'originalVideo' => [
+                '@id' => '/api/videos/7fb5d19e-002a-49d6-ba06-5f9f879137f7',
+                '@type' => 'Video',
+                'originalName' => 'video5.mp4',
+                'name' => 'ddece7e95695595e8b6147b7a3127553.mp4',
+                'mimeType' => 'video/mp4',
+                'size' => 71541180,
+                'subtitles' => [],
+                'audios' => [
+                    'ddece7e95695595e8b6147b7a3127553_1.wav',
+                    'ddece7e95695595e8b6147b7a3127553_2.wav',
+                    'ddece7e95695595e8b6147b7a3127553_3.wav',
+                    'ddece7e95695595e8b6147b7a3127553_4.wav',
+                    'ddece7e95695595e8b6147b7a3127553_5.wav',
                 ],
-                "createdAt" => "2025-02-08T21:08:34+00:00",
-                "updatedAt" => "2025-02-08T21:08:54+00:00",
-                "uuid" => "7fb5d19e-002a-49d6-ba06-5f9f879137f7"
+                'createdAt' => '2025-02-08T21:08:34+00:00',
+                'updatedAt' => '2025-02-08T21:08:54+00:00',
+                'uuid' => '7fb5d19e-002a-49d6-ba06-5f9f879137f7',
             ],
-            "status" => "subtitle_generator_pending",
-            "statuses" => [
-                "upload_complete",
-                "sound_extractor_pending",
-                "sound_extractor_complete",
-                "subtitle_generator_pending"
+            'status' => 'subtitle_generator_pending',
+            'statuses' => [
+                'upload_complete',
+                'sound_extractor_pending',
+                'sound_extractor_complete',
+                'subtitle_generator_pending',
             ],
-            "createdAt" => "2025-02-08T21:08:34+00:00",
-            "updatedAt" => "2025-02-08T21:08:54+00:00",
-            "uuid" => "35d74015-4b0e-46e9-a64c-044a75f27f15"
+            'createdAt' => '2025-02-08T21:08:34+00:00',
+            'updatedAt' => '2025-02-08T21:08:54+00:00',
+            'uuid' => '35d74015-4b0e-46e9-a64c-044a75f27f15',
         ];
-        
+
         $mediaPod = $mediaPodRepository->findOneBy(['uuid' => '35d74015-4b0e-46e9-a64c-044a75f27f15']);
 
         if (!$mediaPod instanceof MediaPod) {

@@ -9,8 +9,6 @@ use App\Exception\MediaPodStatusException;
 use App\Protobuf\ApiSubtitleMerger;
 use App\Protobuf\SubtitleGeneratorApi;
 use App\Repository\MediaPodRepository;
-use Exception;
-use Monolog\Logger;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
@@ -22,7 +20,7 @@ final class SubtitleGeneratorApiMessageHandler
     public function __construct(
         private LoggerInterface $logger,
         private MediaPodRepository $mediaPodRepository,
-        private MessageBusInterface $messageBus
+        private MessageBusInterface $messageBus,
     ) {
     }
 
@@ -52,7 +50,7 @@ final class SubtitleGeneratorApiMessageHandler
         $mediaPod->getOriginalVideo()->setSubtitles($subtitles);
 
         $mediaPod = $this->mediaPodRepository->update($mediaPod, [
-            'statuses' => [MediaPodStatus::SUBTITLE_GENERATOR_COMPLETE->getValue(), MediaPodStatus::SUBTITLE_MERGER_PENDING->getValue(),],
+            'statuses' => [MediaPodStatus::SUBTITLE_GENERATOR_COMPLETE->getValue(), MediaPodStatus::SUBTITLE_MERGER_PENDING->getValue()],
             'status' => MediaPodStatus::SUBTITLE_MERGER_PENDING->getValue(),
         ]);
 

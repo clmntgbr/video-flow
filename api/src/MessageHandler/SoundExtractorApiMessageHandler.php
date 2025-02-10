@@ -8,11 +8,7 @@ use App\Exception\MediaPodNotFoundException;
 use App\Exception\MediaPodStatusException;
 use App\Protobuf\ApiSubtitleGenerator;
 use App\Protobuf\SoundExtractorApi;
-use App\Protobuf\SubtitleGeneratorApi;
 use App\Repository\MediaPodRepository;
-use Exception;
-use Monolog\Logger;
-use NotFoundMediaPodException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
@@ -24,7 +20,7 @@ final class SoundExtractorApiMessageHandler
     public function __construct(
         private LoggerInterface $logger,
         private MediaPodRepository $mediaPodRepository,
-        private MessageBusInterface $messageBus
+        private MessageBusInterface $messageBus,
     ) {
     }
 
@@ -54,10 +50,10 @@ final class SoundExtractorApiMessageHandler
         $mediaPod->getOriginalVideo()->setAudios($audios);
 
         $mediaPod = $this->mediaPodRepository->update($mediaPod, [
-            'statuses' => [MediaPodStatus::SOUND_EXTRACTOR_COMPLETE->getValue(), MediaPodStatus::SUBTITLE_GENERATOR_PENDING->getValue(),],
+            'statuses' => [MediaPodStatus::SOUND_EXTRACTOR_COMPLETE->getValue(), MediaPodStatus::SUBTITLE_GENERATOR_PENDING->getValue()],
             'status' => MediaPodStatus::SUBTITLE_GENERATOR_PENDING->getValue(),
         ]);
-        
+
         $apiSubtitleGenerator = $this->createApiSubtitleGeneratorProto($soundExtractorApi);
 
         $this->messageBus->dispatch($apiSubtitleGenerator, [

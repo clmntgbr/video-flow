@@ -2,12 +2,12 @@
 
 namespace App\Service;
 
-use App\Protobuf\Video as ProtoVideo;
-use App\Protobuf\MediaPod as ProtoMediaPod;
 use App\Entity\MediaPod;
 use App\Entity\User;
 use App\Enum\MediaPodStatus;
 use App\Protobuf\ApiSoundExtractor;
+use App\Protobuf\MediaPod as ProtoMediaPod;
+use App\Protobuf\Video as ProtoVideo;
 use App\Repository\MediaPodRepository;
 use App\Repository\VideoRepository;
 use League\Flysystem\FilesystemOperator;
@@ -15,11 +15,11 @@ use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
 use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
-use Symfony\Component\Uid\Uuid;
 
 class UploadVideoService
 {
@@ -29,7 +29,7 @@ class UploadVideoService
         private Security $security,
         private MediaPodRepository $mediaPodRepository,
         private VideoRepository $videoRepository,
-        private MessageBusInterface $messageBus
+        private MessageBusInterface $messageBus,
     ) {
     }
 
@@ -62,7 +62,7 @@ class UploadVideoService
             $mediaPodUuid = Uuid::v4()->toString();
             $fileName = sprintf('%s.%s', md5(uniqid()), $file->guessExtension());
             $path = sprintf('%s/%s/%s', $user->getUuid(), $mediaPodUuid, $fileName);
-            
+
             $stream = fopen($file->getPathname(), 'r');
 
             if (false === $stream) {
@@ -82,6 +82,7 @@ class UploadVideoService
 
             $mediaPod = $this->createMediaPod($file, $fileName, $mediaPodUuid);
             $this->sendToSoundExtractor($file, $mediaPod, $user, $fileName);
+
             return new JsonResponse([
                 'message' => 'Video uploaded successfully.',
             ], Response::HTTP_OK);
@@ -109,7 +110,7 @@ class UploadVideoService
             'statuses' => [
                 MediaPodStatus::UPLOAD_COMPLETE->getValue(),
                 MediaPodStatus::SOUND_EXTRACTOR_PENDING->getValue(),
-            ]
+            ],
         ]);
 
         return $mediaPod;

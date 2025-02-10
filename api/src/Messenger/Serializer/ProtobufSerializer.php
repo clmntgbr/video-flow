@@ -5,7 +5,6 @@ namespace App\Messenger\Serializer;
 use Google\Protobuf\Internal\Message;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Exception\MessageDecodingFailedException;
-use Symfony\Component\Messenger\Stamp\SerializerStamp;
 use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;
 
 class ProtobufSerializer implements SerializerInterface
@@ -29,9 +28,9 @@ class ProtobufSerializer implements SerializerInterface
         if (null === $body && !$body['args'] && $body['args'][0]) {
             throw new MessageDecodingFailedException('Invalid JSON');
         }
-        
+
         /** @var Message $message */
-        $message = new $messageClass;
+        $message = new $messageClass();
         $message->mergeFromJsonString($body['args'][0]);
 
         return new Envelope($message);
@@ -42,11 +41,7 @@ class ProtobufSerializer implements SerializerInterface
         $message = $envelope->getMessage();
 
         if (!$message instanceof Message) {
-            throw new \InvalidArgumentException(sprintf(
-                'Message must be an instance of %s, %s given',
-                Message::class,
-                get_class($message)
-            ));
+            throw new \InvalidArgumentException(sprintf('Message must be an instance of %s, %s given', Message::class, get_class($message)));
         }
 
         return [
@@ -57,7 +52,7 @@ class ProtobufSerializer implements SerializerInterface
             ]),
             'headers' => [
                 'type' => get_class($message),
-                'Content-Type' => 'application/json'
+                'Content-Type' => 'application/json',
             ],
         ];
     }
@@ -65,6 +60,7 @@ class ProtobufSerializer implements SerializerInterface
     private function convertClassNameToSnakeCase(string $className): string
     {
         $className = substr(strrchr($className, '\\'), 1) ?: $className;
+
         return strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $className));
     }
 }

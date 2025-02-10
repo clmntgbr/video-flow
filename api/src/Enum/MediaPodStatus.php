@@ -14,10 +14,10 @@ enum MediaPodStatus: string
 
     case SUBTITLE_MERGER_PENDING = 'subtitle_merger_pending';
     case SUBTITLE_MERGER_COMPLETE = 'subtitle_merger_complete';
-    
+
     case RESIZING = 'resizing';
     case RESIZED = 'resized';
-    
+
     case READY_FOR_EXPORT = 'ready_for_export';
     case ERROR = 'error';
 
