@@ -20,6 +20,9 @@ load_dotenv()
 app = Flask(__name__)
 app.config['CELERY_RABBITMQ_URL'] = os.getenv("CELERY_RABBITMQ_URL")
 
+RMQ_QUEUE_WRITE = os.getenv("RMQ_QUEUE_WRITE")
+RMQ_QUEUE_READ = os.getenv("RMQ_QUEUE_READ")
+
 S3_ACCESS_KEY = os.getenv("S3_ACCESS_KEY")
 S3_SECRET_KEY = os.getenv("S3_SECRET_KEY")
 S3_ENDPOINT = os.getenv("S3_ENDPOINT")
@@ -44,50 +47,54 @@ celery.conf.update({
     'accept_content': ['json'],
     'broker_connection_retry_on_startup': True,
     'task_routes': {
-        'tasks.process_message': {'queue': 'api_sound_extractor'}
+        'tasks.process_message': {'queue': RMQ_QUEUE_READ}
     },
     'task_queues': [
-        Queue('api_sound_extractor', routing_key='api_sound_extractor')
+        Queue(RMQ_QUEUE_READ, routing_key=RMQ_QUEUE_READ)
     ],
 })
 
-@celery.task(name='tasks.process_message', queue='api_sound_extractor')
+@celery.task(name='tasks.process_message', queue=RMQ_QUEUE_READ)
 def process_message(message):
     protoMediaPod = jsonToProtobuf(message)
 
-    key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/{protoMediaPod.mediaPod.originalVideo.name}"
-    s3FilePath = f"/tmp/{protoMediaPod.mediaPod.originalVideo.name}"
-    uuid = os.path.splitext(os.path.basename(s3FilePath))[0]
+    try:
+        key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/{protoMediaPod.mediaPod.originalVideo.name}"
+        s3FilePath = f"/tmp/{protoMediaPod.mediaPod.originalVideo.name}"
+        uuid = os.path.splitext(os.path.basename(s3FilePath))[0]
 
-    if not downloadFromS3(key, s3FilePath):
-        return False
-
-    audioFilePath = uuid + ".mp3"
-
-    if not extractSound(s3FilePath, f"/tmp/{audioFilePath}"):
-        return False
-    
-    audioFilePath = convertToWav(f"/tmp/{audioFilePath}")
-    
-    chunks = chunkWav(audioFilePath, uuid)
-
-    for chunk in chunks:
-        key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/audios/{chunk}"
-        if not uploadToS3(key, f"/tmp/{chunk}"):
+        if not downloadFromS3(key, s3FilePath):
             return False
-        deleteFile(f"/tmp/{chunk}")
-        
-    deleteFile(s3FilePath)
-    deleteFile(audioFilePath)
 
-    resultsSorted = sorted(chunks, key=extractChunkNumber)
-    protoMediaPod.mediaPod.originalVideo.audios.extend(chunks)
-    protoMediaPod.mediaPod.status = 'sound_extractor_complete'
-    
-    if not sendMessageOnRabbitMQ(protoMediaPod):
-        return False
-    
-    return True
+        audioFilePath = uuid + ".mp3"
+
+        if not extractSound(s3FilePath, f"/tmp/{audioFilePath}"):
+            return False
+        
+        audioFilePath = convertToWav(f"/tmp/{audioFilePath}")
+        
+        chunks = chunkWav(audioFilePath, uuid)
+
+        for chunk in chunks:
+            key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/audios/{chunk}"
+            if not uploadToS3(key, f"/tmp/{chunk}"):
+                return False
+            deleteFile(f"/tmp/{chunk}")
+            
+        deleteFile(s3FilePath)
+        deleteFile(audioFilePath)
+
+        resultsSorted = sorted(chunks, key=extractChunkNumber)
+        protoMediaPod.mediaPod.originalVideo.audios.extend(resultsSorted)
+        protoMediaPod.mediaPod.status = 'sound_extractor_complete'
+        
+        sendMessageOnRabbitMQ(protoMediaPod)
+        return True
+    except Exception as e:
+        protoMediaPod.mediaPod.status = 'sound_extractor_error'
+        if not sendMessageOnRabbitMQ(protoMediaPod):
+            return False
+
 
 def extractChunkNumber(item):
     match = re.search(r'_(\d+)\.wav$', item[0])
@@ -109,18 +116,18 @@ def sendMessageOnRabbitMQ(protoMediaPod: SoundExtractorApi) -> bool:
     message = {
         "task": "tasks.process_message",
         "args": [MessageToJson(protoMediaPod)],
-        "queue": 'sound_extractor_api'
+        "queue": RMQ_QUEUE_WRITE
     }
 
     parameters = pika.URLParameters(os.getenv("CELERY_RABBITMQ_URL"))
     connection = pika.BlockingConnection(parameters)
     channel = connection.channel()
     
-    channel.queue_declare(queue='sound_extractor_api', durable=True)
+    channel.queue_declare(queue=RMQ_QUEUE_WRITE, durable=True)
 
     channel.basic_publish(
         exchange='messages',
-        routing_key='sound_extractor_api',
+        routing_key=RMQ_QUEUE_WRITE,
         body=json.dumps(message),
         properties=pika.BasicProperties(
             delivery_mode=2,

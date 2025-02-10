@@ -26,6 +26,7 @@ final class SubtitleGeneratorApiMessageHandler
 
     public function __invoke(SubtitleGeneratorApi $subtitleGeneratorApi): void
     {
+        $this->logger->info('############################################################################################################################################');
         $this->logger->info(sprintf('Received SubtitleGeneratorApi message with mediaPod uuid : %s', $subtitleGeneratorApi->getMediaPod()->getUuid()));
 
         $mediaPod = $this->mediaPodRepository->findOneBy([
@@ -36,8 +37,15 @@ final class SubtitleGeneratorApiMessageHandler
             throw new MediaPodNotFoundException();
         }
 
-        if ($subtitleGeneratorApi->getMediaPod()->getStatus() !== MediaPodStatus::SUBTITLE_GENERATOR_COMPLETE->getValue()) {
-            throw new MediaPodStatusException();
+        $status = $subtitleGeneratorApi->getMediaPod()->getStatus();
+        
+        $mediaPod = $this->mediaPodRepository->update($mediaPod, [
+            'statuses' => [$status],
+            'status' => $status,
+        ]);
+
+        if ($status !== MediaPodStatus::SUBTITLE_GENERATOR_COMPLETE->getValue()) {
+            return;
         }
 
         $mediaPod->getOriginalVideo()->setSubtitles([]);
@@ -50,7 +58,7 @@ final class SubtitleGeneratorApiMessageHandler
         $mediaPod->getOriginalVideo()->setSubtitles($subtitles);
 
         $mediaPod = $this->mediaPodRepository->update($mediaPod, [
-            'statuses' => [MediaPodStatus::SUBTITLE_GENERATOR_COMPLETE->getValue(), MediaPodStatus::SUBTITLE_MERGER_PENDING->getValue()],
+            'statuses' => [MediaPodStatus::SUBTITLE_MERGER_PENDING->getValue()],
             'status' => MediaPodStatus::SUBTITLE_MERGER_PENDING->getValue(),
         ]);
 

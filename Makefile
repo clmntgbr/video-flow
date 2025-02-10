@@ -11,12 +11,14 @@ CONTAINER_QA := $(shell docker container ls -f "name=$(PROJECT_NAME)-qa" -q)
 CONTAINER_SG := $(shell docker container ls -f "name=$(PROJECT_NAME)-subtitle-generator" -q)
 CONTAINER_SE := $(shell docker container ls -f "name=$(PROJECT_NAME)-sound-extractor" -q)
 CONTAINER_SM := $(shell docker container ls -f "name=$(PROJECT_NAME)-subtitle-merger" -q)
+CONTAINER_SI := $(shell docker container ls -f "name=$(PROJECT_NAME)-subtitle-incrustator" -q)
 
 PHP := docker exec -ti $(CONTAINER_PHP)
 PHP_SH := docker exec -ti $(CONTAINER_PHP) sh -c
 SG := docker exec -ti $(CONTAINER_SG)
 SE := docker exec -ti $(CONTAINER_SE)
 SM := docker exec -ti $(CONTAINER_SM)
+SI := docker exec -ti $(CONTAINER_SI)
 QA := docker exec -ti $(CONTAINER_QA)
 DATABASE := docker exec -ti $(CONTAINER_DB)
 
@@ -82,6 +84,12 @@ consume-sound-extractor:
 	
 consume-subtitle-generator:
 	$(PHP) php bin/console messenger:consume subtitle_generator_api -vv
+	
+consume-subtitle-merger:
+	$(PHP) php bin/console messenger:consume subtitle_merger_api -vv
+	
+consume:
+	$(PHP) php bin/console messenger:consume sound_extractor_api subtitle_generator_api subtitle_merger_api subtitle_incrustator_api -vv
 
 schema:
 	$(PHP) php bin/console doctrine:schema:update -f
@@ -106,3 +114,4 @@ proto:
 	$(SG) protoc --proto_path=protobuf --python_out=src/Protobuf protobuf/*.proto
 	$(SE) protoc --proto_path=protobuf --python_out=src/Protobuf protobuf/*.proto
 	$(SM) protoc --proto_path=protobuf --python_out=src/Protobuf protobuf/*.proto
+	$(SI) protoc --proto_path=protobuf --python_out=src/Protobuf protobuf/*.proto

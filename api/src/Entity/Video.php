@@ -36,6 +36,10 @@ class Video
     #[Groups(['media-pods:get'])]
     private ?int $size = null;
 
+    #[ORM\Column(type: Types::STRING, nullable: true)]
+    #[Groups(['media-pods:get'])]
+    private ?string $subtitle;
+
     #[ORM\Column(type: Types::JSON, nullable: false)]
     #[Groups(['media-pods:get'])]
     private array $subtitles = [];
@@ -143,6 +147,18 @@ class Video
     public function setAudios(array $audios): static
     {
         $this->audios = $audios;
+
+        return $this;
+    }
+
+    public function getSubtitle(): ?string
+    {
+        return $this->subtitle;
+    }
+
+    public function setSubtitle(?string $subtitle): static
+    {
+        $this->subtitle = $subtitle;
 
         return $this;
     }

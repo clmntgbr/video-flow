@@ -2,6 +2,7 @@ import json
 import os
 import sys
 import pika
+import re
 from flask import Flask
 from celery import Celery
 from kombu import Queue
@@ -51,9 +52,87 @@ celery.conf.update({
 @celery.task(name='tasks.process_message', queue='api_subtitle_merger')
 def process_message(message):
     protoMediaPod = jsonToProtobuf(message)
-    print(protoMediaPod)
 
-    return True
+    try:
+        subtitles = []
+        for subtitle in protoMediaPod.mediaPod.originalVideo.subtitles:
+            key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/subtitles/{subtitle}"
+            if not downloadFromS3(key, f"/tmp/{subtitle}"):
+                raise Exception
+            subtitles.append(f"/tmp/{subtitle}")
+
+        subtitles = sorted(subtitles, key=lambda x: int(re.search(r'_(\d+)\.srt$', x).group(1)))
+
+        mergedSubtitles = []
+        currentOffset = 0
+        subtitleIndex = 1
+
+        for file in subtitles:
+            parseSubtitles = parseSrt(file)
+            for _, timestamps, text in parseSubtitles:
+                new_timestamps = shiftTimestamps(timestamps, currentOffset)
+                mergedSubtitles.append(f"{subtitleIndex}\n{new_timestamps}\n{text}\n\n")
+                subtitleIndex += 1
+            
+            currentOffset += 600
+
+        srtFile = protoMediaPod.mediaPod.originalVideo.name.replace(".mp4", ".srt")
+        srtFilePath = f"/tmp/{srtFile}"
+        with open(srtFilePath, 'w', encoding='utf-8') as f:
+            f.writelines(mergedSubtitles)
+
+        key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/{srtFile}"
+        if not uploadToS3(key, srtFilePath):
+            raise Exception
+        
+        protoMediaPod.mediaPod.originalVideo.subtitle = srtFile
+        protoMediaPod.mediaPod.status = 'subtitle_merger_complete'
+        
+        deleteFile(srtFilePath)
+        for subtitle in subtitles:
+            deleteFile(subtitle)
+
+        sendMessageOnRabbitMQ(protoMediaPod)
+        return True
+    except Exception as e:
+        protoMediaPod.mediaPod.status = 'subtitle_merger_error'
+        if not sendMessageOnRabbitMQ(protoMediaPod):
+            return False
+
+def parseSrt(srtFilePath):
+    subtitles = []
+    with open(srtFilePath, 'r', encoding='utf-8') as file:
+        content = file.read().strip()
+    
+    entries = re.split(r'\n\n+', content)
+    for entry in entries:
+        lines = entry.split("\n")
+        if len(lines) >= 3:
+            num = int(lines[0])
+            timestamps = lines[1]
+            text = "\n".join(lines[2:])
+            subtitles.append((num, timestamps, text))
+    
+    return subtitles
+
+def shiftTimestamps(timestamps, offset_seconds):
+    def convertToMs(timestamp):
+        match = re.match(r"(\d+):(\d+):(\d+),(\d+)", timestamp)
+        if not match:
+            raise ValueError(f"Format de timestamp invalide : {timestamp}")
+        h, m, s, ms = map(int, match.groups())
+        return (h * 3600 + m * 60 + s) * 1000 + ms
+    
+    def convertFromMs(ms):
+        h, ms = divmod(ms, 3600000)
+        m, ms = divmod(ms, 60000)
+        s, ms = divmod(ms, 1000)
+        return f"{h:02}:{m:02}:{s:02},{ms:03}"
+
+    start, end = timestamps.split(" --> ")
+    start_ms = convertToMs(start) + offset_seconds * 1000
+    end_ms = convertToMs(end) + offset_seconds * 1000
+    return f"{convertFromMs(start_ms)} --> {convertFromMs(end_ms)}"
 
 def sendMessageOnRabbitMQ(protoMediaPod: SubtitleMergerApi) -> bool:
     message = {

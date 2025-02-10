@@ -26,18 +26,22 @@ final class SoundExtractorApiMessageHandler
 
     public function __invoke(SoundExtractorApi $soundExtractorApi): void
     {
+        $this->logger->info('############################################################################################################################################');
         $this->logger->info(sprintf('Received SoundExtractorApi message with mediaPod uuid : %s', $soundExtractorApi->getMediaPod()->getUuid()));
 
         $mediaPod = $this->mediaPodRepository->findOneBy([
             'uuid' => $soundExtractorApi->getMediaPod()->getUuid(),
         ]);
 
-        if (!$mediaPod instanceof MediaPod) {
-            throw new MediaPodNotFoundException();
-        }
+        $status = $soundExtractorApi->getMediaPod()->getStatus();
+        
+        $mediaPod = $this->mediaPodRepository->update($mediaPod, [
+            'statuses' => [$status],
+            'status' => $status,
+        ]);
 
-        if ($soundExtractorApi->getMediaPod()->getStatus() !== MediaPodStatus::SOUND_EXTRACTOR_COMPLETE->getValue()) {
-            throw new MediaPodStatusException();
+        if ($status !== MediaPodStatus::SOUND_EXTRACTOR_COMPLETE->getValue()) {
+            return;
         }
 
         $mediaPod->getOriginalVideo()->setAudios([]);
@@ -49,8 +53,10 @@ final class SoundExtractorApiMessageHandler
         $audios = array_values($audios);
         $mediaPod->getOriginalVideo()->setAudios($audios);
 
+        $status = $soundExtractorApi->getMediaPod()->getStatus();
+
         $mediaPod = $this->mediaPodRepository->update($mediaPod, [
-            'statuses' => [MediaPodStatus::SOUND_EXTRACTOR_COMPLETE->getValue(), MediaPodStatus::SUBTITLE_GENERATOR_PENDING->getValue()],
+            'statuses' => [MediaPodStatus::SUBTITLE_GENERATOR_PENDING->getValue()],
             'status' => MediaPodStatus::SUBTITLE_GENERATOR_PENDING->getValue(),
         ]);
 

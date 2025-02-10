@@ -1,24 +1,17 @@
-from functools import partial
 import json
 import os
 import sys
-import whisper
-import re
 import pika
-import openai
-from openai import OpenAI
+import re
 from flask import Flask
 from celery import Celery
 from kombu import Queue
 import boto3
 from dotenv import load_dotenv
 from google.protobuf.json_format import MessageToJson
-from concurrent.futures import ThreadPoolExecutor
-from functools import partial
-import assemblyai as aai
 
 sys.path.append('/app/src')
-from Protobuf.Message_pb2 import MediaPod, Video, SubtitleGeneratorApi
+from Protobuf.Message_pb2 import MediaPod, Video, SubtitleIncrustatorApi
 
 load_dotenv()
 
@@ -64,88 +57,15 @@ def process_message(message):
     protoMediaPod = jsonToProtobuf(message)
 
     try:
-        chunks = []
-
-        for audio in protoMediaPod.mediaPod.originalVideo.audios:
-            chunks.append(audio)
-
-        partialMultiprocess = partial(multiprocess, protoMediaPod=protoMediaPod)
-
-        with ThreadPoolExecutor(max_workers=4) as executor:
-            results = list(executor.map(partialMultiprocess, chunks))
-
-        resultsSorted = sorted(results, key=extractChunkNumber)
-        protoMediaPod.mediaPod.originalVideo.subtitles.extend(resultsSorted)
-        protoMediaPod.mediaPod.status = 'subtitle_generator_complete'
-
-        sendMessageOnRabbitMQ(protoMediaPod)
-        return True
+        print(protoMediaPod)
     except Exception as e:
-        protoMediaPod.mediaPod.status = 'subtitle_generator_error'
+        protoMediaPod.mediaPod.status = 'subtitle_incrustator_error'
         if not sendMessageOnRabbitMQ(protoMediaPod):
             return False
 
-def multiprocess(chunk: str, protoMediaPod: SubtitleGeneratorApi):
-    key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/audios/{chunk}"
-    s3FilePath = f"/tmp/{chunk}"
-    srtFilePath = os.path.splitext(s3FilePath)[0] + ".srt"
-    
-    if not downloadFromS3(key, s3FilePath):
-            return False
-        
-    if not generateSubtitleAssemblyAI(s3FilePath, srtFilePath):
-        return False
-    
-    key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/subtitles/{os.path.basename(srtFilePath)}"
-
-    if not uploadToS3(key, srtFilePath):
-            return False
-    
-    return os.path.basename(srtFilePath)
-
-def extractChunkNumber(item):
-    match = re.search(r'_(\d+)\.srt$', item[0])
-    return int(match.group(1)) if match else float('inf')
-
-def generateSubtitleOpenAI(s3FilePath: str, srtFilePath: str) -> bool:
-    print("Uploading file for transcription...")
-
-    client = OpenAI(api_key=os.getenv("OPEN_AI_API_KEY"))
-
-    with open(s3FilePath, "rb") as audio_file:
-        response = client.audio.transcriptions.create(
-            file=audio_file,
-            model="whisper-1",
-            response_format="srt",
-        )
-
-    print("File successfully transcribed")
-
-    with open(srtFilePath, "w", encoding="utf-8") as file:
-        file.write(response)
-
-    print("SRT file successfully generated")
     return True
 
-def generateSubtitleAssemblyAI(s3FilePath: str, srtFilePath: str) -> bool:
-    print("Uploading file for transcription...")
-
-    aai.settings.api_key = os.getenv("ASSEMBLY_AI_API_KEY")
-    config = aai.TranscriptionConfig(language_detection=True)
-    transcriber = aai.Transcriber(config=config)
-
-    transcript = transcriber.transcribe(s3FilePath)
-    srt = transcript.export_subtitles_srt()
-
-    print("File successfully transcribed")
-
-    with open(srtFilePath, "w", encoding="utf-8") as file:
-        file.write(srt)
-
-    print("SRT file successfully generated")
-    return True
-
-def sendMessageOnRabbitMQ(protoMediaPod: SubtitleGeneratorApi) -> bool:
+def sendMessageOnRabbitMQ(protoMediaPod: SubtitleIncrustatorApi) -> bool:
     message = {
         "task": "tasks.process_message",
         "args": [MessageToJson(protoMediaPod)],
@@ -165,7 +85,7 @@ def sendMessageOnRabbitMQ(protoMediaPod: SubtitleGeneratorApi) -> bool:
         properties=pika.BasicProperties(
             delivery_mode=2,
             content_type="application/json",
-            headers={"type": "App\\Protobuf\\SubtitleGeneratorApi"}
+            headers={"type": "App\\Protobuf\\SubtitleIncrustatorApi"}
         )
     )
 
@@ -198,7 +118,7 @@ def deleteFile(filePath: str) -> bool:
         print(f"error deleting file: {e}")
         return False
 
-def jsonToProtobuf(json_str: str) -> SubtitleGeneratorApi:
+def jsonToProtobuf(json_str: str) -> SubtitleIncrustatorApi:
     data = json.loads(json_str)
 
     media_pod_data = data["mediaPod"]
@@ -208,6 +128,8 @@ def jsonToProtobuf(json_str: str) -> SubtitleGeneratorApi:
     video.mimeType = media_pod_data["originalVideo"]["mimeType"]
     video.size = int(media_pod_data["originalVideo"]["size"])
     video.audios.extend(media_pod_data["originalVideo"]["audios"])
+    video.subtitle = media_pod_data["originalVideo"]["subtitle"]
+    video.subtitles.extend(media_pod_data["originalVideo"]["subtitles"])
     
     media_pod = MediaPod()
     media_pod.uuid = media_pod_data["uuid"]
@@ -215,7 +137,7 @@ def jsonToProtobuf(json_str: str) -> SubtitleGeneratorApi:
     media_pod.status = media_pod_data["status"]
     media_pod.originalVideo.CopyFrom(video)
     
-    message = SubtitleGeneratorApi()
+    message = SubtitleIncrustatorApi()
     message.mediaPod.CopyFrom(media_pod)
     
     return message
