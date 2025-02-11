@@ -1,625 +1,720 @@
 1
-00:00:00,000 --> 00:00:04,000
-ça se voit pas ? Je suis sensible de fou, quand je vois un verre de terre dans la rue, je sais que je le prends pour le mettre sur l'herbe.
+00:00:00,008 --> 00:00:01,389
+Ça se voit pas ? Non non non
 
 2
-00:00:04,000 --> 00:00:05,000
-Au sucre, arrêtez.
+00:00:01,409 --> 00:00:02,190
+mais... Je suis sensible de fou
 
 3
-00:00:07,000 --> 00:00:08,000
-Ah ouais, tu vas le faire regretter.
+00:00:02,210 --> 00:00:02,891
+quand je vois un verre de terre
 
 4
-00:00:10,000 --> 00:00:13,000
-A Tokyo, la culture du bozozoku est née dans les années 70.
+00:00:02,911 --> 00:00:03,552
+dans la rue je sais que je le
 
 5
-00:00:13,000 --> 00:00:19,000
-Des jeunes modifiaient leurs véhicules pour défier les règles, faire le plus de bruit, rouler plus vite et se faire remarquer.
+00:00:03,572 --> 00:00:04,473
+prends pour le mettre sur
 
 6
-00:00:19,000 --> 00:00:25,000
-Dans les années 90, les courses de rue illégales sur l'autoroute du Wangan et les modèles emblématiques comme la Skyline GTR
+00:00:04,493 --> 00:00:07,696
+l'herbe. Ah ok. Ah ouais tu vas
 
 7
-00:00:25,000 --> 00:00:28,000
-ont fait de Tokyo un épicentre mondial du tuning.
+00:00:07,716 --> 00:00:10,695
+le faire regretter. A Tokyo,
 
 8
-00:00:28,000 --> 00:00:29,000
-Les gens, ils prennent sur toi là.
+00:00:10,715 --> 00:00:12,316
+la culture du bozozoku est née
 
 9
-00:00:29,000 --> 00:00:31,000
-Eh, bienvenue à Tokyo.
+00:00:12,336 --> 00:00:13,957
+dans les années 70. Des jeunes
 
 10
-00:00:31,000 --> 00:00:32,000
-Non, c'est une folie.
+00:00:13,977 --> 00:00:15,338
+modifiaient leurs véhicules pour
 
 11
-00:00:32,000 --> 00:00:33,000
-Skyline IRL.
+00:00:15,378 --> 00:00:16,979
+défier les règles, faire le plus
 
 12
-00:00:33,000 --> 00:00:34,000
-C'est une folie.
+00:00:17,019 --> 00:00:18,640
+de bruit, rouler plus vite et se
 
 13
-00:00:34,000 --> 00:00:35,000
-Oh là là.
+00:00:18,680 --> 00:00:19,820
+faire remarquer. Dans les années
 
 14
-00:00:35,000 --> 00:00:36,000
-GTR RP, mon pote.
+00:00:19,830 --> 00:00:21,902
+90, les courses de rue illégales
 
 15
-00:00:36,000 --> 00:00:37,000
-Mec, il y a tout le monde sur le parking.
+00:00:21,942 --> 00:00:23,503
+sur l'autoroute du Wangan et les
 
 16
-00:00:37,000 --> 00:00:38,000
-Il a dit GTR RP.
+00:00:23,543 --> 00:00:24,624
+modèles emblématiques comme la
 
 17
-00:00:38,000 --> 00:00:39,000
-Il a dit GTR RP IRL.
+00:00:24,644 --> 00:00:26,705
+Skyline GTR ont fait de Tokyo un
 
 18
-00:00:39,000 --> 00:00:41,000
-C'est ce que je dis, ça c'est du GTR RP IRL, c'est ce que je dis toujours.
+00:00:26,765 --> 00:00:28,426
+épicentre mondial du tuning.
 
 19
-00:00:41,000 --> 00:00:42,000
-Parce que c'est vraiment ça.
+00:00:28,466 --> 00:00:30,687
+Les gens ils prennent sur toi
 
 20
-00:00:43,000 --> 00:00:44,000
-On est comme dans les films là.
+00:00:30,788 --> 00:00:32,189
+là. Bienvenue à Tokyo. Non c'est
 
 21
-00:00:44,000 --> 00:00:46,000
-Grâce au GTR au Japon.
+00:00:32,229 --> 00:00:34,251
+une folie, c'est une folie Inox,
 
 22
-00:00:46,000 --> 00:00:47,000
-Elle est vraie.
+00:00:34,271 --> 00:00:35,312
+c'est une folie Inox. Mec y'a
 
 23
-00:00:48,000 --> 00:00:49,000
-Mec, on est obligé de faire un tour.
+00:00:35,332 --> 00:00:36,173
+tout le monde sur le parking.
 
 24
-00:00:49,000 --> 00:00:50,000
-Viens m'avoir.
+00:00:36,233 --> 00:00:38,275
+Il a dit GT-R-P. Il a dit
 
 25
-00:00:50,000 --> 00:00:51,000
-Il y a trop de voitures.
+00:00:38,315 --> 00:00:39,736
+GT-R-P-I-R-L. Ça c'est du
 
 26
-00:00:51,000 --> 00:00:52,000
-Viens, viens, viens.
+00:00:39,756 --> 00:00:40,457
+GT-R-P-I-R-L, c'est ce que je
 
 27
-00:00:52,000 --> 00:00:53,000
-T'as pas celle-là, t'as pas celle-là.
+00:00:40,497 --> 00:00:41,658
+disais toujours. Parce que c'est
 
 28
-00:01:01,000 --> 00:01:02,000
-R34.
+00:00:41,678 --> 00:00:43,641
+vraiment ça. On est comme dans
 
 29
-00:01:02,000 --> 00:01:04,000
-Elle est exceptionnelle.
+00:00:43,661 --> 00:00:45,502
+les films là. Raceau GT-R au
 
 30
-00:01:05,000 --> 00:01:06,000
-Les phares sont magnifiques.
+00:00:45,522 --> 00:00:48,385
+Japon. Elle est vraie. Mec on
 
 31
-00:01:08,000 --> 00:01:09,000
-C'est Liberty Walk celle-là.
+00:00:48,445 --> 00:00:49,687
+est obligé de faire un tour.
 
 32
-00:01:14,000 --> 00:01:15,000
-En vrai, je kiffe.
+00:00:49,707 --> 00:00:50,568
+Viens on va voir. Y'a trop de
 
 33
-00:01:15,000 --> 00:01:17,000
-Parce qu'on dirait vraiment qu'on est dans un autre monde.
+00:00:50,588 --> 00:00:51,409
+voitures. Viens viens viens.
 
 34
-00:01:17,000 --> 00:01:18,000
-On est téléportés.
+00:00:51,449 --> 00:00:52,249
+Téma celle là, téma celle là,
 
 35
-00:01:19,000 --> 00:01:20,000
-Il y a des voitures partout.
+00:00:52,269 --> 00:00:52,610
+téma celle là.
 
 36
-00:01:20,000 --> 00:01:21,000
-Que des Nissan GTR.
+00:01:03,704 --> 00:01:08,060
+Les faxes sont magnifiques
 
 37
-00:01:21,000 --> 00:01:23,000
-Même s'il pleut, les gens ils en ont rien à foutre.
+00:01:08,070 --> 00:01:12,194
+! C'est Liberty Walk celle-là !
 
 38
-00:01:23,000 --> 00:01:24,000
-Ils prennent leurs parapluies.
+00:01:14,185 --> 00:01:15,345
+En vrai, je kiffe, parce qu'on
 
 39
-00:01:24,000 --> 00:01:25,000
-Ils passent un moment sur le parking.
+00:01:15,365 --> 00:01:16,186
+dirait vraiment qu'on est dans
 
 40
-00:01:25,000 --> 00:01:28,000
-Il pleut mais j'ai le smile parce que le mood il est incroyable.
+00:01:16,226 --> 00:01:17,466
+un autre monde. On est
 
 41
-00:01:28,000 --> 00:01:30,000
-C'est ma grosse Nissan.
+00:01:17,486 --> 00:01:19,827
+téléportés, il y a des voitures
 
 42
-00:01:30,000 --> 00:01:31,000
-Full custom.
+00:01:19,847 --> 00:01:21,407
+partout, que des Nissan GTR.
 
 43
-00:01:31,000 --> 00:01:32,000
-Toute rose.
+00:01:21,447 --> 00:01:22,327
+Même s'il pleut, les gens, ils
 
 44
-00:01:32,000 --> 00:01:33,000
-Sous la pluie.
+00:01:22,367 --> 00:01:22,967
+en ont rien à foutre, ils
 
 45
-00:01:33,000 --> 00:01:34,000
-J'ai envie d'y aller.
+00:01:22,987 --> 00:01:23,788
+prennent leurs parapluies et
 
 46
-00:01:35,000 --> 00:01:36,000
-Allez.
+00:01:23,828 --> 00:01:24,708
+juste ils passent un moment sur
 
 47
-00:01:47,000 --> 00:01:48,000
-Il n'y a que des passionnés en fait ici.
+00:01:24,728 --> 00:01:26,608
+le parking. Il pleut, mais j'ai
 
 48
-00:01:48,000 --> 00:01:50,000
-Tout le monde prend les voitures en photo.
+00:01:26,628 --> 00:01:27,689
+le smile parce que le mood, il
 
 49
-00:01:50,000 --> 00:01:51,000
-Tout le monde passe un bon moment.
+00:01:27,729 --> 00:01:29,309
+est incroyable. C'est ma grosse
 
 50
-00:01:51,000 --> 00:01:53,000
-Là, moi je veux juste prendre ma pics avec cette voiture.
+00:01:29,369 --> 00:01:32,310
+Nissan full custom, toute rose
 
 51
-00:01:53,000 --> 00:01:54,000
-Parce qu'elle est vraiment incroyable.
+00:01:32,330 --> 00:01:33,630
+sous la pluie. J'ai envie d'y
 
 52
-00:01:55,000 --> 00:01:56,000
-En discutant avec les passionnés,
+00:01:33,690 --> 00:01:37,401
+aller sous la... Allez !
 
 53
-00:01:56,000 --> 00:01:59,000
-ils ont accepté de nous amener faire un tour dans ces voitures mythiques.
+00:01:47,397 --> 00:01:48,218
+Y'a que des passionnés en fait
 
 54
-00:01:59,000 --> 00:02:02,000
-Et entre temps, on a reçu la réponse de GMK pour la voiture de Dario.
+00:01:48,258 --> 00:01:49,178
+ici. Tout le monde prend les
 
 55
-00:02:03,000 --> 00:02:05,000
-Dario, Georges il m'a répondu pour la voiture.
+00:01:49,218 --> 00:01:50,159
+voitures en photo, tout le monde
 
 56
-00:02:05,000 --> 00:02:06,000
-Alors il a dit quoi ?
+00:01:50,179 --> 00:01:51,159
+passe un bon moment. Là moi
 
 57
-00:02:06,000 --> 00:02:07,000
-T'as une hoxe mon frérot.
+00:01:51,179 --> 00:01:52,220
+j'veux juste prendre ma Pix avec
 
 58
-00:02:07,000 --> 00:02:11,000
-C'est quoi cette RS3 de trois phares là que tu m'envoies ?
+00:01:52,260 --> 00:01:53,701
+cette voiture parce qu'elle est
 
 59
-00:02:11,000 --> 00:02:13,000
-Elle est horrible gros.
+00:01:53,721 --> 00:01:54,942
+vraiment incroyable. En
 
 60
-00:02:13,000 --> 00:02:16,000
-Mais j'ai jamais vu une caisse aussi horrible que ça.
+00:01:54,962 --> 00:01:56,142
+discutant avec les passionnés,
 
 61
-00:02:16,000 --> 00:02:18,000
-C'est une voiture de trois phares par excellence.
+00:01:56,202 --> 00:01:57,403
+ils ont accepté de nous amener
 
 62
-00:02:18,000 --> 00:02:19,000
-C'est pas possible.
+00:01:57,443 --> 00:01:58,544
+faire un tour dans ces voitures
 
 63
-00:02:19,000 --> 00:02:20,000
-C'est ça sa réponse.
+00:01:58,604 --> 00:02:00,025
+mythiques. Et entre temps, on a
 
 64
-00:02:21,000 --> 00:02:22,000
-C'est ça sa réponse.
+00:02:00,065 --> 00:02:01,405
+reçu la réponse de GMK pour la
 
 65
-00:02:22,000 --> 00:02:23,000
-C'est ça sa réponse.
+00:02:01,445 --> 00:02:02,386
+voiture de Dario. Bon, Dario,
 
 66
-00:02:23,000 --> 00:02:25,000
-C'est ça la réponse du grand Dario.
+00:02:02,486 --> 00:02:04,467
+Georges il m'a répondu pour la
 
 67
-00:02:25,000 --> 00:02:26,000
-Non non mais attends.
+00:02:04,507 --> 00:02:06,158
+voiture. Alors il a dit quoi ?
 
 68
-00:02:26,000 --> 00:02:27,000
-Je suis étonné.
+00:02:06,168 --> 00:02:07,499
+T'as une hoche mon frérot !
 
 69
-00:02:27,000 --> 00:02:28,000
-Je pensais qu'il avait du goût.
+00:02:07,509 --> 00:02:09,430
+C'est quoi cette RS3 de 3 heures
 
 70
-00:02:28,000 --> 00:02:29,000
-Je pensais que t'avais du goût.
+00:02:09,490 --> 00:02:11,606
+là que tu m'envoies ? Elle est
 
 71
-00:02:29,000 --> 00:02:30,000
-On se connait pas mais maintenant tu me connais.
+00:02:11,686 --> 00:02:13,547
+horrible gros ! Mais j'ai jamais
 
 72
-00:02:30,000 --> 00:02:31,000
-Je pensais que t'avais du goût.
+00:02:13,587 --> 00:02:15,349
+vu une caisse aussi horrible que
 
 73
-00:02:31,000 --> 00:02:32,000
-Je te vois rouler avec des Yamos machin et tout.
+00:02:15,389 --> 00:02:16,890
+ça ! C'est une voiture de
 
 74
-00:02:32,000 --> 00:02:33,000
-C'est bien.
+00:02:16,910 --> 00:02:18,571
+coiffeur par excellence ! C'est
 
 75
-00:02:33,000 --> 00:02:34,000
-C'est bien.
+00:02:18,611 --> 00:02:19,972
+pas possible ! C'est ça sa
 
 76
-00:02:34,000 --> 00:02:35,000
-Mais si y'a pas écrit Mansourio Brabus ça va pas.
+00:02:19,992 --> 00:02:22,744
+réponse ? C'est ça sa réponse ?
 
 77
-00:02:35,000 --> 00:02:36,000
-C'est ça en gros.
+00:02:22,754 --> 00:02:24,055
+C'est ça sa réponse ? C'est ça
 
 78
-00:02:36,000 --> 00:02:37,000
-T'as pas de goût.
+00:02:24,096 --> 00:02:25,437
+la réponse du grand... Non non
 
 79
-00:02:37,000 --> 00:02:38,000
-Je suis déçu.
+00:02:25,457 --> 00:02:26,677
+mais attends ! J'suis étonné,
 
 80
-00:02:38,000 --> 00:02:39,000
-J'avais plus d'attente de ta part.
+00:02:26,697 --> 00:02:27,538
+j'pensais qu'il avait du goût,
 
 81
-00:02:39,000 --> 00:02:41,000
-Après des fois il roule avec des voitures qui sont pas non plus extraordinaires.
+00:02:27,558 --> 00:02:28,218
+j'pensais qu'il avait du goût,
 
 82
-00:02:41,000 --> 00:02:43,000
-Un jour tu viendras ici au Japon.
+00:02:28,238 --> 00:02:29,039
+on s'connaît pas mais maintenant
 
 83
-00:02:43,000 --> 00:02:44,000
-Tu la verras et tu verras.
+00:02:29,059 --> 00:02:29,839
+tu m'connais. Donc j'pensais
 
 84
-00:02:44,000 --> 00:02:46,000
-Tu l'aimais bien Georges ou maintenant il t'a saoulé ?
+00:02:29,859 --> 00:02:30,640
+qu'il avait du goût, j't'avais
 
 85
-00:02:46,000 --> 00:02:47,000
-Je l'aimais bien.
+00:02:30,660 --> 00:02:32,000
+roulé avec des gamos, machin et
 
 86
-00:02:47,000 --> 00:02:48,000
-Là je parle au passé.
+00:02:32,040 --> 00:02:33,141
+tout, c'est bien, c'est bien.
 
 87
-00:02:48,000 --> 00:02:49,000
-Je parle au passé.
+00:02:33,161 --> 00:02:34,382
+Mais si y'a pas écrit Mansourio
 
 88
-00:02:49,000 --> 00:02:50,000
-J'attends de réfléchir.
+00:02:34,402 --> 00:02:35,342
+Brabus, ça va pas, c'est ça en
 
 89
-00:02:50,000 --> 00:02:51,000
-Ecoute tu sais quoi ?
+00:02:35,362 --> 00:02:36,883
+gros. T'as pas de goût. J'suis
 
 90
-00:02:51,000 --> 00:02:52,000
-Je t'aime bien quand même.
+00:02:36,903 --> 00:02:38,023
+désolé, j'avais plus d'attente
 
 91
-00:02:52,000 --> 00:02:53,000
-Vas-y tu sais quoi ?
+00:02:38,043 --> 00:02:39,084
+de ta part. Après des fois il
 
 92
-00:02:53,000 --> 00:02:54,000
-T'es un jeune comme eux.
+00:02:39,104 --> 00:02:39,985
+roule avec des voitures qui sont
 
 93
-00:02:54,000 --> 00:02:55,000
-Déçu là.
+00:02:40,005 --> 00:02:40,845
+pas non plus extraordinaires,
 
 94
-00:02:55,000 --> 00:02:56,000
-Déçu de fou parce que je pensais.
+00:02:40,885 --> 00:02:42,406
+mais, un jour tu viendras ici au
 
 95
-00:02:56,000 --> 00:02:57,000
-Je pensais vraiment qu'il avait des bons goûts.
+00:02:42,426 --> 00:02:43,486
+Japon, tu la verras et tu
 
 96
-00:02:57,000 --> 00:02:58,000
-Là c'est bon je te montre la vraie.
+00:02:43,506 --> 00:02:44,307
+verras. J'l'aimais bien George,
 
 97
-00:02:58,000 --> 00:02:59,000
-Bah en vrai j'ai gueule.
+00:02:44,327 --> 00:02:46,098
+ou maintenant il t'a saoulé ?
 
 98
-00:02:59,000 --> 00:03:00,000
-Mon frérot.
+00:02:46,108 --> 00:02:47,328
+J'l'aimais bien ! Là j'parle au
 
 99
-00:03:00,000 --> 00:03:01,000
-J'ai gueule.
+00:02:47,368 --> 00:02:50,450
+passé, j'parle au passé. J Je
 
 100
-00:03:01,000 --> 00:03:02,000
-Non ça fait plaisir.
+00:02:50,490 --> 00:02:51,111
+t'aime bien quand même, je
 
 101
-00:03:02,000 --> 00:03:03,000
-Elle est magnifique la voiture.
+00:02:51,151 --> 00:02:51,812
+t'aime bien quand même. Vas-y,
 
 102
-00:03:04,000 --> 00:03:05,000
-Le casse-coucle c'est que le frangin il la kiffe.
+00:02:51,832 --> 00:02:52,813
+tu sais quoi ? T'es un jeune
 
 103
-00:03:05,000 --> 00:03:07,000
-Ça se voit qu'il a mis son cœur à la faire.
+00:02:52,833 --> 00:02:54,384
+comme eux... T'es déçu là ?
 
 104
-00:03:07,000 --> 00:03:11,000
-Et en plus cette génération de RS3 c'est des voitures de psychopathe.
+00:02:54,394 --> 00:02:55,536
+Déçu de fou parce que je
 
 105
-00:03:11,000 --> 00:03:13,000
-Donc gros big up à lui.
+00:02:55,556 --> 00:02:56,357
+pensais... Je pensais vraiment
 
 106
-00:03:13,000 --> 00:03:16,000
-J'espère que le Japon ça se passe bien.
+00:02:56,377 --> 00:02:57,077
+qu'il y avait des bons goûts.
 
 107
-00:03:16,000 --> 00:03:18,000
-Je t'avais dit que j'allais lui demander il a kiffé la voiture.
+00:02:57,097 --> 00:02:58,178
+Là, c'est bon, je te montre la
 
 108
-00:03:20,000 --> 00:03:22,000
-Le sourire d'un homme.
+00:02:58,218 --> 00:03:00,303
+vraie. En vrai, je rigole. Mon
 
 109
-00:03:22,000 --> 00:03:23,000
-Les voitures ça rend heureux.
+00:03:00,383 --> 00:03:01,603
+frérot, je rigole, non, c'est un
 
 110
-00:03:23,000 --> 00:03:25,000
-C'est ça qu'il faut retenir.
+00:03:01,623 --> 00:03:02,824
+plaisir, elle est magnifique la
 
 111
-00:03:25,000 --> 00:03:26,000
-Attends parce que tu sais quoi ?
+00:03:02,844 --> 00:03:04,124
+voiture. Dans tous les cas, ce
 
 112
-00:03:26,000 --> 00:03:28,000
-Alors déjà tout ce que j'ai dit avant.
+00:03:04,144 --> 00:03:04,824
+qui compte, c'est que le
 
 113
-00:03:28,000 --> 00:03:29,000
-Tu me l'effaces, tu me l'effaces, je vous effacez.
+00:03:04,844 --> 00:03:05,864
+frangin, il la kiffe. Ça se voit
 
 114
-00:03:29,000 --> 00:03:31,000
-Le sourire d'un homme ça rend heureux.
+00:03:05,884 --> 00:03:07,024
+qu'il a mis son cœur à la faire.
 
 115
-00:03:31,000 --> 00:03:35,000
-C'est le mec le plus égide des voitures quasiment en France et dans le monde.
+00:03:07,404 --> 00:03:09,345
+Et en plus, cette génération de
 
 116
-00:03:35,000 --> 00:03:37,000
-C'est pour ça que ça me faisait mal au cœur.
+00:03:09,385 --> 00:03:10,885
+RS3, c'est des voitures de
 
 117
-00:03:38,000 --> 00:03:40,000
-Non les gars mais cette Liberty Walk elle est vraiment belle.
+00:03:10,905 --> 00:03:13,546
+psychopathe. Donc gros big up à
 
 118
-00:03:40,000 --> 00:03:42,000
-Je kiffe l'aileron derrière.
+00:03:13,566 --> 00:03:15,586
+lui. J'espère que le Japon, ça
 
 119
-00:03:42,000 --> 00:03:45,000
-En vrai cette séquence c'est vraiment pour tous mes fans d'auto.
+00:03:15,626 --> 00:03:16,826
+se passera. Je t'avais dit que
 
 120
-00:03:45,000 --> 00:03:48,000
-J'aurais aimé être avec mon petit Georges aussi pour vivre ce petit moment.
+00:03:16,846 --> 00:03:17,726
+j'allais lui demander, il a
 
 121
-00:03:48,000 --> 00:03:50,000
-Malheureusement il est pas là mais je pense fort à lui.
+00:03:17,766 --> 00:03:21,547
+kiffé la voiture. Le sourire
 
 122
-00:03:50,000 --> 00:03:51,000
-Tu veux monter dans celle-là ?
+00:03:21,587 --> 00:03:23,167
+d'un homme, les voitures, ça
 
 123
-00:03:51,000 --> 00:03:52,000
-En plus regarde il y a le masque.
+00:03:23,207 --> 00:03:24,368
+rend heureux. C'est ça qu'il
 
 124
-00:03:52,000 --> 00:03:54,000
-Mets le masque je t'en supplie.
+00:03:24,408 --> 00:03:25,468
+faut retenir. Attends, parce que
 
 125
-00:03:54,000 --> 00:03:56,000
-Non !
+00:03:25,488 --> 00:03:27,109
+tu sais quoi ? Alors déjà, tout
 
 126
-00:03:56,000 --> 00:03:58,000
-Il est incroyable.
+00:03:27,129 --> 00:03:28,111
+ce que j'ai dit avant, tu
 
 127
-00:03:59,000 --> 00:04:00,000
-On va foncer dans les voitures.
+00:03:28,131 --> 00:03:29,072
+l'effaces, tu l'effaces, vous
 
 128
-00:04:00,000 --> 00:04:02,000
-Normalement il y a Sylvia qui arrive à mine.
+00:03:29,112 --> 00:03:30,133
+effacez. Non je suis super
 
 129
-00:04:02,000 --> 00:04:03,000
-C'est qui Sylvia ?
+00:03:30,153 --> 00:03:31,034
+content. Le sourire d'un homme
 
 130
-00:04:03,000 --> 00:04:04,000
-C'est une autre voiture.
+00:03:31,054 --> 00:03:32,316
+ça rend heureux. C'est le mec le
 
 131
-00:04:06,000 --> 00:04:08,000
-C'est une autre voiture et ensuite après on va à Shibuya avec.
+00:03:32,356 --> 00:03:33,537
+plus égide des voitures
 
 132
-00:04:08,000 --> 00:04:10,000
-Merci à Geijin Tuned.
+00:03:33,557 --> 00:03:34,819
+quasiment en France et dans le
 
 133
-00:04:10,000 --> 00:04:12,000
-Geijin Tuned. Traduction je l'ai.
+00:03:34,839 --> 00:03:36,501
+monde. Non mais c'est pour ça
 
 134
-00:04:12,000 --> 00:04:13,000
-C'est quoi ?
+00:03:36,521 --> 00:03:37,362
+que ça me faisait mal au cœur.
 
 135
-00:04:13,000 --> 00:04:14,000
-Tuned. En gros ils font de la tune.
+00:03:38,323 --> 00:03:39,345
+Non les gars mais cette Liberty
 
 136
-00:04:14,000 --> 00:04:15,000
-Ouais. Non.
+00:03:39,365 --> 00:03:40,586
+Walk elle est vraiment belle.
 
 137
-00:04:15,000 --> 00:04:17,000
-Ils font du tuning.
+00:03:40,626 --> 00:03:42,268
+Je kiff l'aileron derrière. En
 
 138
-00:04:17,000 --> 00:04:19,000
-Et Geijin en japonais ça veut dire étranger.
+00:03:42,388 --> 00:03:43,149
+vrai, cette séquence, c'est
 
 139
-00:04:19,000 --> 00:04:20,000
-Genre les gens d'ailleurs.
+00:03:43,169 --> 00:03:44,570
+vraiment pour tous mes fans
 
 140
-00:04:20,000 --> 00:04:22,000
-Dans leur nom c'est en gros des gens d'ailleurs mais qui font du tuning.
+00:03:44,610 --> 00:03:45,751
+d'auto, là. J'aurais aimé être
 
 141
-00:04:22,000 --> 00:04:24,000
-Bon c'est parti on va faire un tour.
+00:03:45,771 --> 00:03:46,811
+avec mon petit Georges aussi,
 
 142
-00:04:24,000 --> 00:04:26,000
-Geijin !
+00:03:46,851 --> 00:03:48,292
+là, pour vivre ce petit moment.
 
 143
-00:04:29,000 --> 00:04:31,000
-Oh la la.
+00:03:48,313 --> 00:03:48,953
+Malheureusement, il n'est pas
 
 144
-00:04:31,000 --> 00:04:33,000
-T'es fou t'es fou.
+00:03:48,993 --> 00:03:49,894
+là, mais je pense fort à lui.
 
 145
-00:04:33,000 --> 00:04:35,000
-C'est la cabine toi tu vas pas beaucoup dans des voitures Thomas.
+00:03:49,934 --> 00:03:50,904
+Tu veux monter dans celle-là ?
 
 146
-00:04:35,000 --> 00:04:37,000
-Merci Inox de me ramener dans des voitures.
+00:03:50,914 --> 00:03:51,575
+Ouais, moi, je... En plus,
 
 147
-00:04:37,000 --> 00:04:39,000
-En habitude je suis en charrette.
+00:03:51,595 --> 00:03:52,375
+regarde, il y a le masque.
 
 148
-00:04:39,000 --> 00:04:40,000
-Ou en caddie.
+00:03:52,416 --> 00:03:55,578
+Ouais. Mets le masque, je t'en
 
 149
-00:04:40,000 --> 00:04:42,000
-Je suis en caddie.
+00:03:55,878 --> 00:03:57,940
+supplie. Non ! Il est
 
 150
-00:04:42,000 --> 00:04:44,000
-Grâce à toi Inox j'arrive à rentrer dans des voitures.
+00:03:57,980 --> 00:03:59,500
+incroyable. On va foncer dans
 
 151
-00:04:44,000 --> 00:04:46,000
-Tout le monde regarde la voiture non ?
+00:03:59,520 --> 00:04:00,521
+les voitures, normalement il y a
 
 152
-00:04:46,000 --> 00:04:47,000
-Ouais carrément.
+00:04:00,561 --> 00:04:02,042
+Sylvia qui arrive, Amine. C'est
 
 153
-00:04:47,000 --> 00:04:48,000
-Ouais je pense que tout le monde regarde.
+00:04:02,062 --> 00:04:03,403
+qui Sylvia ? C'est une autre
 
 154
-00:04:52,000 --> 00:04:54,000
-Frérot le but il est incroyable.
+00:04:03,423 --> 00:04:06,624
+voiture. C'est une autre voiture
 
 155
-00:04:54,000 --> 00:04:56,000
-T'as déjà cartonné un mec ?
+00:04:06,664 --> 00:04:07,785
+et ensuite après on va à Shibuya
 
 156
-00:04:58,000 --> 00:05:00,000
-Non.
+00:04:07,805 --> 00:04:09,486
+avec. Merci à Geijin Tuned.
 
+157
+00:04:09,526 --> 00:04:11,427
+Geijin Tuned, traduction je
+
+158
+00:04:11,467 --> 00:04:12,728
+l'ai. C'est quoi ? Tuned, en
+
+159
+00:04:12,768 --> 00:04:15,429
+gros ils font de la thune. Non,
+
+160
+00:04:15,470 --> 00:04:17,971
+du tuning. Et Geijin en japonais
+
+161
+00:04:17,991 --> 00:04:19,512
+ça veut dire étranger, genre les
+
+162
+00:04:19,531 --> 00:04:20,672
+gens d'ailleurs. Dans leur nom
+
+163
+00:04:20,692 --> 00:04:21,413
+c'est en gros des gens
+
+164
+00:04:21,433 --> 00:04:22,093
+d'ailleurs mais qui font du
+
+165
+00:04:22,113 --> 00:04:23,534
+tuning. Bon c'est parti, on va
+
+166
+00:04:23,574 --> 00:04:23,934
+faire un tour.
+
+167
+00:04:28,962 --> 00:04:32,503
+C'est la
+
+168
+00:04:32,543 --> 00:04:34,264
+cabine, toi tu ne vas pas
+
+169
+00:04:34,304 --> 00:04:35,045
+beaucoup dans des voitures
+
+170
+00:04:35,065 --> 00:04:36,925
+Thomas. Merci Inox de me ramener
+
+171
+00:04:36,965 --> 00:04:38,326
+dans des voitures. Mon habitude,
+
+172
+00:04:38,366 --> 00:04:39,626
+je suis en charrette ou en
+
+173
+00:04:39,706 --> 00:04:41,927
+caddie. Je suis en caddie.
+
+174
+00:04:42,047 --> 00:04:43,368
+Grâce à toi Inox, j'arrive à
+
+175
+00:04:43,388 --> 00:04:44,729
+rentrer dans des voitures. Tout
+
+176
+00:04:44,769 --> 00:04:45,569
+le monde regarde la voiture,
+
+177
+00:04:45,589 --> 00:04:46,929
+non ? Oui, carrément. Je pense
+
+178
+00:04:46,969 --> 00:04:47,990
+que tout le monde regarde.
+
+179
+00:04:51,098 --> 00:04:53,780
+Frérot, le bulle est incroyable
+
+180
+00:04:53,790 --> 00:04:55,021
+! T'as déjà cartonné un mec ?
 

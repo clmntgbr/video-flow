@@ -1,825 +1,804 @@
 1
-00:00:00,000 --> 00:00:03,280
-J'avais pas rigolé, j'avais pas rigolé, j'avais pas rigolé, t'as pas réchuté
+00:00:00,008 --> 00:00:02,830
+J'avais pas rigolé ! J'avais pas
 
 2
-00:00:03,280 --> 00:00:04,280
-AAAAAAAH
+00:00:02,950 --> 00:00:05,062
+rigolé ! J'avais pas rigolé !
 
 3
-00:00:04,280 --> 00:00:06,280
-Arrêtez les gars, il y a pas le pauvre chauffeur en bas
+00:00:05,072 --> 00:00:06,152
+Arrêtez les gars, le pauvre
 
 4
-00:00:06,280 --> 00:00:07,280
-Putain il y a le chauffeur
+00:00:06,172 --> 00:00:08,494
+chauffeur ! Vas-y parle
 
 5
-00:00:07,280 --> 00:00:09,280
-Vas-y parle en espagnol dis lui excuse toi
+00:00:08,514 --> 00:00:09,525
+l'espagnol dis lui excuse-toi !
 
 6
-00:00:09,280 --> 00:00:10,280
-Pardon, pardon
+00:00:09,535 --> 00:00:13,648
+Pardon, pardon !
 
 7
-00:00:13,280 --> 00:00:15,280
-Voir Tokyo la nuit c'est quelque chose d'incroyable
+00:00:13,658 --> 00:00:14,658
+Voir Tokyo la nuit, c'est
 
 8
-00:00:15,280 --> 00:00:16,280
-Il y a les lumières partout
+00:00:14,678 --> 00:00:15,739
+quelque chose d'incroyable. Il y
 
 9
-00:00:16,280 --> 00:00:18,280
-Sur les routes on croise des voitures mythiques
+00:00:15,779 --> 00:00:17,300
+a les lumières partout, sur les
 
 10
-00:00:18,280 --> 00:00:20,280
-Les Nissan GTR
+00:00:17,320 --> 00:00:18,281
+routes on croise des voitures
 
 11
-00:00:20,280 --> 00:00:22,280
-On a eu la chance de rencontrer Dario
+00:00:18,321 --> 00:00:20,643
+mythiques, les Nissan GTR. On a
 
 12
-00:00:22,280 --> 00:00:24,280
-Un passionné qui vit depuis 20 ans au Japon
+00:00:20,663 --> 00:00:21,623
+eu la chance de rencontrer
 
 13
-00:00:24,280 --> 00:00:25,280
-Et qui a une GTR
+00:00:21,683 --> 00:00:23,024
+Dario, un passionné qui vit
 
 14
-00:00:25,280 --> 00:00:27,280
-Mais il a aussi une autre voiture
+00:00:23,064 --> 00:00:24,705
+depuis 20 ans au Japon et qui a
 
 15
-00:00:27,559 --> 00:00:28,559
-Les gars je suis avec Dario
+00:00:24,725 --> 00:00:26,146
+une GTR. Mais il a aussi une
 
 16
-00:00:28,559 --> 00:00:30,559
-Il nous accompagne au Japon, il nous montre des bons spots
+00:00:26,186 --> 00:00:28,369
+autre voiture. Les gars, je suis
 
 17
-00:00:30,559 --> 00:00:31,559
-Salut les gars
+00:00:28,389 --> 00:00:29,770
+avec Dario, il nous accompagne
 
 18
-00:00:31,559 --> 00:00:32,560
-Là on va aller à un rassemblement de GTR
+00:00:29,790 --> 00:00:30,511
+au Japon, il nous montre des
 
 19
-00:00:32,560 --> 00:00:33,560
-Avec plein d'autres voitures aussi
+00:00:30,531 --> 00:00:31,382
+bons spots. Salut les gars !
 
 20
-00:00:33,560 --> 00:00:34,560
-C'est ça
+00:00:31,392 --> 00:00:31,872
+Là, on va aller à un
 
 21
-00:00:34,560 --> 00:00:36,560
-Normalement vous connaissez tous, Mansoury, tous les préparateurs
+00:00:31,912 --> 00:00:33,214
+rassemblement de GTR avec plein
 
 22
-00:00:36,560 --> 00:00:38,560
-Bah Dario il a créé sa propre préparation
+00:00:33,234 --> 00:00:34,115
+d'autres voitures aussi. C'est
 
 23
-00:00:38,560 --> 00:00:40,560
-Et là il nous présente sa voiture
+00:00:34,155 --> 00:00:35,496
+ça. Normalement, vous connaissez
 
 24
-00:00:40,560 --> 00:00:42,560
-Sa petite RS3 MF
+00:00:35,516 --> 00:00:36,638
+tous Mansory, tous les
 
 25
-00:00:46,560 --> 00:00:48,560
-Moi j'aime juste pas le logo MF
+00:00:36,658 --> 00:00:37,919
+préparateurs. Dario, il a créé
 
 26
-00:00:48,560 --> 00:00:50,560
-Je suis pas fan, t'aimes bien son logo ou pas ?
+00:00:37,979 --> 00:00:39,020
+sa propre préparation. Et là,
 
 27
-00:00:51,560 --> 00:00:52,560
-Le logo il est éteint
+00:00:39,040 --> 00:00:40,582
+il nous présente sa voiture, sa
 
 28
-00:00:52,560 --> 00:00:54,560
-Je vais lui en faire un, je te jure je vais lui en faire un
+00:00:40,622 --> 00:00:45,384
+petite RS3 MF.
 
 29
-00:00:54,560 --> 00:00:56,560
-Je vais te refaire un logo parce que ça c'est honteux
+00:00:46,708 --> 00:00:47,790
+Moi, j'aime juste pas le logo
 
 30
-00:00:56,840 --> 00:00:58,840
-Oh lalalala t'es sévère
+00:00:47,930 --> 00:00:49,111
+MF. Je suis pas fan. T'aimes
 
 31
-00:00:58,840 --> 00:01:00,840
-Je suis d'accord mais je vais être sévère aussi
+00:00:49,131 --> 00:00:52,324
+bien son logo ou pas ? Le logo
 
 32
-00:01:00,840 --> 00:01:01,840
-Si tu me fais mieux que ça
+00:00:52,384 --> 00:00:53,705
+il est éteint, j'vais lui en
 
 33
-00:01:01,840 --> 00:01:03,840
-Mais fais-vous avec les pieds, sur photoshop tu le fais mieux
+00:00:53,725 --> 00:00:54,526
+faire un, j'te jure j'vais lui
 
 34
-00:01:04,839 --> 00:01:06,839
-Non je te jure on dirait que tu vas faire un powerpoint
+00:00:54,566 --> 00:00:55,547
+en faire un J'vais te refaire un
 
 35
-00:01:08,839 --> 00:01:10,839
-Il a préparé la voiture à 80 000€
+00:00:55,587 --> 00:00:56,788
+logo parce que ça c'est honteux
 
 36
-00:01:10,839 --> 00:01:12,839
-Et là on lui fait ses powerpoints
+00:00:56,848 --> 00:00:58,710
+Ohlalalala t'es sévère, j'suis
 
 37
-00:01:12,839 --> 00:01:13,839
-T'es sur peine
+00:00:58,730 --> 00:00:59,891
+d'accord mais j'vais être sévère
 
 38
-00:01:13,839 --> 00:01:15,839
-T'sais que ça j'arrêtais pas de dire
+00:00:59,911 --> 00:01:01,132
+aussi si tu me fais mieux que ça
 
 39
-00:01:15,839 --> 00:01:17,839
-Non mais tu sais que t'es sur peine
+00:01:01,152 --> 00:01:02,073
+Mais fais-vous avec les pieds
 
 40
-00:01:17,839 --> 00:01:19,839
-J'arrêtais pas de flammer en disant ouais c'est moi qui ai fait le logo
+00:01:02,113 --> 00:01:03,134
+sur photoshop j'te fais mieux
 
 41
-00:01:19,839 --> 00:01:20,839
-Parce que j'arrête pas de dire c'est moi qui ai fait le logo
+00:01:04,471 --> 00:01:05,372
+Non, je te jure, on dirait que
 
 42
-00:01:20,839 --> 00:01:21,839
-J'en suis fier mais il est magnifique
+00:01:05,391 --> 00:01:08,912
+tu vas faire un
 
 43
-00:01:21,839 --> 00:01:22,839
-Bah lâche ça
+00:01:12,376 --> 00:01:14,497
+powerpoint. Il a préparé la
 
 44
-00:01:22,839 --> 00:01:23,839
-Non je te jure
+00:01:14,517 --> 00:01:15,397
+voiture à 80 000 euros et alors
 
 45
-00:01:23,839 --> 00:01:24,839
-En gros tu sais ce qu'il veut dire ?
+00:01:15,437 --> 00:01:16,138
+on lui fait powerpoint ? On
 
 46
-00:01:25,120 --> 00:01:27,120
-C'est un compliment ce qu'il te fait parce que le logo
+00:01:16,158 --> 00:01:17,058
+s'est surpris. Tu sais que ça,
 
 47
-00:01:27,120 --> 00:01:29,120
-Il est pas à la hauteur de tout le reste que t'as fait
+00:01:17,078 --> 00:01:17,919
+j'ai arrêté pas de flammer en
 
 48
-00:01:29,120 --> 00:01:31,120
-En fait tout est incroyable
+00:01:17,939 --> 00:01:18,819
+disant c'est moi qui ai fait le
 
 49
-00:01:31,120 --> 00:01:33,120
-Je te mets au défi fais moi un bête de logo
+00:01:18,839 --> 00:01:19,460
+logo, parce que j'arrête pas de
 
 50
-00:01:33,120 --> 00:01:35,120
-Demain t'en as un meilleur que ça
+00:01:19,480 --> 00:01:20,500
+dire c'est moi qui ai fait le
 
 51
-00:01:35,120 --> 00:01:37,120
-Il te le fait sur le téléphone
+00:01:20,520 --> 00:01:21,701
+logo, j'en suis fier, mais il
 
 52
-00:01:39,120 --> 00:01:40,120
-Je voulais qu'elle soit concave
+00:01:21,761 --> 00:01:24,062
+est magnifique. Bah lâche ça.
 
 53
-00:01:40,120 --> 00:01:42,120
-Je voulais qu'elle dépasse un peu 100 mètres de spacer
+00:01:24,102 --> 00:01:24,703
+En gros, tu sais ce qu'il veut
 
 54
-00:01:42,120 --> 00:01:44,120
-Les peaux vont sortir parfaites jusque là
+00:01:24,723 --> 00:01:25,443
+dire ? C'est un compliment ce
 
 55
-00:01:44,120 --> 00:01:46,120
-Avec la marque Manfredi qui va juste sortir
+00:01:25,463 --> 00:01:26,504
+qu'il te fait, parce qu'en fait,
 
 56
-00:01:46,120 --> 00:01:48,120
-Tout ça ça va être en cuir
+00:01:26,524 --> 00:01:27,624
+le logo, il est pas à la hauteur
 
 57
-00:01:48,120 --> 00:01:49,120
-Ça ça va être en cuir
+00:01:27,644 --> 00:01:28,985
+de tout le reste que t'as fait.
 
 58
-00:01:49,120 --> 00:01:50,120
-Ça ça va être en cuir
+00:01:29,025 --> 00:01:30,506
+En fait, tout est incroyable.
 
 59
-00:01:50,120 --> 00:01:52,120
-Regarde mon logo imprimé ici
+00:01:30,626 --> 00:01:31,727
+Je te mets au défi, fais-moi un
 
 60
-00:01:52,120 --> 00:01:53,120
-Tu l'as pris quoi lui ?
+00:01:31,747 --> 00:01:32,807
+bête de logo. Tu m'as dit, tu
 
 61
-00:01:53,400 --> 00:01:55,400
-C'est le Enoch Stag adulte
+00:01:32,828 --> 00:01:33,508
+l'as dit, tu l'as dit ! Demain,
 
 62
-00:01:55,400 --> 00:01:57,400
-Regarde je suis de ouf
+00:01:33,528 --> 00:01:34,249
+demain, t'en as un meilleur que
 
 63
-00:01:57,400 --> 00:01:58,400
-Ah ouais ?
+00:01:34,269 --> 00:01:35,150
+ça ! Arrête, de demain ! Et t'le
 
 64
-00:01:58,400 --> 00:02:00,400
-Non mais je suis comme un fou les amis vous savez pas
+00:01:35,170 --> 00:01:38,542
+fais sur le téléphone !
 
 65
-00:02:00,400 --> 00:02:01,400
-Me laisser parler de mon bijou
+00:01:38,552 --> 00:01:39,493
+Je voulais qu'elle soit concave,
 
 66
-00:02:01,400 --> 00:02:02,400
-Y'a pas un slogan ?
+00:01:39,553 --> 00:01:40,514
+et je voulais qu'elle dépasse un
 
 67
-00:02:02,400 --> 00:02:03,400
-Ça tue
+00:01:40,534 --> 00:01:41,595
+peu 100 mètres de spacer, tu
 
 68
-00:02:03,400 --> 00:02:04,400
-Manfredi ça tue ?
+00:01:41,615 --> 00:01:42,256
+vois ce que je veux dire ou pas
 
 69
-00:02:04,400 --> 00:02:05,400
-Ouais ça tue
+00:01:42,266 --> 00:01:43,337
+? Les peaux vont sortir parfaits
 
 70
-00:02:05,400 --> 00:02:06,400
-Trouve le moi
+00:01:43,357 --> 00:01:44,318
+jusque là avec la marque,
 
 71
-00:02:06,400 --> 00:02:07,400
-Vas-y je te laisse trouver un slogan
+00:01:44,358 --> 00:01:45,519
+Manfredi, qui va juste sortir,
 
 72
-00:02:07,400 --> 00:02:09,399
-Ah carrément il a vu il a été claqué le cercle
+00:01:45,539 --> 00:01:46,159
+tu vois ce que je veux dire ou
 
 73
-00:02:09,399 --> 00:02:11,399
-Ça va pas ça va pas
+00:01:46,179 --> 00:01:46,900
+pas ? Tout ça, ça va être en
 
 74
-00:02:11,399 --> 00:02:12,399
-Mais tu me prends au courant j'ai pas un slogan
+00:01:46,920 --> 00:01:48,041
+cuir, là, ça dégage. Ça, ça va
 
 75
-00:02:12,399 --> 00:02:13,399
-Manfredi
+00:01:48,081 --> 00:01:48,982
+être en cuir. Ça, ça va
 
 76
-00:02:13,399 --> 00:02:15,399
-Manfredi GMK t'es sur le cul là
+00:01:49,022 --> 00:01:49,702
+arracher, ça va être en cuir.
 
 77
-00:02:15,399 --> 00:02:16,399
-Honnêtement ?
+00:01:49,722 --> 00:01:51,354
+Regarde mon logo imprimé ici !
 
 78
-00:02:16,399 --> 00:02:18,399
-Je sais que GMK il a une ABT
+00:01:51,364 --> 00:01:52,254
+Mais tu l'as pris quoi, lui ?
 
 79
-00:02:18,399 --> 00:02:19,399
-Ouais
+00:01:52,264 --> 00:01:53,265
+Non mais je suis comme un
 
 80
-00:02:19,399 --> 00:02:21,399
-Non mais GMK il va me donner son avis
+00:01:53,285 --> 00:01:54,867
+fuma-mela, tu sais pas ! C'est
 
 81
-00:02:21,399 --> 00:02:22,399
-Il vient me dire GMK c'est son petit ?
+00:01:54,907 --> 00:01:56,488
+le Innoxtag adulte ! Regarde,
 
 82
-00:02:22,679 --> 00:02:23,679
-Il a quel âge ?
+00:01:56,648 --> 00:01:58,670
+je suis... Ah ouais ? Non mais
 
 83
-00:02:23,679 --> 00:02:24,679
-Il a 10 ans
+00:01:58,710 --> 00:01:59,711
+je suis comme un fou les amis,
 
 84
-00:02:24,679 --> 00:02:25,679
-J'ai pas dit c'est mon petit
+00:01:59,731 --> 00:02:00,972
+vous savez pas ? Me laisser
 
 85
-00:02:25,679 --> 00:02:26,679
-J'ai dit il a une ABT
+00:02:01,012 --> 00:02:02,394
+parler de mon bijou ? Y'a pas un
 
 86
-00:02:26,679 --> 00:02:27,679
-Non non
+00:02:02,414 --> 00:02:04,156
+slogan qui tue ? Manfredi ça tue
 
 87
-00:02:27,679 --> 00:02:28,679
-On a bien entendu
+00:02:04,166 --> 00:02:06,198
+? Ouais ça tue. Trouve-le moi.
 
 88
-00:02:28,679 --> 00:02:29,679
-On a bien entendu
+00:02:06,238 --> 00:02:06,958
+Vas-y je te laisse trouver un
 
 89
-00:02:29,679 --> 00:02:30,679
-On a bien entendu
+00:02:06,978 --> 00:02:07,899
+slogan. Ah carrément, il a vu il
 
 90
-00:02:30,679 --> 00:02:31,679
-J'ai pas dit GMK
+00:02:07,919 --> 00:02:09,901
+a été claqué le cirque. Ça va
 
 91
-00:02:33,679 --> 00:02:35,679
-Il est à fond dans je crois que je lui ai fait tomber le café sur la voiture
+00:02:09,961 --> 00:02:11,443
+pas, ça va pas. Mais tu me
 
 92
-00:02:35,679 --> 00:02:37,679
-Et je pense qu'il va être comme un ouf
+00:02:11,463 --> 00:02:12,324
+prends de court, j'ai pas de
 
 93
-00:02:37,679 --> 00:02:39,679
-Attends je te jure j'ai pas fait exprès
+00:02:12,344 --> 00:02:14,305
+slogan. Manfredi ? Manfredi,
 
 94
-00:02:39,679 --> 00:02:40,679
-Non si si
+00:02:14,346 --> 00:02:15,947
+GMK t'es sur le cul là.
 
 95
-00:02:40,679 --> 00:02:42,679
-Non je te promets j'ai renversé un peu de café sur la voiture
+00:02:15,967 --> 00:02:17,248
+Honnêtement ? Je sais que GMK il
 
 96
-00:02:42,679 --> 00:02:43,679
-Attends non
+00:02:17,268 --> 00:02:20,463
+a une ABT. Ouais. Non mais JMK
 
 97
-00:02:43,679 --> 00:02:45,679
-Mais j'ai essuyé j'ai essuyé
+00:02:20,483 --> 00:02:21,204
+va me donner son avis. Oh, il
 
 98
-00:02:45,679 --> 00:02:46,679
-Où ça ?
+00:02:21,224 --> 00:02:22,324
+vient de me dire JMK c'est son
 
 99
-00:02:46,679 --> 00:02:47,679
-Non mais là à gauche
+00:02:22,344 --> 00:02:23,815
+petit ? Il a quel âge ? Il a 10
 
 100
-00:02:47,679 --> 00:02:48,679
-Mais ça se voit plus là
+00:02:23,825 --> 00:02:24,545
+ans ! J'ai pas dit, j'ai pas
 
 101
-00:02:48,679 --> 00:02:49,679
-T'essuyes avec ?
+00:02:24,565 --> 00:02:25,645
+dit, j'ai pas dit c'est mon
 
 102
-00:02:49,679 --> 00:02:50,679
-Avec mon mouchoir mais je l'ai jeté
+00:02:25,686 --> 00:02:26,946
+petit. J'ai dit il a une ABT.
 
 103
-00:02:50,679 --> 00:02:51,679
-Faut me dire ça
+00:02:26,986 --> 00:02:28,247
+Non, non, non, on a dû en
 
 104
-00:02:51,960 --> 00:02:53,960
-Non mais c'est sur l'incantara que t'as mis là
+00:02:28,287 --> 00:02:29,087
+entendre l'avis. On a bien
 
 105
-00:02:53,960 --> 00:02:55,960
-Ah oui c'est vrai j'ai vu
+00:02:29,167 --> 00:02:30,127
+entendu, on a bien entendu. On a
 
 106
-00:02:55,960 --> 00:02:56,960
-Ah c'est faux c'est faux
+00:02:30,167 --> 00:02:30,788
+entendu, j'ai pas dit qu'il
 
 107
-00:02:56,960 --> 00:02:58,960
-Là il allait faire une crisca
+00:02:30,808 --> 00:02:31,408
+avait... Hé, il est à fond dans
 
 108
-00:02:58,960 --> 00:02:59,960
-Ça c'est des voitures
+00:02:31,448 --> 00:02:34,089
+le jeu, je vais lui faire croire
 
 109
-00:02:59,960 --> 00:03:00,960
-Comme ça avec son café
+00:02:34,109 --> 00:02:35,090
+que je lui ai fait tomber le
 
 110
-00:03:00,960 --> 00:03:03,960
-Ça c'est des voitures tu les essuies au microfiber
+00:02:35,110 --> 00:02:36,290
+café sur la voiture. Hé, je
 
 111
-00:03:03,960 --> 00:03:04,960
-Quoi ?
+00:02:36,310 --> 00:02:37,131
+pense qu'il va être comme un
 
 112
-00:03:04,960 --> 00:03:05,960
-A microfibre
+00:02:37,171 --> 00:02:38,631
+ouf. Attends, attends, attends.
 
 113
-00:03:05,960 --> 00:03:06,960
-Bah tu l'as en français
+00:02:38,671 --> 00:02:39,472
+Attends, je te jure j'ai pas
 
 114
-00:03:06,960 --> 00:03:07,960
-Mais il est fou
+00:02:39,492 --> 00:02:40,872
+fait exprès. Non, si, si. Non,
 
 115
-00:03:07,960 --> 00:03:08,960
-Qu'est ce qu'il y a dans son café ?
+00:02:40,892 --> 00:02:41,613
+je te promets j'ai renversé un
 
 116
-00:03:09,960 --> 00:03:10,960
-Et en vrai elle est sale
+00:02:41,633 --> 00:02:42,453
+peu de café sur la voiture.
 
 117
-00:03:10,960 --> 00:03:12,960
-Tu sais que je crois que c'est une des plus belles RS3 que j'ai vu
+00:02:43,311 --> 00:02:44,892
+Attends, non, mais j'ai essuyé,
 
 118
-00:03:12,960 --> 00:03:14,960
-Bon j'ai envoyé à GMK la voiture
+00:02:44,912 --> 00:02:46,873
+j'ai essuyé. Comme ça ? Non,
 
 119
-00:03:14,960 --> 00:03:15,960
-Il va te dire sa vérité
+00:02:46,913 --> 00:02:47,973
+mais là, à gauche. Mais ça se
 
 120
-00:03:15,960 --> 00:03:16,960
-Je lui ai rien dit
+00:02:47,993 --> 00:02:49,054
+voit plus, là. T'as essuyé avec
 
 121
-00:03:16,960 --> 00:03:17,960
-Je lui ai juste envoyé
+00:02:49,064 --> 00:02:50,634
+? Avec mon mouchoir que j'ai
 
 122
-00:03:17,960 --> 00:03:18,960
-Je lui ai dit t'en penses quoi ?
+00:02:50,654 --> 00:02:52,075
+jeté. Faut me dire, ça. Non,
 
 123
-00:03:18,960 --> 00:03:19,960
-C'est le meilleur avis
+00:02:52,095 --> 00:02:52,916
+mais c'est sur l'incantara que
 
 124
-00:03:20,240 --> 00:03:21,240
-T'as vu respect
+00:02:52,936 --> 00:02:54,856
+t'as mis, là. Ah oui. Ah oui,
 
 125
-00:03:21,240 --> 00:03:22,240
-Bah oui bien sûr qu'il respecte
+00:02:54,876 --> 00:02:56,097
+c'est ça, j'ai compris. Ah,
 
 126
-00:03:22,240 --> 00:03:23,240
-De fou
+00:02:56,137 --> 00:02:56,957
+c'est faux, c'est faux. Là, il
 
 127
-00:03:25,240 --> 00:03:26,240
-Je savais
+00:02:57,017 --> 00:02:58,498
+allait faire une crisquette.
 
 128
-00:03:26,240 --> 00:03:27,240
-Je savais
+00:02:58,538 --> 00:02:59,339
+Non, mais ça, c'est des
 
 129
-00:03:27,240 --> 00:03:28,240
-Je savais
+00:02:59,359 --> 00:03:00,539
+voitures... Comme ça, avec son
 
 130
-00:03:28,240 --> 00:03:30,240
-Mais pourquoi j'ai écrit tellement longtemps ?
+00:03:00,559 --> 00:03:02,300
+café. Ça, c'est des voitures,
 
 131
-00:03:30,240 --> 00:03:31,240
-On y va
+00:03:02,340 --> 00:03:04,101
+tu les essuies au microfiber.
 
 132
-00:03:31,240 --> 00:03:32,240
-L'alarme tout ça
+00:03:04,141 --> 00:03:05,141
+Quoi ? La microfibre.
 
 133
-00:03:34,240 --> 00:03:35,240
-Tu sais il lui a dit quoi en japonais
+00:03:05,181 --> 00:03:05,982
+Microfiber. Bah, tu l'as en
 
 134
-00:03:35,240 --> 00:03:36,240
-Pour pas qu'on entende
+00:03:06,002 --> 00:03:06,982
+français. Mais il est fou.
 
 135
-00:03:36,240 --> 00:03:37,240
-Tu fais un truc bizarre avec la voiture
+00:03:07,002 --> 00:03:07,943
+Crisquette dans son café.
 
 136
-00:03:37,240 --> 00:03:38,240
-Je te...
+00:03:09,990 --> 00:03:11,451
+Et en vrai, elle est sale ! Tu
 
 137
-00:03:38,240 --> 00:03:39,240
-En gros
+00:03:11,471 --> 00:03:12,152
+sais que je crois que c'est une
 
 138
-00:03:39,240 --> 00:03:40,240
-En gros
+00:03:12,172 --> 00:03:13,072
+des plus belles RS3 que j'ai
 
 139
-00:03:40,240 --> 00:03:41,240
-Il lui a dit ça
+00:03:13,092 --> 00:03:14,573
+vues. Bon, j'ai envoyé à GMK la
 
 140
-00:03:41,240 --> 00:03:42,240
-En gros on est pas loin
+00:03:14,593 --> 00:03:15,974
+voiture. Il va te dire sa
 
 141
-00:03:42,240 --> 00:03:43,240
-On est poliment
+00:03:15,994 --> 00:03:17,215
+vérité. Je lui ai rien dit, je
 
 142
-00:03:43,240 --> 00:03:44,240
-On est à la japonaise
+00:03:17,235 --> 00:03:18,036
+lui ai juste envoyé, je lui ai
 
 143
-00:03:44,240 --> 00:03:45,240
-Tu vois ?
+00:03:18,056 --> 00:03:18,857
+dit t'en penses quoi. C'est le
 
 144
-00:03:45,240 --> 00:03:46,240
-C'est une voiture électrique ça ?
+00:03:18,877 --> 00:03:20,278
+meilleur avis. Ah quand même,
 
 145
-00:03:46,240 --> 00:03:47,240
-Oui
+00:03:20,318 --> 00:03:21,519
+t'as vu, respect. Bah oui, bien
 
 146
-00:03:47,240 --> 00:03:48,240
-Oh l'insulte
+00:03:21,559 --> 00:03:22,529
+sûr qu'il respecte. De fou !
 
 147
-00:03:48,240 --> 00:03:49,240
-Oui
+00:03:22,539 --> 00:03:23,200
+Ah, c'est quand même ça, voilà,
 
 148
-00:03:49,520 --> 00:03:50,520
-Wesh
+00:03:23,220 --> 00:03:24,471
+c'est un Imac alors. Chin chin !
 
 149
-00:03:52,520 --> 00:03:53,520
-Ça c'est de la bonne électrique
+00:03:24,481 --> 00:03:26,923
+Ah la la, je savais ! Je savais
 
 150
-00:03:53,520 --> 00:03:54,520
-C'est que ça
+00:03:26,933 --> 00:03:27,854
+!
 
 151
-00:03:59,520 --> 00:04:00,520
-Est-ce que tu penses que nous deux
+00:03:27,864 --> 00:03:31,606
+On y va,
 
 152
-00:04:00,520 --> 00:04:01,520
-On est des génies ?
+00:03:31,626 --> 00:03:34,488
+l'alarme, tout ça. Il lui a dit
 
 153
-00:04:01,520 --> 00:04:02,520
-Oula
+00:03:34,508 --> 00:03:35,369
+quoi en japonais pour pas qu'on
 
 154
-00:04:02,520 --> 00:04:03,520
-Honnêtement
+00:03:35,389 --> 00:03:36,649
+entende ? Tu fais un truc
 
 155
-00:04:03,520 --> 00:04:04,520
-Honnêtement
+00:03:36,669 --> 00:03:37,530
+bizarre avec la voiture, je
 
 156
-00:04:04,520 --> 00:04:05,520
-Maintenant je vais être objectif
+00:03:37,630 --> 00:03:41,432
+te... En gros,
 
 157
-00:04:05,520 --> 00:04:06,520
-Lui derrière
+00:03:41,492 --> 00:03:42,453
+en gros, on est pas loin, on est
 
 158
-00:04:06,520 --> 00:04:07,520
-Moi je pense
+00:03:42,473 --> 00:03:45,034
+poliment. C'est une voiture
 
 159
-00:04:07,520 --> 00:04:08,520
-Ça veut dire quoi ?
+00:03:45,074 --> 00:03:48,336
+électrique, ça. Oui.
 
 160
-00:04:08,520 --> 00:04:09,520
-Non mais je vais dire pourquoi
+00:03:48,396 --> 00:03:49,317
+Oh, l'insulte.
 
 161
-00:04:09,520 --> 00:04:10,520
-Youtube tout ça
+00:03:53,820 --> 00:03:54,800
+Oui. Ça, c'est de la bonne
 
 162
-00:04:10,520 --> 00:04:11,520
-On peut dire ce qu'on veut
+00:03:54,820 --> 00:03:55,621
+électrique, ça.
 
 163
-00:04:11,520 --> 00:04:12,520
-C'est un monté
+00:04:01,580 --> 00:04:02,321
+Est-ce que tu penses que nous
 
 164
-00:04:12,520 --> 00:04:13,520
-Bon monté c'est pas
+00:04:02,361 --> 00:04:04,543
+deux on est des génies ? Oula.
 
 165
-00:04:13,520 --> 00:04:14,520
-Tu montes comme ça
+00:04:04,563 --> 00:04:05,404
+Honnêtement, honnêtement,
 
 166
-00:04:14,520 --> 00:04:15,520
-C'est pas un réflexe
+00:04:05,424 --> 00:04:05,905
+maintenant je vais être
 
 167
-00:04:15,520 --> 00:04:16,519
-Tu vois sûr ou pas
+00:04:05,925 --> 00:04:07,547
+objectif. Lui derrière, ouais je
 
 168
-00:04:16,519 --> 00:04:17,519
-Et ensuite
+00:04:07,567 --> 00:04:09,898
+pense. Ça veut dire quoi ? Non
 
 169
-00:04:17,519 --> 00:04:18,519
-Tu fais tes petits projets
+00:04:09,938 --> 00:04:11,118
+mais je vais dire pourquoi.
 
 170
-00:04:18,799 --> 00:04:19,799
-Genre
+00:04:11,198 --> 00:04:13,019
+Youtube, tout ça, on peut dire
 
 171
-00:04:19,799 --> 00:04:20,799
-Tu montes la montagne
+00:04:13,039 --> 00:04:14,479
+ce qu'on veut. C'est un monté.
 
 172
-00:04:20,799 --> 00:04:21,799
-Etc etc
+00:04:14,499 --> 00:04:15,419
+Pour monter, c'est pas... Tu
 
 173
-00:04:21,799 --> 00:04:22,799
-Tu as le truc de la découverte
+00:04:15,439 --> 00:04:16,379
+montes comme ça, c'est pas un
 
 174
-00:04:22,799 --> 00:04:23,799
-Et tu vas pas lâcher l'affaire
+00:04:16,399 --> 00:04:17,360
+réflexe, tu vois, sûr ou pas.
 
 175
-00:04:23,799 --> 00:04:24,799
-T'es dans ton projet
+00:04:17,420 --> 00:04:18,899
+Et ensuite, tu fais tes petits
 
 176
-00:04:24,799 --> 00:04:25,799
-Même si c'est compliqué
+00:04:18,940 --> 00:04:20,880
+projets, genre tu montes la
 
 177
-00:04:25,799 --> 00:04:26,799
-C'est très compliqué
+00:04:20,899 --> 00:04:22,781
+montagne, etc, etc. Tu as le
 
 178
-00:04:26,799 --> 00:04:27,799
-A faire des projets comme ça
+00:04:22,821 --> 00:04:23,981
+truc de la découverte et tu vas
 
 179
-00:04:27,799 --> 00:04:28,799
-Moi justement
+00:04:24,001 --> 00:04:24,781
+pas lâcher l'affaire, t'es dans
 
 180
-00:04:28,799 --> 00:04:29,799
-T'as vu tout à l'heure
+00:04:24,801 --> 00:04:25,861
+ton projet, même si c'est
 
 181
-00:04:29,799 --> 00:04:30,799
-La voiture machin
+00:04:25,881 --> 00:04:26,981
+compliqué, c'est très compliqué
 
 182
-00:04:30,799 --> 00:04:31,799
-Tu sais que les projets je connais
+00:04:27,001 --> 00:04:27,661
+à faire des projets comme ça,
 
 183
-00:04:31,799 --> 00:04:32,799
-Donc
+00:04:27,701 --> 00:04:28,662
+tu vois. Moi justement, t'as vu
 
 184
-00:04:32,799 --> 00:04:33,799
-Moi je pense que lui
+00:04:28,682 --> 00:04:29,342
+tout à l'heure la voiture,
 
 185
-00:04:33,799 --> 00:04:34,799
-Génie
+00:04:29,382 --> 00:04:30,202
+machin, tu sais que les projets
 
 186
-00:04:34,799 --> 00:04:35,799
-Toi
+00:04:30,222 --> 00:04:31,822
+je connais. Donc, voilà, moi je
 
 187
-00:04:35,799 --> 00:04:36,799
-Moi ?
+00:04:31,862 --> 00:04:33,162
+pense que lui, génie. Toi ? Moi
 
 188
-00:04:36,799 --> 00:04:37,799
-Ouais
+00:04:33,172 --> 00:04:36,213
+? Ouais, bah oui. Honnêtement ?
 
 189
-00:04:37,799 --> 00:04:38,799
-Honnêtement
+00:04:36,223 --> 00:04:38,973
+Ouais. Dis la vérité, j'suis pas
 
 190
-00:04:38,799 --> 00:04:39,799
-Ouais
+00:04:38,993 --> 00:04:40,053
+sceptique. Toi en gros c'est
 
 191
-00:04:39,799 --> 00:04:40,799
-Dis la vérité
+00:04:40,093 --> 00:04:42,995
+quoi, des lives ? Les GTA ? Ah
 
 192
-00:04:40,799 --> 00:04:41,799
-Je suis pas susceptible
+00:04:43,035 --> 00:04:44,136
+ouais j'suis un fils de... GTA,
 
 193
-00:04:41,799 --> 00:04:42,799
-Toi en gros
+00:04:44,156 --> 00:04:45,436
+voilà, mais pour objet qui vend.
 
 194
-00:04:42,799 --> 00:04:43,799
-C'est quoi ?
+00:04:45,456 --> 00:04:48,878
+Non non, j'aime beaucoup. Tu
 
 195
-00:04:43,799 --> 00:04:44,799
-Des lives
+00:04:48,918 --> 00:04:50,089
+sais, tu te fais penser à quoi ?
 
 196
-00:04:44,799 --> 00:04:45,799
-GTA
+00:04:50,099 --> 00:04:54,762
+Un fils de... T'as pas
 
 197
-00:04:45,799 --> 00:04:46,799
-Ah ouais je suis un fils de
+00:04:54,822 --> 00:04:55,682
+un peu un petit verre d'eau s'il
 
 198
-00:04:46,799 --> 00:04:47,799
-GTA
+00:04:55,702 --> 00:04:57,323
+te plaît ou quoi ? Je me suis
 
 199
-00:04:48,079 --> 00:04:50,079
-Tu sais tu te fais penser à quoi ?
+00:04:57,343 --> 00:04:58,604
+mis de rater. En vrai moi j'suis
 
 200
-00:04:50,079 --> 00:04:51,079
-Un fils de
+00:04:58,624 --> 00:04:59,385
+un gars, j'ai un gros problème,
 
 201
-00:04:55,079 --> 00:04:56,079
-T'as pas un peu un petit verre d'eau
-
-202
-00:04:56,079 --> 00:04:57,079
-S'il te plaît ou quoi ?
-
-203
-00:04:57,079 --> 00:04:58,079
-Je vais m'hydrater
-
-204
-00:04:58,079 --> 00:04:59,079
-En vrai moi je suis un gars
-
-205
-00:04:59,079 --> 00:05:00,079
-J'ai un gros problème
-
-206
-00:05:00,079 --> 00:05:01,079
-Je suis sourd
-
+00:04:59,405 --> 00:04:59,805
+j'suis sceptique.
 

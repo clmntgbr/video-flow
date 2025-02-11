@@ -135,7 +135,7 @@ def generateSubtitleAssemblyAI(s3FilePath: str, srtFilePath: str) -> bool:
     transcriber = aai.Transcriber(config=config)
 
     transcript = transcriber.transcribe(s3FilePath)
-    srt = transcript.export_subtitles_srt()
+    srt = transcript.export_subtitles_srt(chars_per_caption=32)
 
     print("File successfully transcribed")
 
