@@ -63,27 +63,29 @@ celery.conf.update({
 def process_message(message):
     protoMediaPod = jsonToProtobuf(message)
 
-    try:
-        chunks = []
+    chunks = []
 
-        for audio in protoMediaPod.mediaPod.originalVideo.audios:
-            chunks.append(audio)
+    for audio in protoMediaPod.mediaPod.originalVideo.audios:
+        chunks.append(audio)
 
-        partialMultiprocess = partial(multiprocess, protoMediaPod=protoMediaPod)
+    partialMultiprocess = partial(multiprocess, protoMediaPod=protoMediaPod)
 
-        with ThreadPoolExecutor(max_workers=4) as executor:
-            results = list(executor.map(partialMultiprocess, chunks))
+    with ThreadPoolExecutor(max_workers=4) as executor:
+        results = list(executor.map(partialMultiprocess, chunks))
 
-        resultsSorted = sorted(results, key=extractChunkNumber)
-        protoMediaPod.mediaPod.originalVideo.subtitles.extend(resultsSorted)
-        protoMediaPod.mediaPod.status = 'subtitle_generator_complete'
-
-        sendMessageOnRabbitMQ(protoMediaPod)
-        return True
-    except Exception as e:
+    if len(results) != len(chunks):
+        print('************************************************************************************')
+        protoMediaPod.mediaPod.originalVideo.subtitles.extend(results)
         protoMediaPod.mediaPod.status = 'subtitle_generator_error'
-        if not sendMessageOnRabbitMQ(protoMediaPod):
-            return False
+        sendMessageOnRabbitMQ(protoMediaPod)
+        return False
+
+    resultsSorted = sorted(results, key=extractChunkNumber)
+    protoMediaPod.mediaPod.originalVideo.subtitles.extend(resultsSorted)
+    protoMediaPod.mediaPod.status = 'subtitle_generator_complete'
+
+    sendMessageOnRabbitMQ(protoMediaPod)
+    return True
 
 def multiprocess(chunk: str, protoMediaPod: SubtitleGeneratorApi):
     key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/audios/{chunk}"
@@ -129,13 +131,15 @@ def generateSubtitleOpenAI(s3FilePath: str, srtFilePath: str) -> bool:
 
 def generateSubtitleAssemblyAI(s3FilePath: str, srtFilePath: str) -> bool:
     print("Uploading file for transcription...")
-
+    print(s3FilePath)
+    print(srtFilePath)
+    
     aai.settings.api_key = os.getenv("ASSEMBLY_AI_API_KEY")
     config = aai.TranscriptionConfig(language_detection=True)
     transcriber = aai.Transcriber(config=config)
 
     transcript = transcriber.transcribe(s3FilePath)
-    srt = transcript.export_subtitles_srt(chars_per_caption=32)
+    srt = transcript.export_subtitles_srt(chars_per_caption=50)
 
     print("File successfully transcribed")
 

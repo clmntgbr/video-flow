@@ -74,7 +74,7 @@ def process_message(message):
                 mergedSubtitles.append(f"{subtitleIndex}\n{new_timestamps}\n{text}\n\n")
                 subtitleIndex += 1
             
-            currentOffset += 600
+            currentOffset += 300
 
         srtFile = protoMediaPod.mediaPod.originalVideo.name.replace(".mp4", ".srt")
         srtFilePath = f"/tmp/{srtFile}"

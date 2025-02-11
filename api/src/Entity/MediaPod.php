@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
 use App\ApiResource\UploadVideoAction;
@@ -18,6 +19,9 @@ use Symfony\Component\Serializer\Attribute\Groups;
 #[ApiResource(
     operations: [
         new GetCollection(
+            normalizationContext: ['skip_null_values' => false, 'groups' => ['media-pods:get', 'default']],
+        ),
+        new Get(
             normalizationContext: ['skip_null_values' => false, 'groups' => ['media-pods:get', 'default']],
         ),
         new Post(
