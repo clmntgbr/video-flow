@@ -16,6 +16,7 @@ from google.protobuf.json_format import MessageToJson
 from concurrent.futures import ThreadPoolExecutor
 from functools import partial
 import assemblyai as aai
+from datetime import timedelta
 
 sys.path.append('/app/src')
 from Protobuf.Message_pb2 import MediaPod, Video, SubtitleGeneratorApi
@@ -65,27 +66,25 @@ def process_message(message):
 
     chunks = []
 
-    for audio in protoMediaPod.mediaPod.originalVideo.audios:
-        chunks.append(audio)
+    try:
+        for audio in protoMediaPod.mediaPod.originalVideo.audios:
+            chunks.append(audio)
 
-    partialMultiprocess = partial(multiprocess, protoMediaPod=protoMediaPod)
+        partialMultiprocess = partial(multiprocess, protoMediaPod=protoMediaPod)
 
-    with ThreadPoolExecutor(max_workers=4) as executor:
-        results = list(executor.map(partialMultiprocess, chunks))
+        with ThreadPoolExecutor(max_workers=4) as executor:
+            results = list(executor.map(partialMultiprocess, chunks))
 
-    if len(results) != len(chunks):
-        print('************************************************************************************')
-        protoMediaPod.mediaPod.originalVideo.subtitles.extend(results)
+        resultsSorted = sorted(results, key=extractChunkNumber)
+        protoMediaPod.mediaPod.originalVideo.subtitles.extend(resultsSorted)
+        protoMediaPod.mediaPod.status = 'subtitle_generator_complete'
+
+        sendMessageOnRabbitMQ(protoMediaPod)
+        return True
+    except Exception as e:
         protoMediaPod.mediaPod.status = 'subtitle_generator_error'
         sendMessageOnRabbitMQ(protoMediaPod)
         return False
-
-    resultsSorted = sorted(results, key=extractChunkNumber)
-    protoMediaPod.mediaPod.originalVideo.subtitles.extend(resultsSorted)
-    protoMediaPod.mediaPod.status = 'subtitle_generator_complete'
-
-    sendMessageOnRabbitMQ(protoMediaPod)
-    return True
 
 def multiprocess(chunk: str, protoMediaPod: SubtitleGeneratorApi):
     key = f"{protoMediaPod.mediaPod.userUuid}/{protoMediaPod.mediaPod.uuid}/audios/{chunk}"
@@ -129,22 +128,44 @@ def generateSubtitleOpenAI(s3FilePath: str, srtFilePath: str) -> bool:
     print("SRT file successfully generated")
     return True
 
+def msToSrtTime(ms):
+    td = timedelta(milliseconds=ms)
+    return f"{td.seconds // 3600:02}:{(td.seconds % 3600) // 60:02}:{td.seconds % 60:02},{td.microseconds // 1000:03}"
+
 def generateSubtitleAssemblyAI(s3FilePath: str, srtFilePath: str) -> bool:
     print("Uploading file for transcription...")
-    print(s3FilePath)
-    print(srtFilePath)
-    
+
     aai.settings.api_key = os.getenv("ASSEMBLY_AI_API_KEY")
     config = aai.TranscriptionConfig(language_detection=True)
     transcriber = aai.Transcriber(config=config)
 
     transcript = transcriber.transcribe(s3FilePath)
-    srt = transcript.export_subtitles_srt(chars_per_caption=50)
+    words = transcript.words
+
+    srtContent = ""
+    subIndex = 1
+    currentLine = []
+    startTime = words[0].start
+
+    for i, word in enumerate(words):
+        currentLine.append(word.text)
+    
+        if len(currentLine) >= 5 or i == len(words) - 1:
+            endTime = words[i].end
+
+            srtContent += f"{subIndex}\n"
+            srtContent += f"{msToSrtTime(startTime)} --> {msToSrtTime(endTime)}\n"
+            srtContent += " ".join(currentLine) + "\n\n"
+
+            subIndex += 1
+            currentLine = []
+            if i < len(words) - 1:
+                startTime = words[i + 1].start
 
     print("File successfully transcribed")
 
     with open(srtFilePath, "w", encoding="utf-8") as file:
-        file.write(srt)
+        file.write(srtContent)
 
     print("SRT file successfully generated")
     return True
@@ -187,7 +208,7 @@ def downloadFromS3(key: str, s3FilePath: str) -> bool:
 def uploadToS3(key: str, s3FilePath: str) -> bool:
     try:
         s3Client.upload_file(s3FilePath, S3_BUCKET_NAME, key)
-        print(f"file successfully uploaded: {s3FilePath}")
+        print(f"✅ file successfully uploaded: {s3FilePath}")
         return True
     except Exception as e:
         print(f"error uploading file: {e}")
