@@ -33,16 +33,16 @@ class DebugController extends AbstractController
                 '@id' => '/api/videos/7fb5d19e-002a-49d6-ba06-5f9f879137f7',
                 '@type' => 'Video',
                 'originalName' => 'video5.mp4',
-                'name' => '68a74fa6574b263fcd0ea4227b0b6bd6.mp4',
+                'name' => '16f6656a5d544e96b732151090caf12d.mp4',
                 'mimeType' => 'video/mp4',
                 'size' => 71541180,
                 'subtitles' => [],
                 'audios' => [
-                    '68a74fa6574b263fcd0ea4227b0b6bd6_1.wav',
-                    '68a74fa6574b263fcd0ea4227b0b6bd6_2.wav',
-                    '68a74fa6574b263fcd0ea4227b0b6bd6_3.wav',
-                    '68a74fa6574b263fcd0ea4227b0b6bd6_4.wav',
-                    '68a74fa6574b263fcd0ea4227b0b6bd6_5.wav',
+                    '16f6656a5d544e96b732151090caf12d_1.wav',
+                    '16f6656a5d544e96b732151090caf12d_2.wav',
+                    '16f6656a5d544e96b732151090caf12d_3.wav',
+                    '16f6656a5d544e96b732151090caf12d_4.wav',
+                    '16f6656a5d544e96b732151090caf12d_5.wav',
                 ],
                 'createdAt' => '2025-02-08T21:08:34+00:00',
                 'updatedAt' => '2025-02-08T21:08:54+00:00',
@@ -88,72 +88,72 @@ class DebugController extends AbstractController
             $entityManager->flush();
         }
 
-        $path = sprintf('%s/%s/%s', $user->getUuid(), $mediaPod->getUuid(), '68a74fa6574b263fcd0ea4227b0b6bd6.mp4');
-        $stream = fopen('/app/public/debug/68a74fa6574b263fcd0ea4227b0b6bd6.mp4', 'r');
+        $path = sprintf('%s/%s/%s', $user->getUuid(), $mediaPod->getUuid(), '16f6656a5d544e96b732151090caf12d.mp4');
+        $stream = fopen('/app/public/debug/16f6656a5d544e96b732151090caf12d.mp4', 'r');
         $awsStorage->writeStream($path, $stream, [
             'visibility' => 'public',
         ]);
 
         // Audios
 
-        $path = sprintf('%s/%s/audios/%s', $user->getUuid(), $mediaPod->getUuid(), '68a74fa6574b263fcd0ea4227b0b6bd6_1.wav');
-        $stream = fopen('/app/public/debug/audios/68a74fa6574b263fcd0ea4227b0b6bd6_1.wav', 'r');
+        $path = sprintf('%s/%s/audios/%s', $user->getUuid(), $mediaPod->getUuid(), '16f6656a5d544e96b732151090caf12d_1.wav');
+        $stream = fopen('/app/public/debug/audios/16f6656a5d544e96b732151090caf12d_1.wav', 'r');
         $awsStorage->writeStream($path, $stream, [
             'visibility' => 'public',
         ]);
 
-        $path = sprintf('%s/%s/audios/%s', $user->getUuid(), $mediaPod->getUuid(), '68a74fa6574b263fcd0ea4227b0b6bd6_2.wav');
-        $stream = fopen('/app/public/debug/audios/68a74fa6574b263fcd0ea4227b0b6bd6_2.wav', 'r');
+        $path = sprintf('%s/%s/audios/%s', $user->getUuid(), $mediaPod->getUuid(), '16f6656a5d544e96b732151090caf12d_2.wav');
+        $stream = fopen('/app/public/debug/audios/16f6656a5d544e96b732151090caf12d_2.wav', 'r');
         $awsStorage->writeStream($path, $stream, [
             'visibility' => 'public',
         ]);
 
-        $path = sprintf('%s/%s/audios/%s', $user->getUuid(), $mediaPod->getUuid(), '68a74fa6574b263fcd0ea4227b0b6bd6_3.wav');
-        $stream = fopen('/app/public/debug/audios/68a74fa6574b263fcd0ea4227b0b6bd6_3.wav', 'r');
+        $path = sprintf('%s/%s/audios/%s', $user->getUuid(), $mediaPod->getUuid(), '16f6656a5d544e96b732151090caf12d_3.wav');
+        $stream = fopen('/app/public/debug/audios/16f6656a5d544e96b732151090caf12d_3.wav', 'r');
         $awsStorage->writeStream($path, $stream, [
             'visibility' => 'public',
         ]);
 
-        $path = sprintf('%s/%s/audios/%s', $user->getUuid(), $mediaPod->getUuid(), '68a74fa6574b263fcd0ea4227b0b6bd6_4.wav');
-        $stream = fopen('/app/public/debug/audios/68a74fa6574b263fcd0ea4227b0b6bd6_4.wav', 'r');
+        $path = sprintf('%s/%s/audios/%s', $user->getUuid(), $mediaPod->getUuid(), '16f6656a5d544e96b732151090caf12d_4.wav');
+        $stream = fopen('/app/public/debug/audios/16f6656a5d544e96b732151090caf12d_4.wav', 'r');
         $awsStorage->writeStream($path, $stream, [
             'visibility' => 'public',
         ]);
 
-        $path = sprintf('%s/%s/audios/%s', $user->getUuid(), $mediaPod->getUuid(), '68a74fa6574b263fcd0ea4227b0b6bd6_5.wav');
-        $stream = fopen('/app/public/debug/audios/68a74fa6574b263fcd0ea4227b0b6bd6_5.wav', 'r');
+        $path = sprintf('%s/%s/audios/%s', $user->getUuid(), $mediaPod->getUuid(), '16f6656a5d544e96b732151090caf12d_5.wav');
+        $stream = fopen('/app/public/debug/audios/16f6656a5d544e96b732151090caf12d_5.wav', 'r');
         $awsStorage->writeStream($path, $stream, [
             'visibility' => 'public',
         ]);
 
         // Subtitles
 
-        $path = sprintf('%s/%s/subtitles/%s', $user->getUuid(), $mediaPod->getUuid(), '68a74fa6574b263fcd0ea4227b0b6bd6_1.srt');
-        $stream = fopen('/app/public/debug/subtitles/68a74fa6574b263fcd0ea4227b0b6bd6_1.srt', 'r');
+        $path = sprintf('%s/%s/subtitles/%s', $user->getUuid(), $mediaPod->getUuid(), '16f6656a5d544e96b732151090caf12d_1.srt');
+        $stream = fopen('/app/public/debug/subtitles/16f6656a5d544e96b732151090caf12d_1.srt', 'r');
         $awsStorage->writeStream($path, $stream, [
             'visibility' => 'public',
         ]);
 
-        $path = sprintf('%s/%s/subtitles/%s', $user->getUuid(), $mediaPod->getUuid(), '68a74fa6574b263fcd0ea4227b0b6bd6_2.srt');
-        $stream = fopen('/app/public/debug/subtitles/68a74fa6574b263fcd0ea4227b0b6bd6_2.srt', 'r');
+        $path = sprintf('%s/%s/subtitles/%s', $user->getUuid(), $mediaPod->getUuid(), '16f6656a5d544e96b732151090caf12d_2.srt');
+        $stream = fopen('/app/public/debug/subtitles/16f6656a5d544e96b732151090caf12d_2.srt', 'r');
         $awsStorage->writeStream($path, $stream, [
             'visibility' => 'public',
         ]);
 
-        $path = sprintf('%s/%s/subtitles/%s', $user->getUuid(), $mediaPod->getUuid(), '68a74fa6574b263fcd0ea4227b0b6bd6_3.srt');
-        $stream = fopen('/app/public/debug/subtitles/68a74fa6574b263fcd0ea4227b0b6bd6_3.srt', 'r');
+        $path = sprintf('%s/%s/subtitles/%s', $user->getUuid(), $mediaPod->getUuid(), '16f6656a5d544e96b732151090caf12d_3.srt');
+        $stream = fopen('/app/public/debug/subtitles/16f6656a5d544e96b732151090caf12d_3.srt', 'r');
         $awsStorage->writeStream($path, $stream, [
             'visibility' => 'public',
         ]);
 
-        $path = sprintf('%s/%s/subtitles/%s', $user->getUuid(), $mediaPod->getUuid(), '68a74fa6574b263fcd0ea4227b0b6bd6_4.srt');
-        $stream = fopen('/app/public/debug/subtitles/68a74fa6574b263fcd0ea4227b0b6bd6_4.srt', 'r');
+        $path = sprintf('%s/%s/subtitles/%s', $user->getUuid(), $mediaPod->getUuid(), '16f6656a5d544e96b732151090caf12d_4.srt');
+        $stream = fopen('/app/public/debug/subtitles/16f6656a5d544e96b732151090caf12d_4.srt', 'r');
         $awsStorage->writeStream($path, $stream, [
             'visibility' => 'public',
         ]);
 
-        $path = sprintf('%s/%s/subtitles/%s', $user->getUuid(), $mediaPod->getUuid(), '68a74fa6574b263fcd0ea4227b0b6bd6_5.srt');
-        $stream = fopen('/app/public/debug/subtitles/68a74fa6574b263fcd0ea4227b0b6bd6_5.srt', 'r');
+        $path = sprintf('%s/%s/subtitles/%s', $user->getUuid(), $mediaPod->getUuid(), '16f6656a5d544e96b732151090caf12d_5.srt');
+        $stream = fopen('/app/public/debug/subtitles/16f6656a5d544e96b732151090caf12d_5.srt', 'r');
         $awsStorage->writeStream($path, $stream, [
             'visibility' => 'public',
         ]);
@@ -164,11 +164,11 @@ class DebugController extends AbstractController
         $protoVideo->setSize($mediaPodData['originalVideo']['size']);
         $protoVideo->setAudios($mediaPodData['originalVideo']['audios']);
         $protoVideo->setSubtitles([
-            '68a74fa6574b263fcd0ea4227b0b6bd6_1.srt',
-            '68a74fa6574b263fcd0ea4227b0b6bd6_2.srt',
-            '68a74fa6574b263fcd0ea4227b0b6bd6_3.srt',
-            '68a74fa6574b263fcd0ea4227b0b6bd6_4.srt',
-            '68a74fa6574b263fcd0ea4227b0b6bd6_5.srt',
+            '16f6656a5d544e96b732151090caf12d_1.srt',
+            '16f6656a5d544e96b732151090caf12d_2.srt',
+            '16f6656a5d544e96b732151090caf12d_3.srt',
+            '16f6656a5d544e96b732151090caf12d_4.srt',
+            '16f6656a5d544e96b732151090caf12d_5.srt',
         ]);
 
         $protoMediaPod = new ProtoMediaPod();
