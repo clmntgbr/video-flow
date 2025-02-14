@@ -3,9 +3,9 @@
 include .env
 export $(shell sed 's/=.*//' .env)
 
-DOCKER_COMPOSE = docker compose -p $(PROJECT_NAME)
+DOCKER_COMPOSE = docker compose -p $(BASE_PROJECT_NAME)
 
-CONTAINER_PHP := $(shell docker container ls -f "name=$(PROJECT_NAME)-php" -q)
+CONTAINER_PHP := $(shell docker container ls -f "name=$(BASE_PROJECT_NAME)-php" -q)
 
 PHP := docker exec -ti $(CONTAINER_PHP)
 PHP_SH := docker exec -ti $(CONTAINER_PHP) sh -c
