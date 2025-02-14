@@ -21,5 +21,11 @@ protobuf:
 start:
 	cd video-flow-api && $(DOCKER_COMPOSE) up -d && cd ..
 
+stop:
+	cd video-flow-api && $(DOCKER_COMPOSE) down --remove-orphans && cd ..
+
 php:
 	$(DOCKER_COMPOSE) exec php sh
+
+setupenv:
+	bash setup-env.sh
