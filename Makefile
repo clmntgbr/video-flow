@@ -17,3 +17,9 @@ protobuf:
 	$(PHP_SH) "mv /app/src/Protobuf/App/Protobuf/* /app/src/Protobuf"
 	$(PHP_SH) "rm -r /app/src/Protobuf/App"
 	$(PHP_SH) "rm -r /app/Message.proto"
+
+start:
+	cd video-flow-api && $(DOCKER_COMPOSE) up -d && cd ..
+
+php:
+	$(DOCKER_COMPOSE) exec php sh
