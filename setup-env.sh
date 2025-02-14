@@ -45,5 +45,3 @@ while IFS='=' read -r key value || [ -n "$key" ]; do
         fi
     fi
 done < "$API_ENV"
-
-echo "Fichier $LOCAL_ENV créé et mis à jour avec succès."
