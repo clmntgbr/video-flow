@@ -3,11 +3,15 @@
 BASE_ENV=".env.local"
 API_ENV="video-flow-api/.env"
 LOCAL_ENV="video-flow-api/.env.local"
+
 SOUND_ENV="video-flow-sound-extractor/.env"
 SOUND_LOCAL_ENV="video-flow-sound-extractor/.env.local"
 
+SUBTITLE_GENERATOR_ENV="video-flow-subtitle-generator/.env"
+SUBTITLE_GENERATOR_LOCAL_ENV="video-flow-subtitle-generator/.env.local"
+
 # Check if source files exist
-if [ ! -f "$API_ENV" ] || [ ! -f "$SOUND_ENV" ]; then
+if [ ! -f "$API_ENV" ] || [ ! -f "$SOUND_ENV" ] || [ ! -f "$SUBTITLE_GENERATOR_ENV" ]; then
     echo "Source environment files not found"
     exit 1
 fi
@@ -15,6 +19,7 @@ fi
 # Create local copies
 cp "$API_ENV" "$LOCAL_ENV"
 cp "$SOUND_ENV" "$SOUND_LOCAL_ENV"
+cp "$SUBTITLE_GENERATOR_ENV" "$SUBTITLE_GENERATOR_LOCAL_ENV"
 
 # Improved get_env_var function that handles quoted values
 get_env_var() {
@@ -72,3 +77,4 @@ replace_env_vars() {
 # Perform replacements
 replace_env_vars "$API_ENV" "$LOCAL_ENV"
 replace_env_vars "$SOUND_ENV" "$SOUND_LOCAL_ENV"
+replace_env_vars "$SUBTITLE_GENERATOR_ENV" "$SUBTITLE_GENERATOR_LOCAL_ENV"
