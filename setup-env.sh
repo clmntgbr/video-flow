@@ -13,11 +13,14 @@ SUBTITLE_GENERATOR_LOCAL_ENV="video-flow-subtitle-generator/.env.local"
 SUBTITLE_MERGER_ENV="video-flow-subtitle-merger/.env"
 SUBTITLE_MERGER_LOCAL_ENV="video-flow-subtitle-merger/.env.local"
 
+SUBTITLE_TRANSFORMER_ENV="video-flow-subtitle-transformer/.env"
+SUBTITLE_TRANSFORMER_LOCAL_ENV="video-flow-subtitle-transformer/.env.local"
+
 SUBTITLE_INCRUSTATOR_ENV="video-flow-subtitle-incrustator/.env"
 SUBTITLE_INCRUSTATOR_LOCAL_ENV="video-flow-subtitle-incrustator/.env.local"
 
 # Check if source files exist
-if [ ! -f "$API_ENV" ] || [ ! -f "$SOUND_ENV" ] || [ ! -f "$SUBTITLE_GENERATOR_ENV" ] || [ ! -f "$SUBTITLE_MERGER_ENV" ] || [ ! -f "$SUBTITLE_INCRUSTATOR_ENV" ]; then
+if [ ! -f "$API_ENV" ] || [ ! -f "$SOUND_ENV" ] || [ ! -f "$SUBTITLE_GENERATOR_ENV" ] || [ ! -f "$SUBTITLE_MERGER_ENV" ] || [ ! -f "$SUBTITLE_TRANSFORMER_ENV" ] || [ ! -f "$SUBTITLE_INCRUSTATOR_ENV" ]; then
     echo "Source environment files not found"
     exit 1
 fi
@@ -27,6 +30,7 @@ cp "$API_ENV" "$LOCAL_ENV"
 cp "$SOUND_ENV" "$SOUND_LOCAL_ENV"
 cp "$SUBTITLE_GENERATOR_ENV" "$SUBTITLE_GENERATOR_LOCAL_ENV"
 cp "$SUBTITLE_MERGER_ENV" "$SUBTITLE_MERGER_LOCAL_ENV"
+cp "$SUBTITLE_TRANSFORMER_ENV" "$SUBTITLE_TRANSFORMER_LOCAL_ENV"
 cp "$SUBTITLE_INCRUSTATOR_ENV" "$SUBTITLE_INCRUSTATOR_LOCAL_ENV"
 
 # Improved get_env_var function that handles quoted values
@@ -87,4 +91,5 @@ replace_env_vars "$API_ENV" "$LOCAL_ENV"
 replace_env_vars "$SOUND_ENV" "$SOUND_LOCAL_ENV"
 replace_env_vars "$SUBTITLE_GENERATOR_ENV" "$SUBTITLE_GENERATOR_LOCAL_ENV"
 replace_env_vars "$SUBTITLE_MERGER_ENV" "$SUBTITLE_MERGER_LOCAL_ENV"
+replace_env_vars "$SUBTITLE_TRANSFORMER_ENV" "$SUBTITLE_TRANSFORMER_LOCAL_ENV"
 replace_env_vars "$SUBTITLE_INCRUSTATOR_ENV" "$SUBTITLE_INCRUSTATOR_LOCAL_ENV"
