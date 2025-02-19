@@ -1,0 +1,21 @@
+[submodule "video-flow-subtitle-transformer"]
+	path = video-flow-subtitle-transformer
+	url = git@github.com:clmntgbr/video-flow-subtitle-transformer.git
+[submodule "video-flow-subtitle-generator"]
+	path = video-flow-subtitle-generator
+	url = git@github.com:clmntgbr/video-flow-subtitle-generator.git
+[submodule "video-flow-subtitle-merger"]
+	path = video-flow-subtitle-merger
+	url = git@github.com:clmntgbr/video-flow-subtitle-merger.git
+[submodule "video-flow-subtitle-incrustator"]
+	path = video-flow-subtitle-incrustator
+	url = git@github.com:clmntgbr/video-flow-subtitle-incrustator.git
+[submodule "video-flow-sound-extractor"]
+	path = video-flow-sound-extractor
+	url = git@github.com:clmntgbr/video-flow-sound-extractor.git
+[submodule "video-flow-protobuf"]
+	path = video-flow-protobuf
+	url = git@github.com:clmntgbr/video-flow-protobuf.git
+[submodule "video-flow-api"]
+	path = video-flow-api
+	url = git@github.com:clmntgbr/video-flow-api.git
