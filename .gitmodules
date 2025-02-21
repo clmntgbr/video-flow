@@ -1,3 +1,6 @@
+[submodule "video-flow-video-formatter"]
+	path = video-flow-video-formatter
+	url = git@github.com:clmntgbr/video-flow-video-formatter.git
 [submodule "video-flow-subtitle-transformer"]
 	path = video-flow-subtitle-transformer
 	url = git@github.com:clmntgbr/video-flow-subtitle-transformer.git
