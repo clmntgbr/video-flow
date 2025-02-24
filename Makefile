@@ -41,6 +41,12 @@ protobuf:
 	$(PHP_SH) "mv /app/src/Protobuf/App/Protobuf/* /app/src/Protobuf"
 	$(PHP_SH) "rm -r /app/src/Protobuf/App"
 	$(PHP_SH) "rm -r /app/Message.proto"
+	rm -r video-flow-sound-extractor/Message.proto
+	rm -r video-flow-subtitle-generator/Message.proto
+	rm -r video-flow-subtitle-merger/Message.proto
+	rm -r video-flow-subtitle-transformer/Message.proto
+	rm -r video-flow-video-formatter/Message.proto
+	rm -r video-flow-subtitle-incrustator/Message.proto
 
 start:
 	cd video-flow-api && $(DOCKER_COMPOSE) up -d && cd ..
