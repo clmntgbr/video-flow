@@ -66,8 +66,5 @@ stop:
 	cd video-flow-video-formatter && $(DOCKER_COMPOSE) down --remove-orphans && cd ..
 	cd video-flow-subtitle-incrustator && $(DOCKER_COMPOSE) down --remove-orphans && cd ..
 
-php:
-	$(DOCKER_COMPOSE) exec php sh
-
 setupenv:
 	bash setup-env.sh
