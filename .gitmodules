@@ -22,3 +22,6 @@
 [submodule "video-flow-api"]
 	path = video-flow-api
 	url = git@github.com:clmntgbr/video-flow-api.git
+[submodule "video-flow-video-splitter"]
+	path = video-flow-video-splitter
+	url = git@github.com:clmntgbr/video-flow-video-splitter.git

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASE_ENV=".env.local"
+ROOT_ENV=".env.local"
 API_ENV="video-flow-api/.env"
 LOCAL_ENV="video-flow-api/.env.local"
 
@@ -19,13 +19,19 @@ SUBTITLE_TRANSFORMER_LOCAL_ENV="video-flow-subtitle-transformer/.env.local"
 SUBTITLE_INCRUSTATOR_ENV="video-flow-subtitle-incrustator/.env"
 SUBTITLE_INCRUSTATOR_LOCAL_ENV="video-flow-subtitle-incrustator/.env.local"
 
+VIDEO_SPLITTER_ENV="video-flow-video-splitter/.env"
+VIDEO_SPLITTER_LOCAL_ENV="video-flow-video-splitter/.env.local"
+
+VIDEO_FORMATTER_ENV="video-flow-video-formatter/.env"
+VIDEO_FORMATTER_LOCAL_ENV="video-flow-video-formatter/.env.local"
+
 # Check if source files exist
-if [ ! -f "$API_ENV" ] || [ ! -f "$SOUND_ENV" ] || [ ! -f "$SUBTITLE_GENERATOR_ENV" ] || [ ! -f "$SUBTITLE_MERGER_ENV" ] || [ ! -f "$SUBTITLE_TRANSFORMER_ENV" ] || [ ! -f "$SUBTITLE_INCRUSTATOR_ENV" ]; then
+if [ ! -f "$API_ENV" ] || [ ! -f "$SOUND_ENV" ] || [ ! -f "$SUBTITLE_GENERATOR_ENV" ] || [ ! -f "$SUBTITLE_MERGER_ENV" ] || [ ! -f "$SUBTITLE_TRANSFORMER_ENV" ] || [ ! -f "$SUBTITLE_INCRUSTATOR_ENV" ] || [ ! -f "$VIDEO_SPLITTER_ENV" ] || [ ! -f "$VIDEO_FORMATTER_ENV" ]; then
     echo "Source environment files not found"
     exit 1
 fi
 
-rm -r "$LOCAL_ENV" "$SOUND_LOCAL_ENV" "$SUBTITLE_GENERATOR_LOCAL_ENV" "$SUBTITLE_MERGER_LOCAL_ENV" "$SUBTITLE_TRANSFORMER_LOCAL_ENV" "$SUBTITLE_INCRUSTATOR_LOCAL_ENV" 2> /dev/null
+rm -r "$LOCAL_ENV" "$SOUND_LOCAL_ENV" "$SUBTITLE_GENERATOR_LOCAL_ENV" "$SUBTITLE_MERGER_LOCAL_ENV" "$SUBTITLE_TRANSFORMER_LOCAL_ENV" "$SUBTITLE_INCRUSTATOR_LOCAL_ENV" "$VIDEO_SPLITTER_LOCAL_ENV" "$VIDEO_FORMATTER_LOCAL_ENV" 2> /dev/null
 
 # Create local copies
 cp "$API_ENV" "$LOCAL_ENV"
@@ -34,6 +40,8 @@ cp "$SUBTITLE_GENERATOR_ENV" "$SUBTITLE_GENERATOR_LOCAL_ENV"
 cp "$SUBTITLE_MERGER_ENV" "$SUBTITLE_MERGER_LOCAL_ENV"
 cp "$SUBTITLE_TRANSFORMER_ENV" "$SUBTITLE_TRANSFORMER_LOCAL_ENV"
 cp "$SUBTITLE_INCRUSTATOR_ENV" "$SUBTITLE_INCRUSTATOR_LOCAL_ENV"
+cp "$VIDEO_SPLITTER_ENV" "$VIDEO_SPLITTER_LOCAL_ENV"
+cp "$VIDEO_FORMATTER_ENV" "$VIDEO_FORMATTER_LOCAL_ENV"
 
 # Improved get_env_var function that handles quoted values
 get_env_var() {
@@ -66,8 +74,8 @@ replace_env_vars() {
         while IFS= read -r line || [ -n "$line" ]; do
             if [[ "$line" =~ .*\$\{([A-Za-z_][A-Za-z0-9_]*)\}.* ]]; then
                 local var_name="${BASH_REMATCH[1]}"
-                # First try BASE_ENV, then source_file
-                local replacement_value=$(get_env_var "$BASE_ENV" "$var_name")
+                # First try ROOT_ENV, then source_file
+                local replacement_value=$(get_env_var "$ROOT_ENV" "$var_name")
                 if [ -z "$replacement_value" ]; then
                     replacement_value=$(get_env_var "$source_file" "$var_name")
                 fi
@@ -95,3 +103,5 @@ replace_env_vars "$SUBTITLE_GENERATOR_ENV" "$SUBTITLE_GENERATOR_LOCAL_ENV"
 replace_env_vars "$SUBTITLE_MERGER_ENV" "$SUBTITLE_MERGER_LOCAL_ENV"
 replace_env_vars "$SUBTITLE_TRANSFORMER_ENV" "$SUBTITLE_TRANSFORMER_LOCAL_ENV"
 replace_env_vars "$SUBTITLE_INCRUSTATOR_ENV" "$SUBTITLE_INCRUSTATOR_LOCAL_ENV"
+replace_env_vars "$VIDEO_SPLITTER_ENV" "$VIDEO_SPLITTER_LOCAL_ENV"
+replace_env_vars "$VIDEO_FORMATTER_ENV" "$VIDEO_FORMATTER_LOCAL_ENV"
