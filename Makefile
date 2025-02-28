@@ -66,5 +66,22 @@ stop:
 	cd video-flow-video-formatter && $(DOCKER_COMPOSE) down --remove-orphans && cd ..
 	cd video-flow-subtitle-incrustator && $(DOCKER_COMPOSE) down --remove-orphans && cd ..
 
+build: 
+	cd video-flow-api && $(DOCKER_COMPOSE) build --pull --no-cache && cd ..
+	cd video-flow-sound-extractor && $(DOCKER_COMPOSE) build --pull --no-cache && cd ..
+	cd video-flow-subtitle-generator && $(DOCKER_COMPOSE) build --pull --no-cache && cd ..
+	cd video-flow-subtitle-merger && $(DOCKER_COMPOSE) build --pull --no-cache && cd ..
+	cd video-flow-subtitle-transformer && $(DOCKER_COMPOSE) build --pull --no-cache && cd ..
+	cd video-flow-video-formatter && $(DOCKER_COMPOSE) build --pull --no-cache && cd ..
+	cd video-flow-subtitle-incrustator && $(DOCKER_COMPOSE) build --pull --no-cache && cd ..
+
+fix:
+	cd video-flow-api && make php-cs-fixer && cd ..
+	cd video-flow-sound-extractor && make fix && cd ..
+	cd video-flow-subtitle-generator && make fix && cd ..
+	cd video-flow-subtitle-merger && make fix && cd ..
+	cd video-flow-subtitle-transformer && make fix && cd ..
+	cd video-flow-video-formatter && make fix && cd ..
+	cd video-flow-subtitle-incrustator && make fix && cd ..
 setupenv:
 	bash setup-env.sh
