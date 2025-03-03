@@ -73,6 +73,24 @@ stop:
 	cd video-flow-subtitle-incrustator && $(DOCKER_COMPOSE) down --remove-orphans && cd ..
 	cd video-flow-video-splitter && $(DOCKER_COMPOSE) down --remove-orphans && cd ..
 
+start-services:
+	cd video-flow-sound-extractor && $(DOCKER_COMPOSE) up -d && cd ..
+	cd video-flow-subtitle-generator && $(DOCKER_COMPOSE) up -d && cd ..
+	cd video-flow-subtitle-merger && $(DOCKER_COMPOSE) up -d && cd ..
+	cd video-flow-subtitle-transformer && $(DOCKER_COMPOSE) up -d && cd ..
+	cd video-flow-video-formatter && $(DOCKER_COMPOSE) up -d && cd ..
+	cd video-flow-subtitle-incrustator && $(DOCKER_COMPOSE) up -d && cd ..
+	cd video-flow-video-splitter && $(DOCKER_COMPOSE) up -d && cd ..
+
+stop-services:
+	cd video-flow-sound-extractor && $(DOCKER_COMPOSE) down && cd ..
+	cd video-flow-subtitle-generator && $(DOCKER_COMPOSE) down && cd ..
+	cd video-flow-subtitle-merger && $(DOCKER_COMPOSE) down && cd ..
+	cd video-flow-subtitle-transformer && $(DOCKER_COMPOSE) down && cd ..
+	cd video-flow-video-formatter && $(DOCKER_COMPOSE) down && cd ..
+	cd video-flow-subtitle-incrustator && $(DOCKER_COMPOSE) down && cd ..
+	cd video-flow-video-splitter && $(DOCKER_COMPOSE) down && cd ..
+
 build: 
 	cd video-flow-api && $(DOCKER_COMPOSE) build --pull --no-cache && cd ..
 	cd video-flow-sound-extractor && $(DOCKER_COMPOSE) build --pull --no-cache && cd ..
