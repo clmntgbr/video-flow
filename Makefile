@@ -13,6 +13,7 @@ CONTAINER_ST := $(shell docker container ls -f "name=$(ROOT_PROJECT_NAME)-subtit
 CONTAINER_VF := $(shell docker container ls -f "name=$(ROOT_PROJECT_NAME)-video-formatter" -q)
 CONTAINER_SI := $(shell docker container ls -f "name=$(ROOT_PROJECT_NAME)-subtitle-incrustator" -q)
 CONTAINER_VS := $(shell docker container ls -f "name=$(ROOT_PROJECT_NAME)-video-splitter" -q)
+CONTAINER_VI := $(shell docker container ls -f "name=$(ROOT_PROJECT_NAME)-video-incrustator" -q)
 
 PHP := docker exec -ti $(CONTAINER_PHP)
 PHP_SH := docker exec -ti $(CONTAINER_PHP) sh -c
@@ -23,6 +24,7 @@ ST := docker exec -ti $(CONTAINER_ST)
 VF := docker exec -ti $(CONTAINER_VF)
 SI := docker exec -ti $(CONTAINER_SI)
 VS := docker exec -ti $(CONTAINER_VS)
+VI := docker exec -ti $(CONTAINER_VI)
 
 protobuf:
 	cp video-flow-protobuf/Message.proto video-flow-api
@@ -33,6 +35,7 @@ protobuf:
 	cp video-flow-protobuf/Message.proto video-flow-video-formatter
 	cp video-flow-protobuf/Message.proto video-flow-subtitle-incrustator
 	cp video-flow-protobuf/Message.proto video-flow-video-splitter
+	cp video-flow-protobuf/Message.proto video-flow-video-incrustator
 	$(PHP_SH) "find /app/src/Protobuf -mindepth 1 ! -name '.gitkeep' -delete"
 	$(PHP) protoc --proto_path=/app --php_out=src/Protobuf /app/Message.proto
 	$(SE) protoc --proto_path=/app --python_out=src/Protobuf /app/Message.proto
@@ -42,6 +45,7 @@ protobuf:
 	$(SI) protoc --proto_path=/app --python_out=src/Protobuf /app/Message.proto
 	$(VF) protoc --proto_path=/app --python_out=src/Protobuf /app/Message.proto
 	$(VS) protoc --proto_path=/app --python_out=src/Protobuf /app/Message.proto
+	$(VI) protoc --proto_path=/app --python_out=src/Protobuf /app/Message.proto
 	$(PHP_SH) "mv /app/src/Protobuf/App/Protobuf/* /app/src/Protobuf"
 	$(PHP_SH) "rm -r /app/src/Protobuf/App"
 	$(PHP_SH) "rm -r /app/Message.proto"
@@ -52,6 +56,7 @@ protobuf:
 	rm -r video-flow-video-formatter/Message.proto
 	rm -r video-flow-subtitle-incrustator/Message.proto
 	rm -r video-flow-video-splitter/Message.proto
+	rm -r video-flow-video-incrustator/Message.proto
 
 start:
 	cd video-flow-api && $(DOCKER_COMPOSE) up -d && cd ..
@@ -62,6 +67,7 @@ start:
 	cd video-flow-video-formatter && $(DOCKER_COMPOSE) up -d && cd ..
 	cd video-flow-subtitle-incrustator && $(DOCKER_COMPOSE) up -d && cd ..
 	cd video-flow-video-splitter && $(DOCKER_COMPOSE) up -d && cd ..
+	cd video-flow-video-incrustator && $(DOCKER_COMPOSE) up -d && cd ..
 
 stop:
 	cd video-flow-api && $(DOCKER_COMPOSE) down --remove-orphans && cd ..
@@ -72,24 +78,7 @@ stop:
 	cd video-flow-video-formatter && $(DOCKER_COMPOSE) down --remove-orphans && cd ..
 	cd video-flow-subtitle-incrustator && $(DOCKER_COMPOSE) down --remove-orphans && cd ..
 	cd video-flow-video-splitter && $(DOCKER_COMPOSE) down --remove-orphans && cd ..
-
-start-services:
-	cd video-flow-sound-extractor && $(DOCKER_COMPOSE) up -d && cd ..
-	cd video-flow-subtitle-generator && $(DOCKER_COMPOSE) up -d && cd ..
-	cd video-flow-subtitle-merger && $(DOCKER_COMPOSE) up -d && cd ..
-	cd video-flow-subtitle-transformer && $(DOCKER_COMPOSE) up -d && cd ..
-	cd video-flow-video-formatter && $(DOCKER_COMPOSE) up -d && cd ..
-	cd video-flow-subtitle-incrustator && $(DOCKER_COMPOSE) up -d && cd ..
-	cd video-flow-video-splitter && $(DOCKER_COMPOSE) up -d && cd ..
-
-stop-services:
-	cd video-flow-sound-extractor && $(DOCKER_COMPOSE) down && cd ..
-	cd video-flow-subtitle-generator && $(DOCKER_COMPOSE) down && cd ..
-	cd video-flow-subtitle-merger && $(DOCKER_COMPOSE) down && cd ..
-	cd video-flow-subtitle-transformer && $(DOCKER_COMPOSE) down && cd ..
-	cd video-flow-video-formatter && $(DOCKER_COMPOSE) down && cd ..
-	cd video-flow-subtitle-incrustator && $(DOCKER_COMPOSE) down && cd ..
-	cd video-flow-video-splitter && $(DOCKER_COMPOSE) down && cd ..
+	cd video-flow-video-incrustator && $(DOCKER_COMPOSE) down --remove-orphans && cd ..
 
 build: 
 	cd video-flow-api && $(DOCKER_COMPOSE) build --pull --no-cache && cd ..
@@ -100,6 +89,7 @@ build:
 	cd video-flow-video-formatter && $(DOCKER_COMPOSE) build --pull --no-cache && cd ..
 	cd video-flow-subtitle-incrustator && $(DOCKER_COMPOSE) build --pull --no-cache && cd ..
 	cd video-flow-video-splitter && $(DOCKER_COMPOSE) build --pull --no-cache && cd ..
+	cd video-flow-video-incrustator && $(DOCKER_COMPOSE) build --pull --no-cache && cd ..
 
 fix:
 	cd video-flow-api && make php-cs-fixer && cd ..
@@ -110,5 +100,6 @@ fix:
 	cd video-flow-video-formatter && make fix && cd ..
 	cd video-flow-subtitle-incrustator && make fix && cd ..
 	cd video-flow-video-splitter && make fix && cd ..
+	cd video-flow-video-incrustator && make fix && cd ..
 setupenv:
 	bash setup-env.sh
