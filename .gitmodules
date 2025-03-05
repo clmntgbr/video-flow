@@ -28,3 +28,6 @@
 [submodule "video-flow-video-incrustator"]
 	path = video-flow-video-incrustator
 	url = git@github.com:clmntgbr/video-flow-video-incrustator.git
+[submodule "video-flow-app"]
+	path = video-flow-app
+	url = git@github.com:clmntgbr/video-flow-app.git

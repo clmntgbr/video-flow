@@ -1,8 +1,8 @@
 #!/bin/bash
 
 ROOT_ENV=".env.local"
-API_ENV="video-flow-api/.env"
-LOCAL_ENV="video-flow-api/.env.local"
+API_ENV="video-flow-api/.env.dist"
+LOCAL_ENV="video-flow-api/.env"
 
 SOUND_ENV="video-flow-sound-extractor/.env"
 SOUND_LOCAL_ENV="video-flow-sound-extractor/.env.local"
